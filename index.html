@@ -15,34 +15,34 @@
             color:#333;
             background:#f5f5f5;
         }
+        body.no-scroll{
+            overflow:hidden;
+        }
 
         /* HEADER & NAVIGATION */
         header{
             display:flex;
             justify-content:space-between;
             align-items:center;
-            padding:12px 40px;
+            padding:10px 24px;
             background:rgba(255,255,255,0.96);
             position:sticky;
             top:0;
-            z-index:100;
+            z-index:130;
             box-shadow:0 1px 10px rgba(0,0,0,0.08);
             backdrop-filter:blur(10px);
         }
-
-        .logo{
-            font-size:20px;
-            font-weight:bold;
-            color:#333;
-            letter-spacing:2px;
+        .logo img{
+            height:34px;
+            display:block;
         }
-
         nav{
             display:flex;
-            gap:25px;
+            gap:18px;
             align-items:center;
+            font-size:11px;
+            z-index:120;
         }
-
         nav a{
             text-decoration:none;
             color:#444;
@@ -54,7 +54,6 @@
             padding-bottom:3px;
             transition:color 0.3s;
         }
-
         nav a::after{
             content:"";
             position:absolute;
@@ -65,7 +64,6 @@
             background:#0f5f7f;
             transition:width 0.3s ease;
         }
-
         nav a:hover{
             color:#0f5f7f;
         }
@@ -91,24 +89,56 @@
             box-shadow:0 6px 14px rgba(0,0,0,0.2);
         }
 
-        /* HERO SECTION WITH SLIDER */
+        /* HAMBURGER MENU */
+        .menu-toggle{
+            display:none;
+            width:32px;
+            height:32px;
+            border:none;
+            background:transparent;
+            cursor:pointer;
+            position:relative;
+            margin-left:8px;
+        }
+        .menu-toggle span{
+            position:absolute;
+            left:4px;
+            right:4px;
+            height:2px;
+            background:#333;
+            border-radius:3px;
+            transition:transform 0.3s ease,top 0.3s ease,opacity 0.3s ease;
+        }
+        .menu-toggle span:nth-child(1){top:8px;}
+        .menu-toggle span:nth-child(2){top:15px;}
+        .menu-toggle span:nth-child(3){top:22px;}
+        header.nav-open .menu-toggle span:nth-child(1){
+            top:15px;
+            transform:rotate(45deg);
+        }
+        header.nav-open .menu-toggle span:nth-child(2){
+            opacity:0;
+        }
+        header.nav-open .menu-toggle span:nth-child(3){
+            top:15px;
+            transform:rotate(-45deg);
+        }
+
+        /* HERO SECTION WITH SLIDER + RIGHT ENQUIRY FORM */
         .hero{
             position:relative;
-            height:550px;
+            height:520px;
             display:flex;
             align-items:center;
             justify-content:center;
-            text-align:center;
             color:#fff;
             overflow:hidden;
         }
-
         .hero-slider{
             position:absolute;
             inset:0;
             z-index:0;
         }
-
         .hero-slide{
             position:absolute;
             inset:0;
@@ -118,47 +148,53 @@
             transition:opacity 1s ease-in-out;
         }
         .hero-slide.active{opacity:1;}
-
         .hero::after{
             content:"";
             position:absolute;
             inset:0;
-            background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.25));
+            background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.2));
             pointer-events:none;
             z-index:1;
         }
 
-        .hero-content{
+        .hero-inner{
             position:relative;
             z-index:2;
-            max-width:650px;
-            padding:0 20px;
-            opacity:0;
-            transform:translateY(30px);
-            animation:heroFadeUp 1s ease-out forwards 0.2s;
+            max-width:1200px;
+            width:100%;
+            padding:0 32px;
+            display:flex;
+            align-items:stretch;
+            justify-content:space-between;
+            gap:32px;
         }
 
+        .hero-content{
+            max-width:520px;
+            align-self:center;
+            opacity:0;
+            transform:translateY(30px);
+            animation:heroFadeUp 0.9s ease-out forwards 0.2s;
+            text-align:left;
+        }
         .hero-content h1{
-            font-size:52px;
+            font-size:46px;
             margin-bottom:8px;
             font-weight:300;
             letter-spacing:1px;
         }
         .hero-content h1 strong{font-weight:700;}
-
         .hero-content p{
             font-size:18px;
-            margin-bottom:16px;
+            margin-bottom:12px;
             font-weight:300;
             letter-spacing:0.5px;
         }
-
         .hero-content .price{
             font-size:16px;
-            margin-bottom:24px;
+            margin-bottom:20px;
             font-weight:400;
         }
-
         .view-btn{
             background:#fff;
             color:#1a1a1a;
@@ -179,17 +215,92 @@
             box-shadow:0 6px 16px rgba(0,0,0,0.25);
         }
 
+        .hero-enquiry{
+            width:380px;
+            max-width:100%;
+            background:#fff;
+            color:#333;
+            border-radius:10px;
+            padding:24px 24px 20px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.28);
+            position:relative;
+            animation:heroFormIn 0.9s ease-out 0.3s both;
+        }
+        .hero-enquiry-header{
+            text-align:center;
+            margin-bottom:16px;
+        }
+        .hero-enquiry-logo{
+            height:40px;
+            margin-bottom:6px;
+        }
+        .hero-enquiry-title{
+            font-size:17px;
+            font-weight:600;
+            margin-bottom:4px;
+        }
+        .hero-enquiry .form-group{
+            margin-bottom:12px;
+        }
+        .hero-enquiry .form-group label{
+            display:block;
+            font-size:11px;
+            margin-bottom:4px;
+            color:#666;
+        }
+        .hero-enquiry .form-group input,
+        .hero-enquiry .form-group textarea{
+            width:100%;
+            padding:8px 0;
+            border:none;
+            border-bottom:1px solid #ddd;
+            font-size:12px;
+            font-family:inherit;
+            outline:none;
+        }
+        .hero-enquiry .form-group textarea{
+            resize:vertical;
+            min-height:60px;
+        }
+        .hero-enquiry .checkbox-row{
+            display:flex;
+            align-items:flex-start;
+            gap:6px;
+            font-size:10px;
+            margin:6px 0 14px;
+        }
+        .hero-enquiry .checkbox-row input{
+            margin-top:2px;
+        }
+        .hero-enquiry .submit-btn{
+            width:100%;
+            border-radius:4px;
+        }
+        .hero-form-close{
+            position:absolute;
+            right:10px;
+            top:8px;
+            border:none;
+            background:transparent;
+            font-size:18px;
+            cursor:pointer;
+            line-height:1;
+            color:#444;
+        }
+        .hero-enquiry.hero-form-hidden{
+            display:none;
+        }
+
         .hero-nav{
             position:absolute;
-            bottom:25px;
+            bottom:24px;
             left:50%;
             transform:translateX(-50%);
             display:flex;
             gap:15px;
-            z-index:3;
+            z-index:2;
             animation:floatNav 3s ease-in-out infinite;
         }
-
         .hero-nav button{
             width:38px;
             height:38px;
@@ -207,141 +318,92 @@
             transform:translateY(-1px);
         }
 
-        /* SECTIONS */
-        section{position:relative;overflow:hidden;}
-        .section-title{
-            text-align:center;
-            font-size:22px;
-            margin-bottom:45px;
-            text-transform:uppercase;
-            letter-spacing:3px;
-            font-weight:400;
+        /* SIMPLE SCROLL ANIMATION */
+        .animate-fade-up{
+            opacity:0;
+            transform:translateY(30px);
+            transition:opacity 0.7s ease, transform 0.7s ease;
+        }
+        .animate-fade-up.visible{
+            opacity:1;
+            transform:translateY(0);
         }
 
-        /* OVERVIEW */
-        .overview{
-            background:linear-gradient(rgba(15,95,127,0.96),rgba(7,50,69,0.96)),
-                        url('images/amenities.webp') center/cover fixed;
-            padding:50px 40px;
-            color:#fff;
-        }
-        .overview-grid{
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:25px;
+        /* MAIN LAYOUT WRAPPER (FIRST BLOCK) */
+        .main-wrapper{
             max-width:1200px;
             margin:0 auto;
+            padding:32px 14px 0;
+            background:#fff;
         }
-        .overview-item{
-            border:1px solid rgba(255,255,255,0.3);
-            padding:25px 20px;
+        .proj-heading{
             text-align:center;
-            transition:all 0.3s,transform 0.3s;
-            background:rgba(255,255,255,0.04);
-            backdrop-filter:blur(6px);
+            margin-bottom:24px;
         }
-        .overview-item:hover{
-            border-color:#fff;
-            background:rgba(255,255,255,0.12);
-            transform:translateY(-3px);
-        }
-        .overview-item .icon{
-            font-size:30px;
-            margin-bottom:12px;
-            width:52px;height:52px;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin-inline:auto;
-            background:rgba(255,255,255,0.1);
-        }
-        .overview-item h3{
-            font-size:13px;
-            margin-bottom:8px;
-            font-weight:600;
-            letter-spacing:0.5px;
-        }
-        .overview-item p{
-            font-size:11px;
-            line-height:1.5;
-            opacity:0.9;
-        }
-
-        /* HIGHLIGHTS */
-        .highlights{
-            padding:60px 40px;
-            background:linear-gradient(rgba(255,255,255,0.95),rgba(255,255,255,0.98)),
-                        url('images/gallery1.webp') center/cover fixed;
-        }
-        .highlights-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:35px;
-            max-width:1200px;
-            margin:0 auto;
-        }
-        .highlight-item{
-            text-align:center;
-            background:rgba(255,255,255,0.9);
-            padding:24px 20px;
-            border-radius:10px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.06);
-            transition:transform 0.3s,box-shadow 0.3s,background 0.3s;
-        }
-        .highlight-item:hover{
-            transform:translateY(-4px);
-            box-shadow:0 16px 40px rgba(0,0,0,0.1);
-            background:rgba(255,255,255,0.98);
-        }
-        .highlight-item .icon{
-            width:55px;height:55px;
-            background:#f5f5f5;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin:0 auto 16px;
-            font-size:28px;
-        }
-        .highlight-item h3{
-            font-size:13px;
-            margin-bottom:10px;
-            font-weight:600;
-            letter-spacing:0.5px;
-        }
-        .highlight-item p{
-            font-size:12px;
-            line-height:1.6;
-            color:#666;
-        }
-
-        /* VISUAL JOURNEY GALLERY SLIDER */
-        .gallery{
-            background:#faf7f4;
-            padding:60px 40px;
-        }
-        .gallery-inner{
-            max-width:1200px;
-            margin:0 auto;
-        }
-        .gallery-title{
-            text-align:center;
-            font-size:28px;
-            margin-bottom:20px;
+        .proj-title{
             font-family:Georgia,serif;
-            color:#0f5f7f;
+            font-size:20px;
+            margin-bottom:4px;
         }
-        .gallery-subline{
-            width:160px;
-            height:1px;
-            background:#0f5f7f;
-            margin:0 auto 32px;
+        .proj-location{
+            font-size:11px;
+            color:#777;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:4px;
+        }
+        .proj-location span.icon{
+            font-size:11px;
+        }
+
+        .info-strip{
+            border:1px solid #d6d6d6;
+            display:flex;
+            justify-content:space-between;
+            text-align:center;
+            font-size:11px;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            margin-bottom:30px;
+        }
+        .info-block{
+            flex:1;
+            padding:16px 8px;
+        }
+        .info-block:not(:last-child){
+            border-right:1px solid #d6d6d6;
+        }
+        .info-label{
+            color:#777;
+            margin-bottom:6px;
+        }
+        .info-value{
+            font-size:11px;
+            font-weight:600;
+        }
+
+        .premium-heading-wrap{
+            text-align:center;
+            margin-bottom:20px;
+        }
+        .premium-title{
+            font-size:13px;
+            text-transform:uppercase;
+            letter-spacing:1.5px;
+            margin-bottom:10px;
+        }
+        .premium-line{
             position:relative;
+            width:170px;
+            height:1px;
+            background:#c6c6c6;
+            margin:0 auto;
         }
-        .gallery-subline::after{
+        .premium-line::after{
             content:"";
-            width:6px;height:6px;
+            width:7px;
+            height:7px;
             border-radius:50%;
             background:#0f5f7f;
             position:absolute;
@@ -349,411 +411,870 @@
             top:50%;
             transform:translate(-50%,-50%);
         }
-        .gallery-track{
+
+        .metrics-row{
             display:flex;
-            transition:transform 0.6s ease;
+            justify-content:space-between;
+            border-top:1px solid #e7e7e7;
+            border-bottom:1px solid #e7e7e7;
+            padding:14px 0;
+            font-size:11px;
+            margin-bottom:22px;
         }
-        .gallery-card{
-            min-width:33.3333%;
-            padding:0 12px;
-            display:flex;
-            justify-content:center;
+        .metric{
+            flex:1;
+            text-align:center;
+            padding:0 6px;
+            transition:transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .gallery-card-inner{
+        .metric:not(:last-child){
+            border-right:1px solid #e7e7e7;
+        }
+        .metric-label{
+            color:#777;
+            margin-bottom:4px;
+        }
+        .metric-value{
+            font-weight:600;
+        }
+        .metric:hover{
+            transform:translateY(-3px);
+            box-shadow:0 8px 18px rgba(0,0,0,0.06);
+        }
+
+        .two-images{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+            margin-bottom:18px;
+        }
+        .two-images img{
             width:100%;
-            border-radius:26px;
-            overflow:hidden;
-            box-shadow:0 12px 30px rgba(0,0,0,0.15);
-            transform:scale(0.92);
-            transition:transform 0.5s ease,box-shadow 0.5s ease;
-            background:#fff;
-        }
-        .gallery-card-inner img{
             display:block;
-            width:100%;
-            height:100%;
+            border-radius:6px;
+            height:260px;       /* smaller & equal */
             object-fit:cover;
         }
-        .gallery-card.active .gallery-card-inner{
-            transform:scale(1);
-            box-shadow:0 18px 40px rgba(0,0,0,0.25);
+
+        .overview-block{
+            text-align:center;
+            padding:20px 6px 32px;
         }
-        .gallery-controls{
-            display:flex;
-            justify-content:center;
-            gap:18px;
-            margin-top:26px;
+        .overview-heading{
+            font-size:20px;
+            margin-bottom:4px;
         }
-        .gallery-btn{
-            width:52px;height:52px;
+        .overview-subtitle{
+            font-size:11px;
+            color:#777;
+            margin-bottom:10px;
+            text-transform:uppercase;
+            letter-spacing:1px;
+        }
+        .overview-divider{
+            width:220px;
+            height:1px;
+            background:#0f5f7f;
+            margin:0 auto 14px;
+            position:relative;
+        }
+        .overview-divider::after{
+            content:"";
+            width:7px;height:7px;
             border-radius:50%;
             border:1px solid #0f5f7f;
             background:#fff;
-            display:flex;
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%,-50%);
+        }
+        .overview-text{
+            font-size:15px;
+            text-align: justify;
+            color:#555;
+            line-height:1.7;
+            max-width:850px;
+            margin:0 auto 18px;
+        }
+        .know-btn{
+            display:inline-flex;
             align-items:center;
-            justify-content:center;
-            font-size:22px;
+            gap:6px;
+            border:1px solid #0f5f7f;
+            color:#0f5f7f;
+            text-transform:uppercase;
+            font-size:10px;
+            padding:7px 18px;
+            background:#fff;
             cursor:pointer;
-            transition:background 0.3s,border-color 0.3s,transform 0.2s;
+            letter-spacing:1px;
+            transition:background 0.3s,color 0.3s,transform 0.2s,box-shadow 0.2s;
+        }
+        .know-btn span.arrow{
+            font-size:10px;
+        }
+        .know-btn:hover{
+            background:#0f5f7f;
+            color:#fff;
+            transform:translateY(-1px);
+            box-shadow:0 8px 18px rgba(0,0,0,0.12);
+        }
+
+        .bottom-image-wrap{
+            margin-top:26px;
+        }
+        .bottom-image-wrap img{
+            width:100%;
+            max-height:420px;
+            display:block;
+            border-radius:6px;
+            object-fit:cover;
+        }
+
+        /* USP SECTION */
+        .usp-section{
+            max-width:1200px;
+            margin:32px auto 0;
+            padding:36px 14px;
+            background:#fdf8f2;
+        }
+        .usp-inner{
+            display:grid;
+            grid-template-columns:1.1fr 1.1fr;
+            gap:32px;
+            align-items:center;
+        }
+        .usp-inner img{
+            width:100%;
+            height:260px;
+            object-fit:cover;
+            border-radius:10px;
+        }
+        .usp-title{
+            font-size:13px;
+            text-transform:uppercase;
+            letter-spacing:1.5px;
+            margin-bottom:14px;
+        }
+        .usp-list{
+            list-style:none;
+            font-size:12px;
+            color:#555;
+            margin-bottom:20px;
+        }
+        .usp-list li{
+            padding-left:18px;
+            margin-bottom:6px;
+            position:relative;
+        }
+        .usp-list li::before{
+            content:"–";
+            position:absolute;
+            left:0;
+            top:0;
             color:#0f5f7f;
         }
-        .gallery-btn:hover{
-            background:#0f5f7f;
-            color:#fff;
-            border-color:#0f5f7f;
-            transform:translateY(-2px);
-        }
 
-        /* PRICE LIST */
-        .price-list{
-            padding:60px 40px;
-            background:linear-gradient(rgba(255,255,255,0.96),rgba(255,255,255,0.98)),
-                        url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=1200&fit=crop') center/cover fixed;
-        }
-        .price-table{
-            max-width:900px;
-            margin:0 auto;
-            border-collapse:collapse;
-            width:100%;
-            background:#fff;
-            box-shadow:0 8px 24px rgba(0,0,0,0.08);
-            border-radius:8px;
-            overflow:hidden;
-        }
-        .price-table th{
-            background:#d5d5d5;
-            padding:14px 12px;
-            text-align:left;
-            font-weight:600;
-            font-size:12px;
-            letter-spacing:0.5px;
-        }
-        .price-table td{
-            padding:14px 12px;
-            border-bottom:1px solid #e5e5e5;
-            font-size:12px;
-        }
-        .price-table tr:nth-child(even){background:#fafafa;}
-
-        .contact-office-btn{
-            background:#0f5f7f;
-            color:#fff;
-            padding:7px 16px;
-            border:none;
-            border-radius:999px;
-            cursor:pointer;
-            font-size:11px;
-            font-weight:600;
-            text-transform:uppercase;
-            letter-spacing:0.5px;
-            transition:background 0.3s,transform 0.2s,box-shadow 0.2s;
-            box-shadow:0 4px 10px rgba(0,0,0,0.15);
-        }
-        .contact-office-btn:hover{
-            background:#09394f;
-            transform:translateY(-1px);
-            box-shadow:0 8px 18px rgba(0,0,0,0.2);
-        }
-
-        /* FLOOR PLANS */
-        .floor-plans{
-            background:linear-gradient(rgba(15,95,127,0.96),rgba(7,50,69,0.96)),
-                        url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=1200&fit=crop') center/cover fixed;
-            padding:60px 40px;
-            color:#fff;
-        }
-        .floor-plans-grid{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:35px;
+        /* Decision Corner Banner */
+        .decision-banner{
             max-width:1200px;
-            margin:0 auto;
-        }
-        .floor-plan-item{
-            aspect-ratio:16/10;
-            background:center/cover;
-            border-radius:6px;
-            position:relative;
-            overflow:hidden;
-            box-shadow:0 12px 32px rgba(0,0,0,0.35);
-            transition:transform 0.3s,box-shadow 0.3s;
-        }
-        .floor-plan-item:hover{
-            transform:translateY(-4px) scale(1.02);
-            box-shadow:0 16px 40px rgba(0,0,0,0.5);
-        }
-        .floor-plan-label{
-            position:absolute;
-            bottom:0;left:0;right:0;
-            background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
-            padding:14px;
-            text-align:center;
-            font-size:12px;
-            font-weight:600;
-            letter-spacing:1px;
-        }
-
-        /* LOCATION */
-        .location{
-            padding:60px 40px;
-            background:linear-gradient(rgba(255,255,255,0.96),rgba(255,255,255,0.98)),
-                        url('https://images.unsplash.com/photo-1494797710133-75adf6c1f4a3?w=1200&fit=crop') center/cover fixed;
-        }
-        .location-content{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:50px;
-            max-width:1200px;
-            margin:0 auto;
-            align-items:flex-start;
-        }
-        .location-map{
-            background:url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&fit=crop') center/cover;
-            aspect-ratio:4/3;
-            border-radius:10px;
-            box-shadow:0 12px 30px rgba(0,0,0,0.18);
-            position:relative;
-            overflow:hidden;
-        }
-        .location-map::after{
-            content:"Sector 49, Gurgaon";
-            position:absolute;
-            left:16px;
-            bottom:16px;
-            background:rgba(0,0,0,0.65);
-            color:#fff;
-            font-size:11px;
-            padding:6px 10px;
-            border-radius:999px;
-            letter-spacing:0.5px;
-        }
-        .location-advantages{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:20px 30px;
-        }
-        .location-item{
-            display:flex;
-            gap:12px;
-            align-items:flex-start;
-            padding:10px 8px;
-            border-radius:10px;
-            background:rgba(255,255,255,0.9);
-            box-shadow:0 4px 12px rgba(0,0,0,0.05);
-            transition:transform 0.25s,box-shadow 0.25s,background 0.25s;
-        }
-        .location-item:hover{
-            transform:translateY(-2px);
-            box-shadow:0 10px 22px rgba(0,0,0,0.08);
-            background:rgba(255,255,255,0.98);
-        }
-        .location-item .icon{
-            width:42px;height:42px;
-            background:#0f5f7f;
-            border-radius:50%;
+            margin:18px auto 0;
+            background:url('images/descisionbg.webp') center/cover no-repeat;
+            height:200px;
             display:flex;
             align-items:center;
             justify-content:center;
+            text-align:center;
             color:#fff;
-            flex-shrink:0;
-            font-size:20px;
         }
-        .location-item h4{
-            font-size:12px;
-            margin-bottom:4px;
-            font-weight:600;
-            letter-spacing:0.5px;
+        .decision-inner h3{
+            text-transform:uppercase;
+            letter-spacing:1.5px;
+            font-size:14px;
+            margin-bottom:6px;
         }
-        .location-item p{
+        .decision-inner p{
             font-size:11px;
-            color:#666;
+            margin-bottom:14px;
+        }
+        .btn-primary{
+            display:inline-block;
+            padding:8px 18px;
+            font-size:11px;
+            background:#0f5f7f;
+            color:#fff;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            border:none;
+            cursor:pointer;
+            transition:background 0.3s,transform 0.2s,box-shadow 0.2s;
+        }
+        .btn-primary:hover{
+            background:#0c485f;
+            transform:translateY(-1px);
+            box-shadow:0 8px 18px rgba(0,0,0,0.25);
         }
 
-        /* AMENITIES */
-        .amenities{
-            background:linear-gradient(rgba(15,95,127,0.96),rgba(7,50,69,0.96)),
-                        url('https://images.unsplash.com/photo-1520256862855-398228c41684?w=1200&fit=crop') center/cover fixed;
-            padding:60px 40px;
+        /* Pricing & Plan */
+        .pricing-section{
+            max-width:1200px;
+            margin:32px auto 0;
+            padding:36px 14px 18px;
+            background:#fff;
+        }
+        .section-heading-center{
+            text-align:center;
+            margin-bottom:6px;
+            font-size:18px;
+            text-transform:uppercase;
+            letter-spacing:1.5px;
+        }
+        .section-sub-center{
+            text-align:center;
+            font-size:11px;
+            color:#777;
+            margin-bottom:20px;
+        }
+        .heading-underline{
+            width:150px;
+            height:1px;
+            background:#0f5f7f;
+            margin:0 auto 4px;
+            position:relative;
+        }
+        .heading-underline::after{
+            content:"";
+            width:7px;
+            height:7px;
+            border-radius:50%;
+            border:1px solid #0f5f7f;
+            background:#fff;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+        }
+        .pricing-cards{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:22px;
+            margin-top:18px;
+        }
+        .price-card{
+            background:#fff;
+            border-radius:10px;
+            box-shadow:0 12px 30px rgba(0,0,0,0.08);
+            padding:24px 20px 22px;
+            text-align:center;
+            transition:transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .price-card:hover{
+            transform:translateY(-4px);
+            box-shadow:0 18px 40px rgba(0,0,0,0.12);
+        }
+        .price-card h4{
+            font-size:13px;
+            margin-bottom:6px;
+            color:#0f5f7f;
+        }
+        .price-card .price{
+            font-size:16px;
+            margin-bottom:8px;
+        }
+        .price-card .size{
+            font-size:11px;
+            color:#777;
+            margin-bottom:16px;
+        }
+        .btn-outline{
+            display:inline-block;
+            padding:7px 18px;
+            font-size:10px;
+            border:1px solid #0f5f7f;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            cursor:pointer;
+            color:#0f5f7f;
+            background:#fff;
+            transition:background 0.3s,color 0.3s,transform 0.2s,box-shadow 0.2s;
+        }
+        .btn-outline:hover{
+            background:#0f5f7f;
             color:#fff;
+            transform:translateY(-1px);
+            box-shadow:0 8px 18px rgba(0,0,0,0.15);
+        }
+
+        /* Amenities section */
+        .amenities-section{
+            max-width:1200px;
+            margin:32px auto 0;
+            padding:36px 14px 42px;
+            background:#fff;
+        }
+        .amenities-title{
+            text-align:center;
+            font-size:18px;
+            margin-bottom:6px;
+        }
+        .amenities-underline{
+            width:130px;
+            height:1px;
+            background:#0f5f7f;
+            margin:0 auto 22px;
+            position:relative;
+        }
+        .amenities-underline::after{
+            content:"";
+            width:6px;height:6px;
+            border-radius:50%;
+            border:1px solid #0f5f7f;
+            background:#fff;
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%,-50%);
+        }
+        .amenities-inner{
+            display:grid;
+            grid-template-columns:1.2fr 1.3fr;
+            gap:20px;
+        }
+        .amenities-inner img{
+            width:100%;
+            height:260px;
+            object-fit:cover;
+            border-radius:10px;
         }
         .amenities-grid{
             display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:18px;
+            grid-template-columns:repeat(3,1fr);
+            gap:6px;
+            font-size:10px;
+        }
+        .amenity-box{
+            background:#0f5f7f;
+            color:#fff;
+            padding:12px 8px;
+            text-align:center;
+            transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+        .amenity-box:hover{
+            transform:translateY(-3px);
+            box-shadow:0 10px 22px rgba(0,0,0,0.2);
+            background:#136f94;
+        }
+
+        /* Master Plans */
+        .master-section{
             max-width:1200px;
             margin:0 auto;
+            padding:36px 14px;
+            background:#fbf5ee;
         }
-        .amenity-item{
-            aspect-ratio:4/3;
-            background:center/cover;
+        .master-top{
+            text-align:center;
+            margin-bottom:22px;
+        }
+        .master-top h3{
+            font-size:18px;
+            margin-bottom:6px;
+        }
+        .master-inner{
+            display:grid;
+            grid-template-columns:1fr 1.6fr;
+            gap:26px;
+            align-items:center;
+        }
+        .master-left-title{
+            font-size:33px;
+            margin-bottom:12px;
+        }
+        .master-inner img{
+            width:100%;
+            max-height:360px;
+            object-fit:cover;
+            display:block;
+            border-radius:10px;
+            border:1px solid #0f5f7f;
+            padding:4px;
+        }
+
+        /* Floor Plans */
+        .floor-section{
+            max-width:1200px;
+            margin:0 auto;
+            padding:36px 14px 42px;
+            background:#fbf5ee;
+        }
+        .floor-top{
+            text-align:center;
+            margin-bottom:22px;
+        }
+        .floor-inner{
+            display:grid;
+            grid-template-columns:1fr 1.6fr;
+            gap:26px;
+            align-items:center;
+        }
+
+        /* POPUP ENQUIRY MODAL */
+.modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:300;
+    padding:18px;
+}
+.modal-backdrop.active{
+    display:flex;
+}
+
+.modal{
+    width:480px;
+    max-width:100%;
+    background:#fffaf4;
+    border-radius:10px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.32);
+    padding:30px 36px 26px;
+    position:relative;
+
+    /* animation */
+    opacity:0;
+    transform:translateY(32px) scale(.96);
+    transition:opacity .35s ease, transform .35s ease;
+}
+.modal-backdrop.active .modal{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.modal-close{
+    position:absolute;
+    right:18px;
+    top:14px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid #ddd;
+    background:#fff;
+    cursor:pointer;
+    font-size:16px;
+    line-height:30px;
+}
+.modal-logo{
+    display:block;
+    margin:0 auto 14px;
+    max-width:140px;
+}
+.modal-title{
+    text-align:center;
+    font-size:18px;
+    margin-bottom:18px;
+    font-weight:600;
+    color:#222;
+}
+
+.modal .form-group{
+    margin-bottom:14px;
+}
+.modal .form-group label{
+    display:block;
+    font-size:11px;
+    margin-bottom:4px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#666;
+}
+.modal .form-group input,
+.modal .form-group textarea{
+    width:100%;
+    border:none;
+    border-bottom:1px solid #ddd;
+    padding:8px 0;
+    font-size:12px;
+    font-family:inherit;
+    outline:none;
+}
+.modal .form-group textarea{
+    resize:vertical;
+    min-height:60px;
+}
+
+.modal .checkbox-row{
+    display:flex;
+    align-items:flex-start;
+    gap:6px;
+    font-size:10px;
+    margin:10px 0 18px;
+}
+.modal .checkbox-row input{
+    margin-top:3px;
+}
+
+.modal .submit-btn{
+    width:170px;
+    margin:0 auto;
+    display:block;
+    border-radius:2px;
+    background:#004a77;
+}
+.modal .submit-btn:hover{
+    background:#003757;
+}
+
+        .floor-tabs{
+            display:flex;
+            border-bottom:1px solid #d0d0d0;
+            margin-bottom:10px;
+            font-size:28px;
+        }
+        .floor-tab{
+            padding:6px 16px;
+            cursor:pointer;
+        }
+        .floor-tab.active{
+            color:#0f5f7f;
+            border-bottom:2px solid #0f5f7f;
+        }
+        .floor-detail{
+            font-size:22px;
+            margin-bottom:14px;
+            color:#555;
+        }
+        .floor-inner img{
+            width:100%;
+            max-height:360px;
+            object-fit:cover;
+            display:block;
+            border-radius:10px;
+            border:1px solid #0f5f7f;
+            padding:4px;
+        }
+
+        /* VISUAL JOURNEY – CENTER AUTO SLIDER */
+        .visual-section{
+            max-width:1200px;
+            margin:0 auto;
+            padding:36px 14px 52px;
+            background:#fdf7f0;
+            text-align:center;
+        }
+        .visual-heading{
+            font-size:18px;
+            margin-bottom:6px;
+        }
+        .visual-underline{
+            width:130px;
+            height:1px;
+            background:#0f5f7f;
+            margin:0 auto 24px;
+            position:relative;
+        }
+        .visual-underline::after{
+            content:"";
+            width:6px;height:6px;
+            border-radius:50%;
+            border:1px solid #0f5f7f;
+            background:#fff;
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%,-50%);
+        }
+        .visual-viewport{
+            overflow:visible;
+            border-radius:24px;
+            padding:12px 0;
+        }
+        .visual-track{
+            display:flex;
+            gap:24px;
+            align-items:center;
+            transition:transform 0.7s cubic-bezier(.22,.9,.31,1);
+            will-change:transform;
+        }
+        .visual-card{
+            flex:0 0 320px;
+            border-radius:18px;
+            overflow:hidden;
+            background:#fff;
+            box-shadow:0 6px 22px rgba(0,0,0,0.08);
+            transform-origin:center center;
+            transition:transform 0.5s ease,box-shadow 0.3s ease,opacity 0.3s ease;
+            position:relative;
+        }
+        .visual-card img{
+            display:block;
+            width:100%;
+            height:260px;
+            object-fit:cover;
+        }
+        .visual-card.active{
+            transform:translateY(-16px) scale(1.05);
+            z-index:3;
+            box-shadow:0 18px 40px rgba(15,95,127,0.16);
+            opacity:1;
+        }
+        .visual-card.inactive{
+            opacity:0.85;
+            transform:scale(0.97);
+        }
+        .visual-controls{
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-top:18px;
+        }
+        .visual-btn{
+            width:40px;height:40px;
+            border-radius:50%;
+            border:2px solid #0f5f7f;
+            background:#fff;
+            cursor:pointer;
+            font-size:18px;
+            line-height:36px;
+            color:#0f5f7f;
+            transition:background 0.25s,color 0.25s,transform 0.18s;
+        }
+        .visual-btn:hover{
+            background:#0f5f7f;
+            color:#fff;
+            transform:translateY(-2px);
+        }
+
+        /* LOCATION ADVANTAGES */
+        .location-section{
+            max-width:1200px;
+            margin:0 auto;
+            padding:36px 14px 42px;
+            background:#fff;
+        }
+        .loc-head{
+            text-align:center;
+            margin-bottom:22px;
+        }
+        .loc-head h3{
+            font-size:18px;
+            margin-bottom:4px;
+        }
+        .loc-head p{
+            font-size:11px;
+            color:#777;
+        }
+        .location-inner{
+            display:grid;
+            grid-template-columns:1.3fr 1.1fr;
+            gap:24px;
+            align-items:flex-start;
+        }
+        .loc-list{
+            font-size:11px;
+        }
+        .loc-row{
+            display:flex;
+            justify-content:space-between;
+            padding:6px 0;
+            border-bottom:1px solid #eee;
+        }
+        .loc-row span:last-child{
+            color:#555;
+        }
+        .loc-btn-wrap{
+            margin-top:16px;
+        }
+        .loc-map{
             border-radius:10px;
             overflow:hidden;
-            position:relative;
-            box-shadow:0 10px 26px rgba(0,0,0,0.35);
-            transition:transform 0.3s,box-shadow 0.3s;
+            border:1px solid #0f5f7f;
+            padding:4px;
         }
-        .amenity-item::after{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:linear-gradient(to top,rgba(0,0,0,0.6),transparent 55%);
-            opacity:0;
-            transition:opacity 0.3s;
-        }
-        .amenity-item:hover{
-            transform:translateY(-4px) scale(1.02);
-            box-shadow:0 16px 36px rgba(0,0,0,0.5);
-        }
-        .amenity-item:hover::after{opacity:1;}
-
-        /* ABOUT */
-        .about{
-            padding:60px 40px 70px;
-            background:linear-gradient(rgba(255,255,255,0.96),rgba(255,255,255,0.98)),
-                        url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1200&fit=crop') center/cover fixed;
-            text-align:center;
-            max-width:950px;
-            margin:0 auto;
-        }
-        .about h2{
-            font-size:22px;
-            margin-bottom:18px;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            font-weight:400;
-        }
-        .about p{
-            font-size:12px;
-            line-height:1.8;
-            color:#555;
-            margin-bottom:28px;
-        }
-        .about-video{
-            aspect-ratio:16/9;
-            background:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=700&h=400&fit=crop') center/cover;
-            border-radius:12px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin:0 auto;
-            max-width:700px;
-            position:relative;
-            box-shadow:0 18px 40px rgba(0,0,0,0.25);
-            overflow:hidden;
-        }
-        .about-video::after{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:radial-gradient(circle at center,rgba(0,0,0,0.2),transparent 60%);
-        }
-        .play-button{
-            width:56px;height:56px;
-            background:#fff;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:22px;
-            cursor:pointer;
-            transition:transform 0.3s,box-shadow 0.3s,background 0.3s;
-            color:#0f5f7f;
-            box-shadow:0 4px 15px rgba(0,0,0,0.3);
-            position:relative;
-            z-index:2;
-        }
-        .play-button:hover{
-            transform:scale(1.08);
-            box-shadow:0 8px 22px rgba(0,0,0,0.4);
-            background:#f5f5f5;
-        }
-
-        /* ENQUIRE SECTION (BOTTOM FORM) */
-        .enquire{
-            padding:60px 40px 70px;
-            background:linear-gradient(rgba(255,255,255,0.96),rgba(255,255,255,0.98)),
-                        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&fit=crop') center/cover fixed;
-        }
-        .form-container{
-            max-width:550px;
-            margin:0 auto;
-            background:rgba(255,255,255,0.96);
-            padding:28px 24px 30px;
-            border-radius:12px;
-            box-shadow:0 14px 36px rgba(0,0,0,0.15);
-        }
-        .form-group{margin-bottom:18px;}
-        .form-group input,
-        .form-group textarea{
+        .loc-map img{
             width:100%;
-            padding:11px;
-            border:1px solid #ddd;
-            border-radius:6px;
-            font-family:inherit;
-            font-size:12px;
-            transition:border-color 0.25s,box-shadow 0.25s;
+            max-height:360px;
+            object-fit:cover;
+            display:block;
+            border-radius:8px;
         }
-        .form-group textarea{
-            resize:vertical;
-            min-height:100px;
+
+        /* ABOUT DEVELOPER */
+        .developer-section{
+            max-width:1200px;
+            margin:0 auto;
+            padding:36px 14px 52px;
+            background:#fbf5ee;
+            text-align:center;
         }
-        .form-group input:focus,
-        .form-group textarea:focus{
-            outline:none;
-            border-color:#0f5f7f;
-            box-shadow:0 0 0 2px rgba(15,95,127,0.18);
+        .developer-section h3{
+            font-size:18px;
+            margin-bottom:6px;
+        }
+        .dev-underline{
+            width:130px;height:1px;
+            background:#0f5f7f;
+            margin:0 auto 18px;
+            position:relative;
+        }
+        .dev-underline::after{
+            content:"";
+            width:6px;height:6px;border-radius:50%;
+            border:1px solid #0f5f7f;
+            background:#fff;
+            position:absolute;left:50%;top:50%;
+            transform:translate(-50%,-50%);
+        }
+        .dev-logo{
+            margin-bottom:10px;
+        }
+        .dev-logo img{
+            height:36px;
+        }
+        .dev-text{
+            font-size:11px;
+            color:#555;
+            max-width:900px;
+            margin:0 auto 22px;
+        }
+        .dev-bottom img{
+            width:100%;
+            max-height:360px;
+            object-fit:cover;
+            display:block;
+            border-radius:10px;
+        }
+
+        /* GET IN TOUCH SECTION */
+        .contact-section{
+            max-width:1200px;
+            margin:0 auto 32px;
+            padding:36px 14px 42px;
+            background:#fff;
+        }
+        .contact-inner{
+            display:grid;
+            grid-template-columns:1.1fr 1.2fr;
+            gap:32px;
+            align-items:flex-start;
+        }
+        .contact-title{
+            font-family:Georgia,serif;
+            font-size:42px;
+            line-height:1.2;
+            text-align:left;
+        }
+        .contact-title span{
+            color:#0f5f7f;
+        }
+        .contact-right{
+            border:1px solid #0f5f7f;
+            padding:24px 20px 22px;
+        }
+        .contact-right h4{
+            font-size:14px;
+            margin-bottom:14px;
+            text-align:center;
+        }
+        .form-group{
+            margin-bottom:14px;
         }
         .form-group label{
             display:block;
-            margin-bottom:6px;
             font-size:11px;
-            font-weight:600;
-            color:#333;
-            text-transform:uppercase;
-            letter-spacing:0.5px;
+            margin-bottom:6px;
+        }
+        .form-group input,
+        .form-group textarea{
+            width:100%;
+            padding:9px;
+            border:1px solid #ddd;
+            border-radius:2px;
+            font-size:12px;
+            font-family:inherit;
+        }
+        .form-group textarea{
+            resize:vertical;
+            min-height:80px;
+        }
+        .checkbox-row{
+            display:flex;
+            align-items:flex-start;
+            gap:6px;
+            font-size:10px;
+            margin-bottom:14px;
+        }
+        .checkbox-row input{
+            margin-top:3px;
         }
         .submit-btn{
-            background:#1a1a1a;
+            background:#0f5f7f;
             color:#fff;
-            padding:11px 28px;
+            padding:10px 22px;
             border:none;
-            border-radius:999px;
-            cursor:pointer;
-            font-size:12px;
-            font-weight:600;
-            width:100%;
-            transition:background 0.3s,transform 0.2s,box-shadow 0.2s;
+            font-size:11px;
             text-transform:uppercase;
             letter-spacing:0.5px;
-            box-shadow:0 6px 18px rgba(0,0,0,0.25);
+            cursor:pointer;
+            width:100%;
+            transition:background 0.3s,transform 0.2s,box-shadow 0.2s;
         }
         .submit-btn:hover{
-            background:#0f5f7f;
+            background:#0c485f;
             transform:translateY(-1px);
-            box-shadow:0 10px 26px rgba(0,0,0,0.3);
+            box-shadow:0 8px 18px rgba(0,0,0,0.22);
         }
 
-        /* FOOTER */
-        footer{
-            background:#0f5f7f;
-            color:#fff;
-            padding:35px 40px;
+        /* FOOTER PHONE + DISCLAIMER */
+        .footer-main{
+            max-width:1200px;
+            margin:0 auto 0;
+            padding:32px 14px 16px;
+            background:#fbf5ee;
             text-align:center;
-            font-size:10px;
+        }
+        .footer-decor{
+            width:60%;
+            max-width:900px;
+            height:1px;
+            background:#0f5f7f;
+            margin:0 auto 18px;
+            opacity:0.95;
+        }
+        .footer-phone{
+            color:#0f5f7f;
+            font-size:32px;
+            margin:4px 0 10px;
+            font-family:Georgia,serif;
+            letter-spacing:1px;
+            font-weight:600;
+        }
+        .footer-bottom{
+            max-width:1200px;
+            margin:0 auto 30px;
+            background:transparent;
+            font-size:12px;
+            color:#555;
+            padding:0 14px 32px;
+            text-align:center;
             line-height:1.6;
         }
-        footer a{color:#fff;text-decoration:none;}
-        footer a:hover{text-decoration:underline;}
-
-        /* REVEAL ON SCROLL */
-        .reveal{
-            opacity:0;
-            transform:translateY(30px);
-            transition:opacity 0.7s ease-out,transform 0.7s ease-out;
+        .disclaimer-text{
+            max-width:1000px;
+            margin:0 auto;
         }
-        .reveal.visible{
-            opacity:1;
-            transform:translateY(0);
+        .read-more{
+            display:block;
+            margin:10px 0;
+            color:#444;
+            text-decoration:none;
+            font-weight:600;
+        }
+        .footer-bottom a{
+            color:#0f5f7f;
+            text-decoration:none;
+            display:block;
+            margin-top:8px;
+            font-weight:500;
         }
 
         /* FLOATING ICONS + RIGHT STICKY ENQUIRE */
@@ -771,7 +1292,6 @@
         }
         .float-left{left:18px;bottom:22px;}
         .float-right{right:22px;bottom:22px;}
-
         .enquire-sticky{
             position:fixed;
             right:0;
@@ -793,58 +1313,15 @@
             letter-spacing:1px;
             box-shadow:-6px 10px 24px rgba(0,0,0,0.25);
         }
-        .enquire-sticky button:hover{
-            background:#0b3b51;
-        }
-
-        /* MODAL POPUP */
-        .modal-backdrop{
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,0.45);
-            display:none;
-            align-items:center;
-            justify-content:center;
-            z-index:200;
-            padding:18px;
-        }
-        .modal-backdrop.active{display:flex;}
-
-        .modal{
-            width:420px;
-            max-width:100%;
-            background:#fff;
-            border-radius:8px;
-            box-shadow:0 20px 50px rgba(0,0,0,0.3);
-            padding:22px;
-            position:relative;
-        }
-        .modal-close{
-            position:absolute;
-            right:12px;
-            top:10px;
-            background:transparent;
-            border:none;
-            font-size:18px;
-            cursor:pointer;
-        }
-        .modal-logo{
-            display:block;
-            margin:0 auto 12px;
-            max-width:160px;
-        }
-        .modal-title{
-            text-align:center;
-            font-size:18px;
-            margin-bottom:12px;
-            font-weight:700;
-            color:#0f5f7f;
-        }
 
         /* KEYFRAMES */
         @keyframes heroFadeUp{
             0%{opacity:0;transform:translateY(30px);}
             100%{opacity:1;transform:translateY(0);}
+        }
+        @keyframes heroFormIn{
+            0%{opacity:0;transform:translate(40px,10px);}
+            100%{opacity:1;transform:translate(0,0);}
         }
         @keyframes floatNav{
             0%,100%{transform:translate(-50%,0);}
@@ -853,83 +1330,168 @@
 
         /* RESPONSIVE */
         @media (max-width:1024px){
-            .overview-grid,
-            .highlights-grid,
+            .hero{
+                height:auto;
+                padding:72px 0 40px;
+            }
+            .hero-inner{
+                flex-direction:column;
+                align-items:center;
+                gap:22px;
+            }
+            .hero-content{
+                text-align:center;
+                max-width:640px;
+            }
+            .hero-content h1{font-size:38px;}
+            .hero-enquiry{
+                width:100%;
+                max-width:420px;
+            }
+
+            .metrics-row{flex-wrap:wrap;}
+            .metric{flex:0 0 50%;margin-bottom:8px;}
+            .metric:nth-child(2){border-right:none;}
+            .two-images{grid-template-columns:1fr;}
+            .usp-inner,
+            .amenities-inner,
+            .master-inner,
+            .floor-inner,
+            .location-inner,
+            .contact-inner{grid-template-columns:1fr;gap:20px;}
+            .pricing-cards{grid-template-columns:1fr;}
             .amenities-grid{grid-template-columns:repeat(2,1fr);}
-            .gallery-card{min-width:50%;}
+            .location-inner img,
+            .dev-bottom img{max-height:320px;}
+            .contact-title{text-align:center;}
         }
 
         @media (max-width:768px){
-            header{padding:10px 18px;}
-            nav{display:none;}
-
-            .overview-grid,
-            .highlights-grid,
-            .amenities-grid{grid-template-columns:repeat(2,1fr);}
-
-            .floor-plans-grid,
-            .location-advantages,
-            .location-content{grid-template-columns:1fr;}
-
-            .location-content{gap:30px;}
-            .hero-content h1{font-size:34px;}
-            .hero{height:440px;}
-
-            .gallery-card{min-width:80%;}
+            header{padding:8px 14px;}
+            .menu-toggle{display:block;}
+            nav{
+                position:fixed;
+                left:0;
+                right:0;
+                top:54px;
+                background:rgba(255,255,255,0.98);
+                flex-direction:column;
+                align-items:flex-start;
+                padding:14px 18px 18px;
+                gap:12px;
+                border-bottom:1px solid #eee;
+                transform:translateY(-120%);
+                opacity:0;
+                pointer-events:none;
+                transition:transform 0.3s ease, opacity 0.3s ease;
+            }
+            header.nav-open nav{
+                transform:translateY(0);
+                opacity:1;
+                pointer-events:auto;
+            }
+            .hero-content h1{font-size:32px;}
+            .visual-card{flex:0 0 280px;}
         }
 
         @media (max-width:480px){
-            .overview,
-            .highlights,
-            .gallery,
-            .price-list,
-            .floor-plans,
-            .location,
-            .amenities,
-            .about,
-            .enquire{padding:40px 20px;}
-
-            .overview-grid,
-            .highlights-grid,
-            .amenities-grid{grid-template-columns:1fr;}
-
             .hero-content h1{font-size:26px;}
-            .hero{height:400px;}
-
+            .hero-inner{padding:0 16px;}
+            .main-wrapper{padding:26px 12px 0;}
+            .metrics-row{flex-direction:column;}
+            .metric{border-right:none;border-bottom:1px solid #eee;padding:6px 0;}
+            .metric:last-child{border-bottom:none;}
             .float-left{left:14px;bottom:18px;}
             .float-right{right:18px;bottom:18px;}
+            .amenities-grid{grid-template-columns:1fr;}
+            .info-strip{flex-direction:column;}
+            .info-block:not(:last-child){border-right:none;border-bottom:1px solid #d6d6d6;}
+            .enquire-sticky button{padding:30px 10px;font-size:11px;}
+            .contact-title{font-size:32px;text-align:center;}
+            .two-images img,
+            .usp-inner img,
+            .amenities-inner img,
+            .dev-bottom img{height:220px;}
+            .visual-card{flex:0 0 calc(100% - 48px);}
+            .visual-card img{height:220px;}
+            .visual-viewport{padding:0 24px;}
         }
     </style>
 </head>
 <body>
     <!-- HEADER -->
     <header>
-        <div class="logo">            <img src="images/logo.png" class="modal-logo" alt="Elan">
-</div>
+        <div class="logo">
+            <img src="images/logo.png" alt="Elan">
+        </div>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+
         <nav>
-            <a href="#overview">OVERVIEW</a>
-            <a href="#highlights">HIGHLIGHTS</a>
-            <a href="#gallery">GALLERY</a>
-            <a href="#price">PRICE LIST</a>
-            <a href="#floor">FLOOR PLANS</a>
-            <a href="#location">LOCATION</a>
-            <a href="#amenities">AMENITIES</a>
-            <button class="cta-button open-enquire">ENQUIRY 02</button>
+            <a href="#overview">Overview</a>
+            <a href="#highlights">Highlights</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#amenities">Amenities</a>
+            <a href="#master">Master Plan</a>
+            <a href="#floor">Floor Plans</a>
+            <a href="#visual">Gallery</a>
+            <a href="#location">Location</a>
+            <a href="#developer">Developer</a>
+            <a href="#contact">Contact</a>
+            <button class="cta-button open-enquire">Enquiry</button>
         </nav>
     </header>
 
-    <!-- HERO SECTION (2-IMAGE SLIDER) -->
+    <!-- HERO SECTION (SLIDER + SIDE ENQUIRY FORM) -->
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide active" style="background-image:url('images/banner.webp');"></div>
             <div class="hero-slide" style="background-image:url('images/banner-2.webp');"></div>
         </div>
 
-        <div class="hero-content">
-            <h1>4 BHK <strong>LUXURY APARTMENTS</strong></h1>
-            <p>SECTOR 49, GURGAON</p>
-            <div class="price">₹10.50 Cr+ Onwards</div>
-            <button class="view-btn open-enquire">VIEW PROJECT</button>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1>4 BHK <strong>LUXURY APARTMENTS</strong></h1>
+                <p>SECTOR 49, GURGAON</p>
+                <div class="price">₹10.50 Cr+ Onwards</div>
+                <button class="view-btn open-enquire">VIEW PROJECT</button>
+            </div>
+
+            <aside class="hero-enquiry" id="heroForm">
+                <button class="hero-form-close" id="heroFormClose">✕</button>
+                <div class="hero-enquiry-header">
+                    <img src="images/logo.png" alt="Elan" class="hero-enquiry-logo">
+                    <div class="hero-enquiry-title">Talk to Our Property Specialist!</div>
+                </div>
+                <form id="heroEnquiryForm">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email ID</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact No.</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea required></textarea>
+                    </div>
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="heroConsent" required>
+                        <label for="heroConsent">
+                            I authorize company representatives to Call, SMS, Email, or WhatsApp me about its products and offers.
+                            This consent overrides my registration for DNC/NDNC.
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Now</button>
+                </form>
+            </aside>
         </div>
 
         <div class="hero-nav">
@@ -938,237 +1500,321 @@
         </div>
     </section>
 
-    <!-- OVERVIEW -->
-    <section id="overview" class="overview">
-        <h2 class="section-title reveal">OVERVIEW</h2>
-        <div class="overview-grid">
-            <div class="overview-item reveal">
-                <div class="icon">📍</div>
-                <h3>Location</h3>
-                <p>Sector 49, Gurgaon</p>
+    <!-- FIRST BLOCK -->
+    <main class="main-wrapper animate-fade-up" id="overview">
+        <div class="proj-heading">
+            <div class="proj-title">Elan Sector 49 Gurugram</div>
+            <div class="proj-location">
+                <span class="icon">📍</span>
+                <span>Sector 49 Gurugram</span>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">🏞️</div>
-                <h3>Land Area</h3>
-                <p>6 Acres</p>
+        </div>
+
+        <div class="info-strip">
+            <div class="info-block">
+                <div class="info-label">Configuration</div>
+                <div class="info-value">4 BHK Apartments &amp; Penthouse</div>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">🏢</div>
-                <h3>No. of Units</h3>
-                <p>340</p>
+            <div class="info-block">
+                <div class="info-label">Starting Price</div>
+                <div class="info-value">₹10 Cr*</div>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">🏗️</div>
-                <h3>No. of Towers</h3>
-                <p>05</p>
+        </div>
+
+        <div class="premium-heading-wrap">
+            <div class="premium-title">Premium Offerings for Elite Living</div>
+            <div class="premium-line"></div>
+        </div>
+
+        <div class="metrics-row">
+            <div class="metric">
+                <div class="metric-label">Land Parcel</div>
+                <div class="metric-value">6.5 Acres</div>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">📊</div>
-                <h3>No. of Floors</h3>
-                <p>G + 36</p>
+            <div class="metric">
+                <div class="metric-label">Towers</div>
+                <div class="metric-value">5 Iconic Towers</div>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">🛏️</div>
-                <h3>Unit Variants</h3>
-                <p>4 BHK</p>
+            <div class="metric">
+                <div class="metric-label">Floor</div>
+                <div class="metric-value">G + 37 Floors</div>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">⚙️</div>
-                <h3>Status</h3>
-                <p>Coming Soon</p>
+            <div class="metric">
+                <div class="metric-label">Payment Plan</div>
+                <div class="metric-value">25 : 25 : 25 : 25</div>
             </div>
-            <div class="overview-item reveal">
-                <div class="icon">✅</div>
-                <h3>RERA ID</h3>
-                <p>Applied</p>
+        </div>
+
+        <div class="two-images">
+            <img src="images/gallery1.webp" alt="Living Room 1">
+            <img src="images/gallery2.webp" alt="Living Room 2">
+        </div>
+
+        <div class="overview-block">
+            <div class="overview-heading">Overview</div>
+            <div class="overview-subtitle">A Snapshot of Our Real Estate Expertise</div>
+            <div class="overview-divider"></div>
+
+            <p class="overview-text">
+                Elan Group’s latest masterpiece, Elan 49, redefines luxury living on Sohna Road in Sector 49, Gurugram.
+                Spanning 6.5 acres, this exclusive community features striking, contemporary towers that rise high above the skyline,
+                offering sweeping panoramic views. Choose from expansive 4.5 BHK apartments or lavish penthouses, each crafted
+                with exquisite attention to detail. Interiors showcase polished Italian marble flooring, state-of-the-art modular
+                kitchens with sleek European cabinetry, sound-insulated double-glazed windows for year-round comfort, and
+                advanced VRV/VRF climate control. Blending modern elegance with eco-friendly design, Elan 49 delivers a lifestyle
+                that is both sophisticated and serene.
+            </p>
+
+            <button class="know-btn">
+                Know More
+                <span class="arrow">&#10140;</span>
+            </button>
+
+            <div class="bottom-image-wrap">
+                <img src="images/amenties.webp" alt="Project View">
+            </div>
+        </div>
+    </main>
+
+    <!-- USP SECTION -->
+    <section class="usp-section animate-fade-up" id="highlights">
+        <div class="usp-inner">
+            <div>
+                <img src="images/highlight.webp" alt="USP Image">
+            </div>
+            <div>
+                <div class="usp-title">Key Highlights</div>
+                <ul class="usp-list">
+                    <li>Only 2 Ultra-Spacious Residences per Floor</li>
+                    <li>Expansive 80000 Sq.ft Clubhouse with World-Class Amenities</li>
+                    <li>Uber-Luxurious Living with Signature Hospitality &amp; Services</li>
+                    <li>Unparalleled Luxury Living</li>
+                    <li>International-Level Facilities &amp; Amenities</li>
+                    <li>Premium Concierge Services</li>
+                </ul>
+                <button class="btn-outline">Know More</button>
             </div>
         </div>
     </section>
 
-    <!-- HIGHLIGHTS -->
-    <section id="highlights" class="highlights">
-        <h2 class="section-title reveal">HIGHLIGHTS</h2>
-        <div class="highlights-grid">
-            <div class="highlight-item reveal">
-                <div class="icon">💎</div>
-                <h3>Ultra-Luxury Residences</h3>
-                <p>The project offers a limited collection of spacious 4 BHK Apartments, with sizes 4500 Sq. Ft.</p>
+    <!-- DECISION CORNER BANNER -->
+    <section class="decision-banner animate-fade-up">
+        <div class="decision-inner">
+            <h3>Decision Corner</h3>
+            <p>Looking For A Luxurious Home To Live Or A Lucrative Investment.</p>
+            <button class="btn-primary open-enquire">Book Now</button>
+        </div>
+    </section>
+
+    <!-- PRICING & PLAN -->
+    <section class="pricing-section animate-fade-up" id="pricing">
+        <div class="section-heading-center">Our Pricing &amp; Plan</div>
+        <div class="heading-underline"></div>
+        <div class="section-sub-center">
+            Explore Pricing Options Tailored To Your Budget
+        </div>
+
+        <div class="pricing-cards">
+            <div class="price-card">
+                <h4>4 BHK Apartments</h4>
+                <div class="price">₹ 10 Cr*</div>
+                <div class="size">Size: 4500 sq.ft.</div>
+                <button class="btn-outline">Know More</button>
             </div>
-            <div class="highlight-item reveal">
-                <div class="icon">🌱</div>
-                <h3>Low-Density Living</h3>
-                <p>Spread across approximately 6 acres, low-density with 340 units and two apartments per core.</p>
-            </div>
-            <div class="highlight-item reveal">
-                <div class="icon">🏊</div>
-                <h3>Expansive Clubhouse</h3>
-                <p>Resort-style clubhouse with gym, spa, pools and multiple sports courts.</p>
-            </div>
-            <div class="highlight-item reveal">
-                <div class="icon">✨</div>
-                <h3>Premium Interiors</h3>
-                <p>Imported Italian marble flooring, double-glazed soundproof windows and more.</p>
-            </div>
-            <div class="highlight-item reveal">
-                <div class="icon">🛣️</div>
-                <h3>Strategic Location</h3>
-                <p>Excellent connectivity to Golf Course Extension Road, NH-48 & SPR.</p>
-            </div>
-            <div class="highlight-item reveal">
-                <div class="icon">🌿</div>
-                <h3>Green & Sustainable</h3>
-                <p>Around 65% open green spaces with landscaped gardens.</p>
+            <div class="price-card">
+                <h4>Penthouse</h4>
+                <div class="price">₹ On Request</div>
+                <div class="size">Size: 4500 sq.ft.</div>
+                <button class="btn-outline">Know More</button>
             </div>
         </div>
     </section>
 
-    <!-- VISUAL JOURNEY / GALLERY SLIDER -->
-    <section id="gallery" class="gallery">
-        <div class="gallery-inner">
-            <h2 class="gallery-title">Visual Journey</h2>
-            <div class="gallery-subline"></div>
+    <!-- AMENITIES SECTION -->
+    <section class="amenities-section animate-fade-up" id="amenities">
+        <div class="amenities-title">Amenities</div>
+        <div class="amenities-underline"></div>
 
-            <div class="gallery-track" id="galleryTrack">
-                <div class="gallery-card"><div class="gallery-card-inner"><img src="images/gallery1.webp" alt=""></div></div>
-                <div class="gallery-card"><div class="gallery-card-inner"><img src="images/gallery2.webp" alt=""></div></div>
-                <div class="gallery-card"><div class="gallery-card-inner"><img src="images/4.webp" alt=""></div></div>
-                <div class="gallery-card"><div class="gallery-card-inner"><img src="images/5.webp" alt=""></div></div>
-                <div class="gallery-card"><div class="gallery-card-inner"><img src="images/6.webp" alt=""></div></div>
-                <div class="gallery-card"><div class="gallery-card-inner"><img src="images/amenities.webp" alt=""></div></div>
+        <div class="amenities-inner">
+            <div>
+                <img src="images/highlight.webp" alt="Amenities Image">
             </div>
-
-            <div class="gallery-controls">
-                <button class="gallery-btn" id="galleryPrev">&#x276E;</button>
-                <button class="gallery-btn" id="galleryNext">&#x276F;</button>
+            <div class="amenities-grid">
+                <div class="amenity-box">Indoor &amp; Outdoor Pools</div>
+                <div class="amenity-box">Fully Equipped Gym</div>
+                <div class="amenity-box">Open-air Fitness Zone</div>
+                <div class="amenity-box">Sports Courts</div>
+                <div class="amenity-box">Myriad Forest Trail</div>
+                <div class="amenity-box">Playcation Zone</div>
+                <div class="amenity-box">Salon, Lounge Area</div>
+                <div class="amenity-box">Fine Dining Zone</div>
+                <div class="amenity-box">Multi-purpose Hall</div>
+                <div class="amenity-box">Wellness Retreat</div>
+                <div class="amenity-box">Indoor Kids Play Zone</div>
+                <div class="amenity-box">Business Centre</div>
             </div>
         </div>
     </section>
 
-    <!-- PRICE LIST -->
-    <section id="price" class="price-list">
-        <h2 class="section-title reveal">PRICE LIST</h2>
-        <table class="price-table reveal">
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Sizes</th>
-                    <th>Price</th>
-                    <th>Contact Office</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>4 BHK + Utility</td>
-                    <td>4500 Sq. Ft.*</td>
-                    <td>₹10.50 Cr* Onwards</td>
-                    <td><button class="contact-office-btn open-enquire">ENQUIRE NOW</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- MASTER PLANS -->
+    <section class="master-section animate-fade-up" id="master">
+        <div class="master-top">
+            <h3>Master Plans</h3>
+            <div class="heading-underline"></div>
+        </div>
+        <div class="master-inner">
+            <div class="master-left">
+                <div class="master-left-title">Master Plan</div>
+                <button class="btn-outline">View Plan</button>
+            </div>
+            <div>
+                <img src="images/master-plan.webp" alt="Master Plan">
+            </div>
+        </div>
     </section>
 
     <!-- FLOOR PLANS -->
-    <section id="floor" class="floor-plans">
-        <h2 class="section-title reveal">FLOOR PLANS & MASTER PLAN</h2>
-        <div class="floor-plans-grid">
-            <div class="floor-plan-item reveal" style="background-image:url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=500&fit=crop');">
-                <div class="floor-plan-label">3 & 4 BHK FLOOR PLAN</div>
-            </div>
-            <div class="floor-plan-item reveal" style="background-image:url('https://images.unsplash.com/photo-1529424301806-4be0bb154e7d?w=800&h=500&fit=crop');">
-                <div class="floor-plan-label">MASTER PLAN</div>
-            </div>
+    <section class="floor-section animate-fade-up" id="floor">
+        <div class="floor-top">
+            <h3>Floor Plans</h3>
+            <div class="heading-underline"></div>
         </div>
-    </section>
-
-    <!-- LOCATION -->
-    <section id="location" class="location">
-        <h2 class="section-title reveal">LOCATION ADVANTAGE</h2>
-        <div class="location-content">
-            <div class="location-map reveal"></div>
-            <div class="location-advantages">
-                <div class="location-item reveal">
-                    <div class="icon">📍</div><div><h4>Sohna Road</h4><p>02 Mins</p></div>
+        <div class="floor-inner">
+            <div>
+                <div class="floor-tabs">
+                    <div class="floor-tab active" data-plan="4bhk">4 BHK</div>
+                    <div class="floor-tab" data-plan="ph">Penthouse</div>
                 </div>
-                <div class="location-item reveal">
-                    <div class="icon">🛣️</div><div><h4>Golf Course Extension Road</h4><p>05 Mins</p></div>
+                <div class="floor-detail" id="floorDetail">
+                    Size: 4500 sq.ft.
                 </div>
-                <div class="location-item reveal">
-                    <div class="icon">🛣️</div><div><h4>NH-48 (Delhi–Jaipur Highway)</h4><p>10 Mins</p></div>
-                </div>
-                <div class="location-item reveal">
-                    <div class="icon">🚇</div><div><h4>Huda City Centre Metro Station</h4><p>15 Mins</p></div>
-                </div>
-                <div class="location-item reveal">
-                    <div class="icon">🏢</div><div><h4>Cyber City / Udyog Vihar</h4><p>25 Mins</p></div>
-                </div>
-                <div class="location-item reveal">
-                    <div class="icon">🏥</div><div><h4>Medanta – The Medicity Hospital</h4><p>10 Mins</p></div>
-                </div>
-                <div class="location-item reveal">
-                    <div class="icon">✈️</div><div><h4>IGI Airport</h4><p>25 Mins</p></div>
-                </div>
-                <div class="location-item reveal">
-                    <div class="icon">🌿</div><div><h4>Aravalli Biodiversity Park</h4><p>15 Mins</p></div>
-                </div>
+                <button class="btn-outline">View Plan</button>
+            </div>
+            <div>
+                <img src="images/floor.png" alt="Floor Plan" id="floorImage">
             </div>
         </div>
     </section>
 
-    <!-- AMENITIES -->
-    <section id="amenities" class="amenities">
-        <h2 class="section-title reveal">AMENITIES</h2>
-        <div class="amenities-grid">
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1587379633332-e4c37b4fe8d7?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1558893494393-dc9b5b41f387?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1559599101-7466fe601f5a?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1578821799657-08f47940d0ff?w=600&h=450&fit=crop');"></div>
-            <div class="amenity-item reveal" style="background-image:url('https://images.unsplash.com/photo-1518893494393-dc9b5b41f387?w=600&h=450&fit=crop');"></div>
+    <!-- VISUAL JOURNEY (AUTO MOVING) -->
+    <section class="visual-section animate-fade-up" id="visual">
+        <div class="visual-heading">Visual Journey</div>
+        <div class="visual-underline"></div>
+
+        <div class="visual-viewport">
+            <div class="visual-track" id="visualTrack">
+                <div class="visual-card"><img src="images/1.webp" alt=""></div>
+                <div class="visual-card"><img src="images/6.webp" alt=""></div>
+                <div class="visual-card"><img src="images/3.webp" alt=""></div>
+                <div class="visual-card"><img src="images/4.webp" alt=""></div>
+                <div class="visual-card"><img src="images/5.webp" alt=""></div>
+            </div>
+        </div>
+        <div class="visual-controls">
+            <button class="visual-btn" id="visualPrev">&#10094;</button>
+            <button class="visual-btn" id="visualNext">&#10095;</button>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about reveal">
-        <h2>ABOUT ELAN GROUP</h2>
-        <p>Elan Group is a prominent real estate developer based in Gurugram, India, known for its innovative and luxurious residential, commercial, and hospitality projects.</p>
-        <div class="about-video">
-            <div class="play-button">▶</div>
+    <!-- LOCATION ADVANTAGES -->
+    <section class="location-section animate-fade-up" id="location">
+        <div class="loc-head">
+            <h3>Location Advantages</h3>
+            <div class="heading-underline"></div>
+            <p>An Exclusive Address Where The World Comes To You</p>
+        </div>
+        <div class="location-inner">
+            <div class="loc-list">
+                <div class="loc-row"><span>Sohna Road</span><span>10 minutes</span></div>
+                <div class="loc-row"><span>Golf Course Extension Road</span><span>15 minutes</span></div>
+                <div class="loc-row"><span>Cyber Park (DLF Cyber City)</span><span>25 minutes</span></div>
+                <div class="loc-row"><span>Huda City Centre Metro Station</span><span>15 minutes</span></div>
+                <div class="loc-row"><span>Medanta and Artemis Hospitals</span><span>15 minutes</span></div>
+                <div class="loc-row"><span>White Park Hospital</span><span>15 minutes</span></div>
+                <div class="loc-row"><span>Omaxe Celebration Mall</span><span>15 minutes</span></div>
+                <div class="loc-row"><span>GD Goenka School</span><span>7 minutes</span></div>
+                <div class="loc-row"><span>St. Xavier's School</span><span>7 minutes</span></div>
+                <div class="loc-btn-wrap">
+                    <button class="btn-outline">View Location Map</button>
+                </div>
+            </div>
+            <div class="loc-map">
+                <img src="images/location-map.webp" alt="Location Map">
+            </div>
         </div>
     </section>
 
-    <!-- ENQUIRE SECTION (BOTTOM) -->
-    <section class="enquire">
-        <h2 class="section-title reveal">ENQUIRE NOW</h2>
-        <div class="form-container reveal">
-            <form id="bottomForm">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" required>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">SUBMIT</button>
-            </form>
+    <!-- ABOUT DEVELOPER -->
+    <section class="developer-section animate-fade-up" id="developer">
+        <h3>About Developer</h3>
+        <div class="dev-underline"></div>
+        <div class="dev-logo">
+            <img src="images/logo.png" alt="Developer Logo">
+        </div>
+        <p class="dev-text">
+            Elan Group is a prominent real estate developer headquartered in Gurugram, Haryana, known for creating high-end
+            residential, commercial, and mixed-use spaces. With landmark projects such as Elan The Presidential, Elan The
+            Emperor, and Elan Imperial, the company focuses on luxury living, upscale retail, and hospitality experiences
+            across prime locations in the NCR region.
+        </p>
+        <div class="dev-bottom">
+            <img src="images/happy_family.webp" alt="Happy Family">
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 Elan Group. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
-        <p>For more information, visit www.elangroup.com or call +91-124-467100</p>
-    </footer>
+    <!-- GET IN TOUCH SECTION -->
+    <section class="contact-section animate-fade-up" id="contact">
+        <div class="contact-inner">
+            <div>
+                <h2 class="contact-title">Get In Touch<br><span>With Us</span></h2>
+            </div>
+            <div class="contact-right">
+                <h4>Talk to Our Property Specialist!</h4>
+                <form id="bottomForm">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email ID</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact No.</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea required></textarea>
+                    </div>
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">
+                            I authorize company representatives to Call, SMS, Email, or WhatsApp me about its products and offers.
+                            This consent overrides my registration for DNC/NDNC.
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PHONE + DISCLAIMER -->
+    <div class="footer-main animate-fade-up">
+        <div class="footer-decor"></div>
+        <div class="footer-phone">+91 7838550055</div>
+        <div class="footer-decor"></div>
+    </div>
+    <div class="footer-bottom">
+        <p class="disclaimer-text">
+            Disclaimer - The content provided on this website is for information purposes only and does not constitute an offer to
+            avail any service. The prices mentioned are subject to change without prior notice, and the availability of properties
+            mentioned is not guaranteed.
+        </p>
+        <a href="#" class="read-more">Read more</a>
+        <a href="#">Disclaimer &amp; Privacy Policy</a>
+    </div>
 
     <!-- FLOATING ICONS + RIGHT STICKY ENQUIRE -->
     <div class="float-icon float-left" id="callIcon" title="Call Us">
@@ -1180,46 +1826,110 @@
     <div class="enquire-sticky">
         <button class="open-enquire">Enquire Now</button>
     </div>
+<!-- POPUP ENQUIRY MODAL -->
+<div class="modal-backdrop" id="popupEnquiry">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <button class="modal-close" id="popupClose">✕</button>
 
-    <!-- POPUP ENQUIRY MODAL -->
-    <div class="modal-backdrop" id="enquireModal">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="enquireTitle">
-            <button class="modal-close" id="closeEnquire">✕</button>
-            <img src="images/logo.png" class="modal-logo" alt="Elan">
-            <div id="enquireTitle" class="modal-title">Talk to Our Property Specialist!</div>
+        <img src="images/logo.png" alt="Elan" class="modal-logo">
+        <div class="modal-title" id="popupTitle">Talk to Our Property Specialist!</div>
 
-            <form id="modalForm">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" required>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit Now</button>
-            </form>
-        </div>
+        <form id="popupForm">
+            <div class="form-group">
+                <label>NAME</label>
+                <input type="text" required>
+            </div>
+            <div class="form-group">
+                <label>EMAIL ID</label>
+                <input type="email" required>
+            </div>
+            <div class="form-group">
+                <label>CONTACT NO.</label>
+                <input type="tel" required>
+            </div>
+            <div class="form-group">
+                <label>MESSAGE</label>
+                <textarea required></textarea>
+            </div>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="popupConsent" required>
+                <label for="popupConsent">
+                    I authorize company representatives to Call, SMS, Email, or WhatsApp me about its products and offers.
+                    This consent overrides my registration for DNC/NDNC.
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Now</button>
+        </form>
     </div>
+</div>
 
     <script>
-        // basic alert submit handler (bottom form)
+        // ========= POPUP MODAL ENQUIRY (center) =========
+const popupBackdrop = document.getElementById('popupEnquiry');
+const popupClose    = document.getElementById('popupClose');
+const popupForm     = document.getElementById('popupForm');
+
+// all buttons with .open-enquire will open the popup
+const popupOpenButtons = document.querySelectorAll('.open-enquire');
+
+function openPopup(){
+    popupBackdrop.classList.add('active');
+}
+
+function closePopup(){
+    popupBackdrop.classList.remove('active');
+}
+
+// click on Enquiry / Book Now / side Enquire etc.
+popupOpenButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openPopup();
+    });
+});
+
+// close actions
+popupClose.addEventListener('click', closePopup);
+popupBackdrop.addEventListener('click', (e) => {
+    if (e.target === popupBackdrop) closePopup();
+});
+
+// submit
+popupForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Thank you! Our property specialist will contact you shortly.');
+    this.reset();
+    closePopup();
+});
+
+// auto-open once after 5 seconds
+setTimeout(() => {
+    if (!popupBackdrop.classList.contains('active')) {
+        openPopup();
+    }
+}, 5000);
+
+        const headerEl = document.querySelector('header');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        // MOBILE MENU TOGGLE
+        menuToggle.addEventListener('click', () => {
+            headerEl.classList.toggle('nav-open');
+            document.body.classList.toggle('no-scroll');
+        });
+
+        // Simple submit handlers (hero + bottom)
         function handleSimpleSubmit(e){
             e.preventDefault();
             alert('Thank you for your enquiry! We will contact you soon.');
             e.target.reset();
         }
         document.getElementById('bottomForm').addEventListener('submit',handleSimpleSubmit);
+        document.getElementById('heroEnquiryForm').addEventListener('submit',handleSimpleSubmit);
 
-        // Smooth scroll for nav links
+        // Smooth scroll for nav link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
@@ -1227,56 +1937,36 @@
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) target.scrollIntoView({ behavior: 'smooth' });
+
+                    headerEl.classList.remove('nav-open');
+                    document.body.classList.remove('no-scroll');
                 }
             });
         });
 
-        // Reveal on scroll
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold:0.2 });
-        revealElements.forEach(el => observer.observe(el));
-
-        // Floating icons actions
+        // Floating icons
         document.getElementById('callIcon').addEventListener('click', () => {
-            window.location.href = 'tel:+91124467100';
+            window.location.href = 'tel:+917838550055';
         });
         document.getElementById('whatsappIcon').addEventListener('click', () => {
-            window.open('https://wa.me/911234567890','_blank');
+            window.open('https://wa.me/917838550055','_blank');
         });
 
-        // Modal logic (all .open-enquire buttons)
-        const modalBackdrop = document.getElementById('enquireModal');
-        const closeEnquire = document.getElementById('closeEnquire');
+        // HERO SIDE ENQUIRY SHOW/HIDE
+        const heroForm = document.getElementById('heroForm');
+        const heroFormClose = document.getElementById('heroFormClose');
         const openEnquireButtons = document.querySelectorAll('.open-enquire');
 
-        function openModal(){
-            modalBackdrop.classList.add('active');
+        function openHeroForm(){
+            heroForm.classList.remove('hero-form-hidden');
+            document.querySelector('.hero').scrollIntoView({behavior:'smooth'});
         }
-        function closeModal(){
-            modalBackdrop.classList.remove('active');
-        }
-
-        openEnquireButtons.forEach(btn => btn.addEventListener('click', openModal));
-        closeEnquire.addEventListener('click', closeModal);
-        modalBackdrop.addEventListener('click', (e) => {
-            if (e.target === modalBackdrop) closeModal();
+        openEnquireButtons.forEach(btn => btn.addEventListener('click', openHeroForm));
+        heroFormClose.addEventListener('click', () => {
+            heroForm.classList.add('hero-form-hidden');
         });
 
-        document.getElementById('modalForm').addEventListener('submit', (e)=>{
-            e.preventDefault();
-            alert('Thank you! Our property specialist will contact you shortly.');
-            e.target.reset();
-            closeModal();
-        });
-
-        // HERO SLIDER (2 images) + auto
+        // HERO SLIDER
         const heroSlides = document.querySelectorAll('.hero-slide');
         let heroIndex = 0;
         const heroPrev = document.getElementById('heroPrev');
@@ -1287,7 +1977,6 @@
             heroIndex = (idx + heroSlides.length) % heroSlides.length;
             heroSlides[heroIndex].classList.add('active');
         }
-
         heroPrev.addEventListener('click', ()=>{
             showHeroSlide(heroIndex - 1);
             resetHeroTimer();
@@ -1296,68 +1985,134 @@
             showHeroSlide(heroIndex + 1);
             resetHeroTimer();
         });
-
         let heroTimer = setInterval(()=>showHeroSlide(heroIndex + 1), 5000);
         function resetHeroTimer(){
             clearInterval(heroTimer);
             heroTimer = setInterval(()=>showHeroSlide(heroIndex + 1), 5000);
         }
 
-        // GALLERY SLIDER (Visual Journey) + auto
-        const galleryTrack = document.getElementById('galleryTrack');
-        const galleryCards = document.querySelectorAll('.gallery-card');
-        const galleryPrev = document.getElementById('galleryPrev');
-        const galleryNext = document.getElementById('galleryNext');
-        let galleryIndex = 0;
+        // FLOOR PLAN TABS (image swap)
+        const floorTabs = document.querySelectorAll('.floor-tab');
+        const floorImage = document.getElementById('floorImage');
+        const floorDetail = document.getElementById('floorDetail');
 
-        function cardsPerView(){
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 1024) return 2;
-            return 3;
-        }
-
-        function updateGallery(){
-            const cardWidth = galleryCards[0].getBoundingClientRect().width;
-            const perView = cardsPerView();
-            const maxIndex = galleryCards.length - perView;
-            if (galleryIndex > maxIndex) galleryIndex = 0;
-            if (galleryIndex < 0) galleryIndex = maxIndex;
-
-            galleryTrack.style.transform = `translateX(-${galleryIndex * cardWidth}px)`;
-
-            galleryCards.forEach((card, i)=>{
-                card.classList.toggle('active', i === galleryIndex + Math.floor(perView/2));
+        floorTabs.forEach(tab=>{
+            tab.addEventListener('click',()=>{
+                floorTabs.forEach(t=>t.classList.remove('active'));
+                tab.classList.add('active');
+                if(tab.dataset.plan === '4bhk'){
+                    floorImage.src = 'images/floor-4bhk.webp';
+                    floorDetail.textContent = 'Size: 4500 sq.ft.';
+                }else{
+                    floorImage.src = 'images/floor-ph.webp';
+                    floorDetail.textContent = 'Penthouse – Size on Request.';
+                }
             });
-        }
-
-        galleryPrev.addEventListener('click', ()=>{
-            galleryIndex--;
-            updateGallery();
-            resetGalleryTimer();
         });
 
-        galleryNext.addEventListener('click', ()=>{
-            galleryIndex++;
-            updateGallery();
-            resetGalleryTimer();
-        });
+        // VISUAL JOURNEY – CENTER AUTO SLIDER
+        const visualTrack = document.getElementById('visualTrack');
+        const visualPrev = document.getElementById('visualPrev');
+        const visualNext = document.getElementById('visualNext');
+        let visualIndex = 0;
 
-        let galleryTimer = setInterval(()=>{
-            galleryIndex++;
-            updateGallery();
-        }, 4000);
-
-        function resetGalleryTimer(){
-            clearInterval(galleryTimer);
-            galleryTimer = setInterval(()=>{
-                galleryIndex++;
-                updateGallery();
-            }, 4000);
+        function getCards(){
+            return Array.from(document.querySelectorAll('.visual-card'));
+        }
+        function clampIndex(i){
+            const cards = getCards();
+            return Math.max(0, Math.min(i, cards.length - 1));
         }
 
-        window.addEventListener('resize', updateGallery);
-        // initial setup
-        updateGallery();
+        function updateVisual(){
+            const cards = getCards();
+            if(!cards.length) return;
+            visualIndex = clampIndex(visualIndex);
+            const viewport = document.querySelector('.visual-viewport');
+            const vpWidth = viewport.clientWidth;
+            const activeCard = cards[visualIndex];
+
+            cards.forEach((c,i)=>{
+                c.classList.remove('active','inactive');
+                if(i === visualIndex) c.classList.add('active');
+                else c.classList.add('inactive');
+            });
+
+            const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth/2;
+            const offset = cardCenter - vpWidth/2;
+            visualTrack.style.transform = `translateX(-${offset}px)`;
+        }
+
+        visualPrev.addEventListener('click', ()=>{
+            visualIndex = clampIndex(visualIndex - 1);
+            updateVisual();
+            resetVisualAuto();
+        });
+        visualNext.addEventListener('click', ()=>{
+            visualIndex = clampIndex(visualIndex + 1);
+            updateVisual();
+            resetVisualAuto();
+        });
+
+        document.addEventListener('click',(e)=>{
+            const card = e.target.closest && e.target.closest('.visual-card');
+            if(card && card.parentElement === visualTrack){
+                const cards = getCards();
+                const idx = cards.indexOf(card);
+                if(idx>=0){
+                    visualIndex = idx;
+                    updateVisual();
+                    resetVisualAuto();
+                }
+            }
+        });
+
+        let visualTimer = null;
+        const visualDelay = 4000;
+        function startVisualAuto(){
+            if(visualTimer) return;
+            visualTimer = setInterval(()=>{
+                const cards = getCards();
+                if(!cards.length) return;
+                visualIndex = visualIndex >= cards.length-1 ? 0 : visualIndex+1;
+                updateVisual();
+            }, visualDelay);
+        }
+        function stopVisualAuto(){
+            if(visualTimer){
+                clearInterval(visualTimer);
+                visualTimer = null;
+            }
+        }
+        function resetVisualAuto(){
+            stopVisualAuto();
+            setTimeout(startVisualAuto, 1200);
+        }
+
+        (function initVisual(){
+            const cards = getCards();
+            visualIndex = Math.floor(cards.length/2);
+            window.addEventListener('resize', ()=> setTimeout(updateVisual,60));
+            const visualViewport = document.querySelector('.visual-viewport');
+            visualViewport.addEventListener('mouseenter', stopVisualAuto);
+            visualViewport.addEventListener('mouseleave', startVisualAuto);
+            visualViewport.addEventListener('focusin', stopVisualAuto);
+            visualViewport.addEventListener('focusout', startVisualAuto);
+            updateVisual();
+            startVisualAuto();
+        })();
+
+        // SCROLL ANIMATIONS
+        const animatedEls = document.querySelectorAll('.animate-fade-up');
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },{threshold:0.15});
+        animatedEls.forEach(el=>observer.observe(el));
     </script>
 </body>
 </html>
