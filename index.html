@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elan - 4 BHK Luxury Apartments, Sector 49, Gurgaon</title>
+    <title>Experion Sector 151 Noida - 3 & 4 BHK Luxury Apartments</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
 
         html{scroll-behavior:smooth;}
 
         body{
-            font-family:Arial,sans-serif;
+            font-family:popins;
             line-height:1.6;
-            color:#333;
+            color:black ;
             background:#f5f5f5;
         }
         body.no-scroll{
@@ -82,6 +82,8 @@
             text-transform:uppercase;
             letter-spacing:0.5px;
             box-shadow:0 4px 10px rgba(0,0,0,0.15);
+            position:relative;
+            overflow:hidden;
         }
         .cta-button:hover{
             background:#0f5f7f;
@@ -145,14 +147,18 @@
             background-size:cover;
             background-position:center;
             opacity:0;
-            transition:opacity 1s ease-in-out;
+            transition:opacity 1s ease-in-out, transform 6s ease-out;
+            transform:scale(1.04);
         }
-        .hero-slide.active{opacity:1;}
+        .hero-slide.active{
+            opacity:1;
+            transform:scale(1);
+        }
         .hero::after{
             content:"";
             position:absolute;
             inset:0;
-            background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.2));
+            background:linear-gradient(120deg,rgba(0,0,0,0.70),rgba(0,0,0,0.25));
             pointer-events:none;
             z-index:1;
         }
@@ -169,32 +175,93 @@
             gap:32px;
         }
 
+        /* HERO BANNER CARD – glass, premium look */
+        .banner-card{
+            background:linear-gradient(135deg,rgba(15,95,127,0.22),rgba(0,0,0,0.55));
+            border-radius:18px;
+            padding:26px 26px 22px;
+            border:1px solid rgba(255,255,255,0.18);
+            box-shadow:0 20px 40px rgba(0,0,0,0.4);
+            backdrop-filter:blur(14px);
+            max-width:520px;
+            animation:heroCardIn 0.9s ease-out forwards 0.25s;
+            transform:translateY(24px);
+            opacity:0;
+        }
+        .banner-title{
+            font-size:30px;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            margin-bottom:6px;
+            font-weight:700;
+        }
+        .banner-sub{
+            font-size:13px;
+            letter-spacing:1.6px;
+            text-transform:uppercase;
+            color:#e0f7ff;
+            margin-bottom:14px;
+        }
+        .badge{
+            display:inline-block;
+            padding:6px 14px;
+            font-size:11px;
+            text-transform:uppercase;
+            letter-spacing:1.4px;
+            border-radius:999px;
+            background:linear-gradient(135deg,#ffe29f,#ffa99f,#f7c0ff);
+            color:#2b2b2b;
+            font-weight:600;
+            margin-bottom:16px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.25);
+        }
+        .features-list{
+            list-style:none;
+            margin:0 0 18px;
+            padding:0;
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:8px 18px;
+            font-size:13px;
+        }
+        .features-list li{
+            position:relative;
+            padding-left:16px;
+            color:#f4f7fb;
+        }
+        .features-list li::before{
+            content:"";
+            width:7px;height:7px;
+            border-radius:50%;
+            background:#ffe29f;
+            position:absolute;
+            left:0;top:7px;
+        }
+        .starting-price{
+            display:flex;
+            align-items:baseline;
+            justify-content:flex-start;
+            gap:10px;
+            margin-top:4px;
+        }
+        .sp-label{
+            font-size:12px;
+            text-transform:uppercase;
+            letter-spacing:1.4px;
+            color:#d2e7ff;
+        }
+        .sp-value{
+            font-size:22px;
+            font-weight:700;
+            color:#ffffff;
+        }
+
         .hero-content{
             max-width:520px;
             align-self:center;
-            opacity:0;
-            transform:translateY(30px);
-            animation:heroFadeUp 0.9s ease-out forwards 0.2s;
             text-align:left;
         }
-        .hero-content h1{
-            font-size:46px;
-            margin-bottom:8px;
-            font-weight:300;
-            letter-spacing:1px;
-        }
-        .hero-content h1 strong{font-weight:700;}
-        .hero-content p{
-            font-size:18px;
-            margin-bottom:12px;
-            font-weight:300;
-            letter-spacing:0.5px;
-        }
-        .hero-content .price{
-            font-size:16px;
-            margin-bottom:20px;
-            font-weight:400;
-        }
+
         .view-btn{
             background:#fff;
             color:#1a1a1a;
@@ -220,9 +287,9 @@
             max-width:100%;
             background:#fff;
             color:#333;
-            border-radius:10px;
+            border-radius:14px;
             padding:24px 24px 20px;
-            box-shadow:0 18px 40px rgba(0,0,0,0.28);
+            box-shadow:0 18px 40px rgba(0,0,0,0.32);
             position:relative;
             animation:heroFormIn 0.9s ease-out 0.3s both;
         }
@@ -274,7 +341,7 @@
         }
         .hero-enquiry .submit-btn{
             width:100%;
-            border-radius:4px;
+            border-radius:6px;
         }
         .hero-form-close{
             position:absolute;
@@ -318,6 +385,32 @@
             transform:translateY(-1px);
         }
 
+        /* GLOBAL CTA / BUTTON ANIMATION */
+        .btn-primary,
+        .btn-outline,
+        .know-btn,
+        .cta-button{
+            position:relative;
+            overflow:hidden;
+        }
+        .btn-primary::before,
+        .btn-outline::before,
+        .know-btn::before,
+        .cta-button::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:linear-gradient(120deg,rgba(255,255,255,0.35),transparent 60%);
+            transform:translateX(-120%);
+            transition:transform 0.5s ease;
+        }
+        .btn-primary:hover::before,
+        .btn-outline:hover::before,
+        .know-btn:hover::before,
+        .cta-button:hover::before{
+            transform:translateX(0);
+        }
+
         /* SIMPLE SCROLL ANIMATION */
         .animate-fade-up{
             opacity:0;
@@ -335,125 +428,8 @@
             margin:0 auto;
             padding:32px 14px 0;
             background:#fff;
-        }
-        .proj-heading{
-            text-align:center;
-            margin-bottom:24px;
-        }
-        .proj-title{
-            font-family:Georgia,serif;
-            font-size:20px;
-            margin-bottom:4px;
-        }
-        .proj-location{
-            font-size:11px;
-            color:#777;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            gap:4px;
-        }
-        .proj-location span.icon{
-            font-size:11px;
-        }
-
-        .info-strip{
-            border:1px solid #d6d6d6;
-            display:flex;
-            justify-content:space-between;
-            text-align:center;
-            font-size:11px;
-            text-transform:uppercase;
-            letter-spacing:1px;
-            margin-bottom:30px;
-        }
-        .info-block{
-            flex:1;
-            padding:16px 8px;
-        }
-        .info-block:not(:last-child){
-            border-right:1px solid #d6d6d6;
-        }
-        .info-label{
-            color:#777;
-            margin-bottom:6px;
-        }
-        .info-value{
-            font-size:11px;
-            font-weight:600;
-        }
-
-        .premium-heading-wrap{
-            text-align:center;
-            margin-bottom:20px;
-        }
-        .premium-title{
-            font-size:13px;
-            text-transform:uppercase;
-            letter-spacing:1.5px;
-            margin-bottom:10px;
-        }
-        .premium-line{
-            position:relative;
-            width:170px;
-            height:1px;
-            background:#c6c6c6;
-            margin:0 auto;
-        }
-        .premium-line::after{
-            content:"";
-            width:7px;
-            height:7px;
-            border-radius:50%;
-            background:#0f5f7f;
-            position:absolute;
-            left:50%;
-            top:50%;
-            transform:translate(-50%,-50%);
-        }
-
-        .metrics-row{
-            display:flex;
-            justify-content:space-between;
-            border-top:1px solid #e7e7e7;
-            border-bottom:1px solid #e7e7e7;
-            padding:14px 0;
-            font-size:11px;
-            margin-bottom:22px;
-        }
-        .metric{
-            flex:1;
-            text-align:center;
-            padding:0 6px;
-            transition:transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .metric:not(:last-child){
-            border-right:1px solid #e7e7e7;
-        }
-        .metric-label{
-            color:#777;
-            margin-bottom:4px;
-        }
-        .metric-value{
-            font-weight:600;
-        }
-        .metric:hover{
-            transform:translateY(-3px);
-            box-shadow:0 8px 18px rgba(0,0,0,0.06);
-        }
-
-        .two-images{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:10px;
-            margin-bottom:18px;
-        }
-        .two-images img{
-            width:100%;
-            display:block;
-            border-radius:6px;
-            height:260px;       /* smaller & equal */
-            object-fit:cover;
+            border-radius:0 0 18px 18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.05);
         }
 
         .overview-block{
@@ -461,11 +437,13 @@
             padding:20px 6px 32px;
         }
         .overview-heading{
-            font-size:20px;
+            font-size:30px;
             margin-bottom:4px;
+            text-transform:uppercase;
+            letter-spacing:1.4px;
         }
         .overview-subtitle{
-            font-size:11px;
+            font-size:18px;
             color:#777;
             margin-bottom:10px;
             text-transform:uppercase;
@@ -489,7 +467,7 @@
             transform:translate(-50%,-50%);
         }
         .overview-text{
-            font-size:15px;
+            font-size:16px;
             text-align: justify;
             color:#555;
             line-height:1.7;
@@ -527,53 +505,105 @@
             width:100%;
             max-height:420px;
             display:block;
-            border-radius:6px;
+            border-radius:10px;
             object-fit:cover;
+            box-shadow:0 16px 32px rgba(0,0,0,0.12);
+            transition:transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .bottom-image-wrap img:hover{
+            transform:translateY(-6px) scale(1.01);
+            box-shadow:0 22px 40px rgba(0,0,0,0.18);
         }
 
-        /* USP SECTION */
+        /* USP / HIGHLIGHTS SECTION (ENHANCED) */
         .usp-section{
             max-width:1200px;
             margin:32px auto 0;
-            padding:36px 14px;
-            background:#fdf8f2;
+            padding:28px 20px;
+            background:linear-gradient(180deg,#fffaf6 0%, #fbf6f2 100%);
+            border-radius:20px;
+            box-shadow:0 30px 60px rgba(15,95,127,0.06);
+            border:1px solid rgba(15,95,127,0.04);
         }
         .usp-inner{
             display:grid;
-            grid-template-columns:1.1fr 1.1fr;
-            gap:32px;
+            grid-template-columns:1fr 1fr;
+            gap:28px;
             align-items:center;
         }
-        .usp-inner img{
+        .highlight-image{
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:0 18px 40px rgba(0,0,0,0.12);
+            position:relative;
+            background:linear-gradient(135deg, rgba(15,95,127,0.06), rgba(255,255,255,0.2));
+        }
+        .highlight-image img{
             width:100%;
-            height:260px;
+            height:100%;
+            min-height:260px;
             object-fit:cover;
-            border-radius:10px;
+            display:block;
+            transition:transform 0.8s ease, filter 0.6s ease;
+            transform-origin:center center;
+            filter:contrast(1.03) saturate(1.02);
+        }
+        .highlight-image:hover img{transform:scale(1.04);} 
+
+        .highlights-content{
+            padding:6px 6px 6px 6px;
         }
         .usp-title{
-            font-size:13px;
+            font-size:28px;
             text-transform:uppercase;
-            letter-spacing:1.5px;
-            margin-bottom:14px;
-        }
-        .usp-list{
-            list-style:none;
-            font-size:12px;
-            color:#555;
-            margin-bottom:20px;
-        }
-        .usp-list li{
-            padding-left:18px;
-            margin-bottom:6px;
-            position:relative;
-        }
-        .usp-list li::before{
-            content:"–";
-            position:absolute;
-            left:0;
-            top:0;
+            letter-spacing:1.8px;
+            margin-bottom:10px;
             color:#0f5f7f;
+            font-weight:700;
         }
+        .usp-sub{
+            color:#6b6b6b;
+            margin-bottom:16px;
+            font-size:13px;
+        }
+
+        .highlights-list{
+            list-style:none;
+            margin:0;
+            padding:0;
+            display:grid;
+            grid-template-columns:repeat(1,minmax(0,1fr));
+            gap:12px 14px;
+        }
+        @media (min-width:720px){
+            .highlights-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+        }
+        .hl-item{
+            display:flex;
+            gap:12px;
+            align-items:flex-start;
+            padding:10px 12px;
+            border-radius:10px;
+            transition:transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+            background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+            box-shadow:0 8px 20px rgba(15,95,127,0.03);
+        }
+        .hl-item:hover{
+            transform:translateX(6px);
+            box-shadow:0 18px 36px rgba(15,95,127,0.09);
+            background:linear-gradient(180deg, #fff, #fbfbfb);
+        }
+        .hl-icon{
+            width:42px;height:42px;flex:0 0 42px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e6fbfa,#eaf6ff);border:1px solid rgba(15,95,127,0.06);
+        }
+        .hl-icon svg{width:20px;height:20px;color:#0f5f7f;fill:currentColor}
+        .hl-text{font-size:13px;color:#333;line-height:1.45}
+        .usp-cta{
+            margin-top:16px;
+            display:flex;gap:12px;align-items:center;
+        }
+        .usp-cta .btn-outline{padding:10px 18px;border-radius:8px;font-weight:700}
+        .usp-cta .btn-primary{padding:10px 18px;border-radius:8px}
 
         /* Decision Corner Banner */
         .decision-banner{
@@ -586,21 +616,35 @@
             justify-content:center;
             text-align:center;
             color:#fff;
+            border-radius:16px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.32);
+            position:relative;
+            overflow:hidden;
+        }
+        .decision-banner::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:linear-gradient(135deg,rgba(0,0,0,0.75),rgba(15,95,127,0.65));
+        }
+        .decision-inner{
+            position:relative;
+            z-index:1;
         }
         .decision-inner h3{
             text-transform:uppercase;
             letter-spacing:1.5px;
-            font-size:14px;
+            font-size:33px;
             margin-bottom:6px;
         }
         .decision-inner p{
-            font-size:11px;
-            margin-bottom:14px;
+            font-size:15px;
+            margin-bottom:16px;
         }
         .btn-primary{
             display:inline-block;
             padding:8px 18px;
-            font-size:11px;
+            font-size:14px;
             background:#0f5f7f;
             color:#fff;
             text-transform:uppercase;
@@ -619,19 +663,21 @@
         .pricing-section{
             max-width:1200px;
             margin:32px auto 0;
-            padding:36px 14px 18px;
-            background:#fff;
+            padding:36px 24px 48px;
+            background:linear-gradient(180deg,#ffffff 0%,#fbfbfb 100%);
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
         }
         .section-heading-center{
             text-align:center;
             margin-bottom:6px;
-            font-size:18px;
+            font-size:22px;
             text-transform:uppercase;
             letter-spacing:1.5px;
         }
         .section-sub-center{
             text-align:center;
-            font-size:11px;
+            font-size:18px;
             color:#777;
             margin-bottom:20px;
         }
@@ -656,54 +702,68 @@
         }
         .pricing-cards{
             display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:22px;
-            margin-top:18px;
+            grid-template-columns:repeat(3,1fr);
+            gap:28px;
+            margin-top:28px;
+            align-items:start;
         }
         .price-card{
-            background:#fff;
-            border-radius:10px;
-            box-shadow:0 12px 30px rgba(0,0,0,0.08);
-            padding:24px 20px 22px;
-            text-align:center;
-            transition:transform 0.3s ease, box-shadow 0.3s ease;
+            background:#1f2224;
+            color:#e9f6f6;
+            border-radius:8px;
+            padding:36px 30px 36px;
+            text-align:left;
+            transition:transform 0.36s cubic-bezier(.2,.9,.2,1), box-shadow 0.36s ease;
+            position:relative;
+            overflow:hidden;
+            border:1px solid rgba(255,255,255,0.03);
         }
-        .price-card:hover{
-            transform:translateY(-4px);
-            box-shadow:0 18px 40px rgba(0,0,0,0.12);
+        .price-card::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:radial-gradient(circle at 20% 10%, rgba(15,95,127,0.06) 0px, transparent 6px), radial-gradient(circle at 80% 90%, rgba(15,95,127,0.04) 0px, transparent 6px);
+            mix-blend-mode:overlay;
+            pointer-events:none;
+        }
+        .price-card::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            background-image:radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size:12px 12px;
+            opacity:0.08;
+        }
+        .price-card::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:radial-gradient(circle at top left,rgba(15,95,127,0.10),transparent 55%);
+            opacity:0;
+            transition:opacity 0.4s ease;
         }
         .price-card h4{
-            font-size:13px;
-            margin-bottom:6px;
-            color:#0f5f7f;
-        }
-        .price-card .price{
-            font-size:16px;
-            margin-bottom:8px;
-        }
-        .price-card .size{
-            font-size:11px;
-            color:#777;
-            margin-bottom:16px;
-        }
-        .btn-outline{
-            display:inline-block;
-            padding:7px 18px;
-            font-size:10px;
-            border:1px solid #0f5f7f;
-            text-transform:uppercase;
-            letter-spacing:1px;
-            cursor:pointer;
-            color:#0f5f7f;
-            background:#fff;
-            transition:background 0.3s,color 0.3s,transform 0.2s,box-shadow 0.2s;
-        }
-        .btn-outline:hover{
-            background:#0f5f7f;
+            font-size:20px;
+            margin:0 0 14px 0;
+            white-space: nowrap !important;
             color:#fff;
-            transform:translateY(-1px);
-            box-shadow:0 8px 18px rgba(0,0,0,0.15);
+            text-transform:uppercase;
+            letter-spacing:2px;
+            font-weight:800;
+            line-height:1.05;
         }
+        .price-card .row{
+            display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+        }
+        .price-card .row.labelled{padding-top:18px}
+        .price-card .label{color:rgba(255,255,255,0.65);font-size:15px}
+        .price-card .value{color:#dbeff0;font-weight:800;font-size:20px}
+        .price-card .price{font-size:20px;color:#dbeff0;font-weight:800}
+        .price-card .price small{font-size:12px;color:#6b6b6b;margin-left:6px}
+        .price-card .size{font-size:13px;color:rgba(255,255,255,0.7)}
+        .price-cta{
+            display:inline-block;padding:12px 24px;background:linear-gradient(90deg,#0f5f7f,#0b6b78);color:#fff;border-radius:12px;border:none;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 12px 28px rgba(11,107,120,0.18);}
+        .price-cta:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(11,107,120,0.22)}
 
         /* Amenities section */
         .amenities-section{
@@ -711,10 +771,12 @@
             margin:32px auto 0;
             padding:36px 14px 42px;
             background:#fff;
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
         }
         .amenities-title{
             text-align:center;
-            font-size:18px;
+            font-size:30px;
             margin-bottom:6px;
         }
         .amenities-underline{
@@ -748,55 +810,40 @@
         .amenities-grid{
             display:grid;
             grid-template-columns:repeat(3,1fr);
-            gap:6px;
-            font-size:10px;
+            gap:28px;
+            align-items:start;
         }
-        .amenity-box{
-            background:#0f5f7f;
-            color:#fff;
-            padding:12px 8px;
+        .amenity-item{
             text-align:center;
-            transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-        }
-        .amenity-box:hover{
-            transform:translateY(-3px);
-            box-shadow:0 10px 22px rgba(0,0,0,0.2);
-            background:#136f94;
-        }
-
-        /* Master Plans */
-        .master-section{
-            max-width:1200px;
-            margin:0 auto;
-            padding:36px 14px;
-            background:#fbf5ee;
-        }
-        .master-top{
-            text-align:center;
-            margin-bottom:22px;
-        }
-        .master-top h3{
-            font-size:18px;
-            margin-bottom:6px;
-        }
-        .master-inner{
-            display:grid;
-            grid-template-columns:1fr 1.6fr;
-            gap:26px;
+            font-size:13px;
+            color:#0f5f7f;
+            display:flex;
+            flex-direction:column;
             align-items:center;
+            gap:12px;
+            transition:transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .master-left-title{
-            font-size:33px;
-            margin-bottom:12px;
+        .amenity-icon{
+            width:78px;
+            height:78px;
+            border-radius:12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border:2px solid rgba(15,95,127,0.06);
+            background:rgba(15,95,127,0.02);
+            box-shadow:0 10px 20px rgba(0,0,0,0.06);
         }
-        .master-inner img{
-            width:100%;
-            max-height:360px;
-            object-fit:cover;
+        .amenity-item span.label{
             display:block;
-            border-radius:10px;
-            border:1px solid #0f5f7f;
-            padding:4px;
+            font-weight:600;
+            font-size:12px;
+            color:#222;
+            margin-top:6px;
+        }
+        .amenity-item:hover{
+            transform:translateY(-5px);
+            box-shadow:0 14px 30px rgba(0,0,0,0.08);
         }
 
         /* Floor Plans */
@@ -805,144 +852,22 @@
             margin:0 auto;
             padding:36px 14px 42px;
             background:#fbf5ee;
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
         }
         .floor-top{
             text-align:center;
             margin-bottom:22px;
+        }
+        .floor-top h3{
+            font-size:30px;
+            margin-bottom:6px;
         }
         .floor-inner{
             display:grid;
             grid-template-columns:1fr 1.6fr;
             gap:26px;
             align-items:center;
-        }
-
-        /* POPUP ENQUIRY MODAL */
-.modal-backdrop{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.45);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:300;
-    padding:18px;
-}
-.modal-backdrop.active{
-    display:flex;
-}
-
-.modal{
-    width:480px;
-    max-width:100%;
-    background:#fffaf4;
-    border-radius:10px;
-    box-shadow:0 24px 60px rgba(0,0,0,0.32);
-    padding:30px 36px 26px;
-    position:relative;
-
-    /* animation */
-    opacity:0;
-    transform:translateY(32px) scale(.96);
-    transition:opacity .35s ease, transform .35s ease;
-}
-.modal-backdrop.active .modal{
-    opacity:1;
-    transform:translateY(0) scale(1);
-}
-
-.modal-close{
-    position:absolute;
-    right:18px;
-    top:14px;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    border:1px solid #ddd;
-    background:#fff;
-    cursor:pointer;
-    font-size:16px;
-    line-height:30px;
-}
-.modal-logo{
-    display:block;
-    margin:0 auto 14px;
-    max-width:140px;
-}
-.modal-title{
-    text-align:center;
-    font-size:18px;
-    margin-bottom:18px;
-    font-weight:600;
-    color:#222;
-}
-
-.modal .form-group{
-    margin-bottom:14px;
-}
-.modal .form-group label{
-    display:block;
-    font-size:11px;
-    margin-bottom:4px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:#666;
-}
-.modal .form-group input,
-.modal .form-group textarea{
-    width:100%;
-    border:none;
-    border-bottom:1px solid #ddd;
-    padding:8px 0;
-    font-size:12px;
-    font-family:inherit;
-    outline:none;
-}
-.modal .form-group textarea{
-    resize:vertical;
-    min-height:60px;
-}
-
-.modal .checkbox-row{
-    display:flex;
-    align-items:flex-start;
-    gap:6px;
-    font-size:10px;
-    margin:10px 0 18px;
-}
-.modal .checkbox-row input{
-    margin-top:3px;
-}
-
-.modal .submit-btn{
-    width:170px;
-    margin:0 auto;
-    display:block;
-    border-radius:2px;
-    background:#004a77;
-}
-.modal .submit-btn:hover{
-    background:#003757;
-}
-
-        .floor-tabs{
-            display:flex;
-            border-bottom:1px solid #d0d0d0;
-            margin-bottom:10px;
-            font-size:28px;
-        }
-        .floor-tab{
-            padding:6px 16px;
-            cursor:pointer;
-        }
-        .floor-tab.active{
-            color:#0f5f7f;
-            border-bottom:2px solid #0f5f7f;
-        }
-        .floor-detail{
-            font-size:22px;
-            margin-bottom:14px;
-            color:#555;
         }
         .floor-inner img{
             width:100%;
@@ -952,97 +877,116 @@
             border-radius:10px;
             border:1px solid #0f5f7f;
             padding:4px;
+            box-shadow:0 16px 32px rgba(0,0,0,0.16);
         }
 
-        /* VISUAL JOURNEY – CENTER AUTO SLIDER */
-        .visual-section{
-            max-width:1200px;
-            margin:0 auto;
-            padding:36px 14px 52px;
-            background:#fdf7f0;
-            text-align:center;
-        }
-        .visual-heading{
-            font-size:18px;
-            margin-bottom:6px;
-        }
-        .visual-underline{
-            width:130px;
-            height:1px;
-            background:#0f5f7f;
-            margin:0 auto 24px;
-            position:relative;
-        }
-        .visual-underline::after{
-            content:"";
-            width:6px;height:6px;
-            border-radius:50%;
-            border:1px solid #0f5f7f;
-            background:#fff;
-            position:absolute;
-            left:50%;top:50%;
-            transform:translate(-50%,-50%);
-        }
-        .visual-viewport{
-            overflow:visible;
-            border-radius:24px;
-            padding:12px 0;
-        }
-        .visual-track{
-            display:flex;
-            gap:24px;
+        /* POPUP ENQUIRY MODAL */
+        .modal-backdrop{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.45);
+            display:none;
             align-items:center;
-            transition:transform 0.7s cubic-bezier(.22,.9,.31,1);
-            will-change:transform;
-        }
-        .visual-card{
-            flex:0 0 320px;
-            border-radius:18px;
-            overflow:hidden;
-            background:#fff;
-            box-shadow:0 6px 22px rgba(0,0,0,0.08);
-            transform-origin:center center;
-            transition:transform 0.5s ease,box-shadow 0.3s ease,opacity 0.3s ease;
-            position:relative;
-        }
-        .visual-card img{
-            display:block;
-            width:100%;
-            height:260px;
-            object-fit:cover;
-        }
-        .visual-card.active{
-            transform:translateY(-16px) scale(1.05);
-            z-index:3;
-            box-shadow:0 18px 40px rgba(15,95,127,0.16);
-            opacity:1;
-        }
-        .visual-card.inactive{
-            opacity:0.85;
-            transform:scale(0.97);
-        }
-        .visual-controls{
-            display:flex;
             justify-content:center;
-            gap:12px;
-            margin-top:18px;
+            z-index:300;
+            padding:18px;
         }
-        .visual-btn{
-            width:40px;height:40px;
+        .modal-backdrop.active{
+            display:flex;
+        }
+
+        .modal{
+            width:480px;
+            max-width:100%;
+            background:#fffaf4;
+            border-radius:16px;
+            box-shadow:0 24px 60px rgba(0,0,0,0.32);
+            padding:30px 36px 26px;
+            position:relative;
+            opacity:0;
+            transform:translateY(32px) scale(.96);
+            transition:opacity .35s ease, transform .35s ease;
+        }
+        .modal-backdrop.active .modal{
+            opacity:1;
+            transform:translateY(0) scale(1);
+        }
+
+        .modal-close{
+            position:absolute;
+            right:18px;
+            top:14px;
+            width:32px;
+            height:32px;
             border-radius:50%;
-            border:2px solid #0f5f7f;
+            border:1px solid #ddd;
             background:#fff;
             cursor:pointer;
+            font-size:16px;
+            line-height:30px;
+        }
+        .modal-logo{
+            display:block;
+            margin:0 auto 14px;
+            max-width:140px;
+        }
+        .modal-title{
+            text-align:center;
             font-size:18px;
-            line-height:36px;
-            color:#0f5f7f;
-            transition:background 0.25s,color 0.25s,transform 0.18s;
+            margin-bottom:18px;
+            font-weight:600;
+            color:#222;
         }
-        .visual-btn:hover{
-            background:#0f5f7f;
-            color:#fff;
-            transform:translateY(-2px);
+
+        .modal .form-group{
+            margin-bottom:14px;
         }
+        .modal .form-group label{
+            display:block;
+            font-size:11px;
+            margin-bottom:4px;
+            letter-spacing:1px;
+            text-transform:uppercase;
+            color:#666;
+        }
+        .modal .form-group input,
+        .modal .form-group textarea{
+            width:100%;
+            border:none;
+            border-bottom:1px solid #ddd;
+            padding:8px 0;
+            font-size:12px;
+            font-family:inherit;
+            outline:none;
+        }
+        .modal .form-group textarea{
+            resize:vertical;
+            min-height:60px;
+        }
+
+        .modal .checkbox-row{
+            display:flex;
+            align-items:flex-start;
+            gap:6px;
+            font-size:10px;
+            margin:10px 0 18px;
+        }
+        .modal .checkbox-row input{
+            margin-top:3px;
+        }
+
+        .modal .submit-btn{
+            width:170px;
+            margin:0 auto;
+            display:block;
+            border-radius:4px;
+            background:#004a77;
+        }
+        .modal .submit-btn:hover{
+            background:#003757;
+        }
+
+        /* Visual Journey removed (carousel disabled) */
 
         /* LOCATION ADVANTAGES */
         .location-section{
@@ -1050,45 +994,58 @@
             margin:0 auto;
             padding:36px 14px 42px;
             background:#fff;
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
         }
         .loc-head{
             text-align:center;
-            margin-bottom:22px;
+            margin-bottom:18px;
         }
         .loc-head h3{
-            font-size:18px;
-            margin-bottom:4px;
+            font-size:28px;
+            margin:0 0 6px 0;
+            letter-spacing:0.6px;
+            color:#102f35;
         }
-        .loc-head p{
-            font-size:11px;
-            color:#777;
-        }
+        .loc-head p{font-size:13px;color:#666;margin:0}
+
         .location-inner{
             display:grid;
-            grid-template-columns:1.3fr 1.1fr;
-            gap:24px;
-            align-items:flex-start;
+            grid-template-columns:1fr 420px;
+            gap:28px;
+            align-items:start;
         }
-        .loc-list{
-            font-size:11px;
-        }
-        .loc-row{
-            display:flex;
-            justify-content:space-between;
-            padding:6px 0;
-            border-bottom:1px solid #eee;
-        }
-        .loc-row span:last-child{
-            color:#555;
-        }
+        .loc-list{font-size:15px}
+
+        .loc-advantages{list-style:none;padding:0;margin:0 0 14px 0;display:flex;flex-direction:column;gap:14px}
+
+        .loc-adv{display:flex;gap:14px;align-items:center;background:linear-gradient(180deg,#f6fbfb,#eef9f9);padding:14px;border-radius:12px;box-shadow:0 10px 30px rgba(15,95,127,0.04);width:100%;transition:transform 0.28s ease,box-shadow 0.28s ease}
+
+        .loc-adv .icon{width:48px;height:48px;border-radius:12px;background:#fff;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(15,95,127,0.08);color:#0f5f7f;flex:0 0 48px}
+
+        .loc-adv .text{color:#0f4f59;font-weight:600;font-size:15px}
+
+        .loc-adv:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(15,95,127,0.12)}
+
         .loc-btn-wrap{
-            margin-top:16px;
+            margin-top:18px;
+        }
+        .loc-btn-wrap .btn-primary{padding:10px 18px;border-radius:8px;background:#0f5f7f}
+
+        .loc-map{border-radius:12px;overflow:hidden;border:1px solid rgba(15,95,127,0.04);box-shadow:0 18px 40px rgba(0,0,0,0.08);}
+        .loc-map img{width:100%;height:100%;object-fit:cover;display:block;min-height:500px}
+
+        @media (max-width:900px){
+            .location-inner{grid-template-columns:1fr;}
+            .loc-map img{min-height:220px}
         }
         .loc-map{
-            border-radius:10px;
+            border-radius:8px;
             overflow:hidden;
-            border:1px solid #0f5f7f;
-            padding:4px;
+            border:1px solid rgba(15,95,127,0.06);
+            padding:6px;
+            background:#fff;
+            box-shadow:0 14px 30px rgba(0,0,0,0.06);
         }
         .loc-map img{
             width:100%;
@@ -1105,9 +1062,11 @@
             padding:36px 14px 52px;
             background:#fbf5ee;
             text-align:center;
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
         }
         .developer-section h3{
-            font-size:18px;
+            font-size:30px;
             margin-bottom:6px;
         }
         .dev-underline{
@@ -1128,13 +1087,14 @@
             margin-bottom:10px;
         }
         .dev-logo img{
-            height:36px;
+            height:50px;
         }
         .dev-text{
-            font-size:11px;
+            font-size:18px;
             color:#555;
             max-width:900px;
             margin:0 auto 22px;
+            text-align:justify;
         }
         .dev-bottom img{
             width:100%;
@@ -1142,6 +1102,7 @@
             object-fit:cover;
             display:block;
             border-radius:10px;
+            box-shadow:0 16px 32px rgba(0,0,0,0.12);
         }
 
         /* GET IN TOUCH SECTION */
@@ -1150,31 +1111,35 @@
             margin:0 auto 32px;
             padding:36px 14px 42px;
             background:#fff;
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
         }
         .contact-inner{
             display:grid;
-            grid-template-columns:1.1fr 1.2fr;
-            gap:32px;
-            align-items:flex-start;
+            grid-template-columns:1fr;
+            gap:22px;
+            align-items:center;
+            justify-items:center;
+            text-align:center;
         }
         .contact-title{
             font-family:Georgia,serif;
-            font-size:42px;
-            line-height:1.2;
-            text-align:left;
+            font-size:48px;
+            line-height:1.05;
+            margin:6px 0 4px;
+            font-weight:700;
+            color:#0d3338;
         }
-        .contact-title span{
-            color:#0f5f7f;
-        }
+        .contact-title span{color:#0f5f7f;display:block;font-size:56px;line-height:1}
         .contact-right{
-            border:1px solid #0f5f7f;
-            padding:24px 20px 22px;
+            border:1px solid rgba(15,95,127,0.14);
+            padding:28px 28px 26px;
+            border-radius:16px;
+            box-shadow:0 28px 60px rgba(15,95,127,0.06);
+            max-width:820px;
+            width:100%;
         }
-        .contact-right h4{
-            font-size:14px;
-            margin-bottom:14px;
-            text-align:center;
-        }
+        .contact-right h4{font-size:18px;margin-bottom:18px;text-align:center;color:#0f4f59;font-weight:700}
         .form-group{
             margin-bottom:14px;
         }
@@ -1186,11 +1151,13 @@
         .form-group input,
         .form-group textarea{
             width:100%;
-            padding:9px;
-            border:1px solid #ddd;
-            border-radius:2px;
-            font-size:12px;
+            padding:12px 14px;
+            border:1px solid #e6e6e6;
+            border-radius:8px;
+            font-size:14px;
             font-family:inherit;
+            box-shadow:inset 0 1px 0 rgba(0,0,0,0.02);
+            transition:box-shadow 0.18s ease, border-color 0.18s ease;
         }
         .form-group textarea{
             resize:vertical;
@@ -1207,21 +1174,28 @@
             margin-top:3px;
         }
         .submit-btn{
-            background:#0f5f7f;
+            background:linear-gradient(90deg,#0f5f7f,#0b6b78);
             color:#fff;
-            padding:10px 22px;
+            padding:14px 22px;
             border:none;
-            font-size:11px;
+            font-size:14px;
             text-transform:uppercase;
-            letter-spacing:0.5px;
+            letter-spacing:0.8px;
             cursor:pointer;
             width:100%;
-            transition:background 0.3s,transform 0.2s,box-shadow 0.2s;
+            border-radius:8px;
+            transition:transform 0.18s ease,box-shadow 0.18s ease,opacity 0.18s ease;
+            box-shadow:0 10px 26px rgba(15,95,127,0.12);
         }
-        .submit-btn:hover{
-            background:#0c485f;
-            transform:translateY(-1px);
-            box-shadow:0 8px 18px rgba(0,0,0,0.22);
+        .submit-btn:hover{transform:translateY(-3px);opacity:0.98;box-shadow:0 20px 46px rgba(15,95,127,0.16)}
+
+        .form-group input:focus, .form-group textarea:focus{outline:none;border-color:rgba(15,95,127,0.24);box-shadow:0 6px 18px rgba(15,95,127,0.06)}
+
+        @media (min-width:1000px){
+            .contact-inner{grid-template-columns:1fr 740px;align-items:start;text-align:left;justify-items:stretch}
+            .contact-title{font-size:44px}
+            .contact-title span{font-size:40px}
+            .contact-right{margin-left:auto}
         }
 
         /* FOOTER PHONE + DISCLAIMER */
@@ -1231,6 +1205,7 @@
             padding:32px 14px 16px;
             background:#fbf5ee;
             text-align:center;
+            border-radius:18px 18px 0 0;
         }
         .footer-decor{
             width:60%;
@@ -1289,6 +1264,7 @@
             cursor:pointer;
             z-index:140;
             background:#fff;
+            animation:floatIcon 3.4s ease-in-out infinite;
         }
         .float-left{left:18px;bottom:22px;}
         .float-right{right:22px;bottom:22px;}
@@ -1315,17 +1291,21 @@
         }
 
         /* KEYFRAMES */
-        @keyframes heroFadeUp{
-            0%{opacity:0;transform:translateY(30px);}
-            100%{opacity:1;transform:translateY(0);}
-        }
         @keyframes heroFormIn{
             0%{opacity:0;transform:translate(40px,10px);}
             100%{opacity:1;transform:translate(0,0);}
         }
+        @keyframes heroCardIn{
+            0%{opacity:0;transform:translateY(24px);}
+            100%{opacity:1;transform:translateY(0);}
+        }
         @keyframes floatNav{
             0%,100%{transform:translate(-50%,0);}
             50%{transform:translate(-50%,-4px);}
+        }
+        @keyframes floatIcon{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-6px);}
         }
 
         /* RESPONSIVE */
@@ -1343,27 +1323,21 @@
                 text-align:center;
                 max-width:640px;
             }
-            .hero-content h1{font-size:38px;}
+            .banner-card{
+                margin:0 auto;
+            }
             .hero-enquiry{
                 width:100%;
                 max-width:420px;
             }
 
-            .metrics-row{flex-wrap:wrap;}
-            .metric{flex:0 0 50%;margin-bottom:8px;}
-            .metric:nth-child(2){border-right:none;}
-            .two-images{grid-template-columns:1fr;}
             .usp-inner,
             .amenities-inner,
-            .master-inner,
             .floor-inner,
             .location-inner,
             .contact-inner{grid-template-columns:1fr;gap:20px;}
-            .pricing-cards{grid-template-columns:1fr;}
+            .pricing-cards{grid-template-columns:repeat(2,1fr);}
             .amenities-grid{grid-template-columns:repeat(2,1fr);}
-            .location-inner img,
-            .dev-bottom img{max-height:320px;}
-            .contact-title{text-align:center;}
         }
 
         @media (max-width:768px){
@@ -1390,31 +1364,46 @@
                 opacity:1;
                 pointer-events:auto;
             }
-            .hero-content h1{font-size:32px;}
             .visual-card{flex:0 0 280px;}
+            .pricing-cards{grid-template-columns:1fr;}
         }
 
         @media (max-width:480px){
-            .hero-content h1{font-size:26px;}
             .hero-inner{padding:0 16px;}
             .main-wrapper{padding:26px 12px 0;}
-            .metrics-row{flex-direction:column;}
-            .metric{border-right:none;border-bottom:1px solid #eee;padding:6px 0;}
-            .metric:last-child{border-bottom:none;}
+            .pricing-cards{grid-template-columns:1fr;}
             .float-left{left:14px;bottom:18px;}
             .float-right{right:18px;bottom:18px;}
             .amenities-grid{grid-template-columns:1fr;}
-            .info-strip{flex-direction:column;}
-            .info-block:not(:last-child){border-right:none;border-bottom:1px solid #d6d6d6;}
             .enquire-sticky button{padding:30px 10px;font-size:11px;}
             .contact-title{font-size:32px;text-align:center;}
-            .two-images img,
             .usp-inner img,
             .amenities-inner img,
             .dev-bottom img{height:220px;}
             .visual-card{flex:0 0 calc(100% - 48px);}
             .visual-card img{height:220px;}
             .visual-viewport{padding:0 24px;}
+            /* Mobile-specific pricing adjustments (do not change desktop styles) */
+            .price-card{
+                padding:18px 14px 20px;
+                border-radius:12px;
+            }
+            .price-card h4{
+                font-size:18px;
+                letter-spacing:1px;
+                white-space:normal !important;
+            }
+            .price-card .row{padding:8px 0}
+            .price-card .label{font-size:14px}
+            .price-card .value{font-size:16px}
+            .price-cta{display:block;width:100%;padding:12px 14px;font-size:14px;border-radius:8px;text-align:center}
+            .price-card::after{opacity:0.04}
+            /* Make visual cards fit smaller screens neatly */
+            .visual-card{flex:0 0 calc(100% - 36px);border-radius:14px}
+            .visual-card img{height:160px;object-fit:cover}
+            /* Forms and contact */
+            .contact-right{padding:20px;box-shadow:0 14px 30px rgba(15,95,127,0.06)}
+            .form-group input,.form-group textarea{padding:10px 12px;font-size:14px}
         }
     </style>
 </head>
@@ -1422,7 +1411,7 @@
     <!-- HEADER -->
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Elan">
+            <img src="images/logo.png" alt="Experion">
         </div>
 
         <button class="menu-toggle" aria-label="Toggle navigation">
@@ -1434,9 +1423,7 @@
             <a href="#highlights">Highlights</a>
             <a href="#pricing">Pricing</a>
             <a href="#amenities">Amenities</a>
-            <a href="#master">Master Plan</a>
             <a href="#floor">Floor Plans</a>
-            <a href="#visual">Gallery</a>
             <a href="#location">Location</a>
             <a href="#developer">Developer</a>
             <a href="#contact">Contact</a>
@@ -1453,10 +1440,26 @@
 
         <div class="hero-inner">
             <div class="hero-content">
-                <h1>4 BHK <strong>LUXURY APARTMENTS</strong></h1>
-                <p>SECTOR 49, GURGAON</p>
-                <div class="price">₹10.50 Cr+ Onwards</div>
-                <button class="view-btn open-enquire">VIEW PROJECT</button>
+                <div class="banner-card">
+                    <h1 class="banner-title">EXPERION SECTOR 151 NOIDA</h1>
+                    <p class="banner-sub">SECTOR 151, NOIDA EXPRESSWAY</p>
+
+                    <div class="badge">LUXURY 3 BHK &amp; 4 BHK APARTMENTS</div>
+
+                    <ul class="features-list">
+                        <li>Total Land Area 5 Acres</li>
+                        <li>Total Towers: 3</li>
+                        <li>Total Units ~ 425 Apartments</li>
+                        <li>Tower Height ~ G+35</li>
+                        <li>Only 4 Units Per Floor</li>
+                        <li>Special Payment Plan: 25:25:25:25</li>
+                    </ul>
+
+                    <div class="starting-price">
+                        <div class="sp-label">Starting Price</div>
+                        <div class="sp-value">₹ 3.36 Cr*</div>
+                    </div>
+                </div>
             </div>
 
             <aside class="hero-enquiry" id="heroForm">
@@ -1502,70 +1505,17 @@
 
     <!-- FIRST BLOCK -->
     <main class="main-wrapper animate-fade-up" id="overview">
-        <div class="proj-heading">
-            <div class="proj-title">Elan Sector 49 Gurugram</div>
-            <div class="proj-location">
-                <span class="icon">📍</span>
-                <span>Sector 49 Gurugram</span>
-            </div>
-        </div>
-
-        <div class="info-strip">
-            <div class="info-block">
-                <div class="info-label">Configuration</div>
-                <div class="info-value">4 BHK Apartments &amp; Penthouse</div>
-            </div>
-            <div class="info-block">
-                <div class="info-label">Starting Price</div>
-                <div class="info-value">₹10 Cr*</div>
-            </div>
-        </div>
-
-        <div class="premium-heading-wrap">
-            <div class="premium-title">Premium Offerings for Elite Living</div>
-            <div class="premium-line"></div>
-        </div>
-
-        <div class="metrics-row">
-            <div class="metric">
-                <div class="metric-label">Land Parcel</div>
-                <div class="metric-value">6.5 Acres</div>
-            </div>
-            <div class="metric">
-                <div class="metric-label">Towers</div>
-                <div class="metric-value">5 Iconic Towers</div>
-            </div>
-            <div class="metric">
-                <div class="metric-label">Floor</div>
-                <div class="metric-value">G + 37 Floors</div>
-            </div>
-            <div class="metric">
-                <div class="metric-label">Payment Plan</div>
-                <div class="metric-value">25 : 25 : 25 : 25</div>
-            </div>
-        </div>
-
-        <div class="two-images">
-            <img src="images/gallery1.webp" alt="Living Room 1">
-            <img src="images/gallery2.webp" alt="Living Room 2">
-        </div>
-
         <div class="overview-block">
             <div class="overview-heading">Overview</div>
-            <div class="overview-subtitle">A Snapshot of Our Real Estate Expertise</div>
+            <div class="overview-subtitle">Experion Sector 151 Noida</div>
             <div class="overview-divider"></div>
 
             <p class="overview-text">
-                Elan Group’s latest masterpiece, Elan 49, redefines luxury living on Sohna Road in Sector 49, Gurugram.
-                Spanning 6.5 acres, this exclusive community features striking, contemporary towers that rise high above the skyline,
-                offering sweeping panoramic views. Choose from expansive 4.5 BHK apartments or lavish penthouses, each crafted
-                with exquisite attention to detail. Interiors showcase polished Italian marble flooring, state-of-the-art modular
-                kitchens with sleek European cabinetry, sound-insulated double-glazed windows for year-round comfort, and
-                advanced VRV/VRF climate control. Blending modern elegance with eco-friendly design, Elan 49 delivers a lifestyle
-                that is both sophisticated and serene.
-            </p>
+              Experion Group is all set to launch an ultra-luxurious residential project in Sector 151, Noida Expressway, offering exquisitely designed 3 BHK and 4 BHK apartments that redefine modern living. Sprawled across 5 acres, this premium development comprises 3 elegant towers rising G+35 floors, with only 4 spacious units per floor, ensuring exclusivity and privacy for every resident.
+Built by a Grade A contractor (Shapoorji Pallonji), the project showcases superior construction quality and architectural finesse. With approximately 425 well-planned residences, every home blends contemporary design with functionality and comfort.
+Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clubhouse, swimming pool, fitness center, and lush landscaped greens that promote a serene lifestyle. The development embraces eco-friendly, energy-efficient infrastructure, ensuring a sustainable living experience. Strategically located near major expressways and urban conveniences, Experion’s new address in Noida offers a perfect balance of luxury, connectivity, and community living. </p>
 
-            <button class="know-btn">
+            <button class="know-btn open-enquire">
                 Know More
                 <span class="arrow">&#10140;</span>
             </button>
@@ -1579,20 +1529,29 @@
     <!-- USP SECTION -->
     <section class="usp-section animate-fade-up" id="highlights">
         <div class="usp-inner">
-            <div>
+            <div class="highlight-image">
                 <img src="images/highlight.webp" alt="USP Image">
             </div>
-            <div>
+            <div class="highlights-content">
                 <div class="usp-title">Key Highlights</div>
-                <ul class="usp-list">
-                    <li>Only 2 Ultra-Spacious Residences per Floor</li>
-                    <li>Expansive 80000 Sq.ft Clubhouse with World-Class Amenities</li>
-                    <li>Uber-Luxurious Living with Signature Hospitality &amp; Services</li>
-                    <li>Unparalleled Luxury Living</li>
-                    <li>International-Level Facilities &amp; Amenities</li>
-                    <li>Premium Concierge Services</li>
+                <div class="usp-sub">World-class amenities, premium finishes and thoughtful design — everything crafted for exclusive living.</div>
+
+                <ul class="highlights-list">
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Grade A contractor: Shapoorji Pallonji (for Experion Elements)</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Exclusive 50,000 sq. ft. clubhouse with world-class recreational and wellness spaces</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Water cascading features and landscaped greens for serene outdoor experiences</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">State-of-the-art fitness zone, indoor games area, and multipurpose halls</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Infinity-edge swimming pool, spa, and kids' play area</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Premium Italian marble flooring in living and dining areas</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Laminated wooden flooring in all bedrooms</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Fully equipped modular kitchen with chimney and hob</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Branded air-conditioning units in all rooms</div></li>
                 </ul>
-                <button class="btn-outline">Know More</button>
+
+                <div class="usp-cta">
+                    <button class="btn-outline open-enquire">Know More</button>
+                    <button class="btn-primary open-enquire">Request a Brochure</button>
+                </div>
             </div>
         </div>
     </section>
@@ -1616,16 +1575,24 @@
 
         <div class="pricing-cards">
             <div class="price-card">
-                <h4>4 BHK Apartments</h4>
-                <div class="price">₹ 10 Cr*</div>
-                <div class="size">Size: 4500 sq.ft.</div>
-                <button class="btn-outline">Know More</button>
+                <h4>3 BHK</h4>
+                <div class="row"><div class="label">Size</div><div class="value">2100 Sq. Ft.</div></div>
+                <div class="row labelled"><div class="label">Price</div><div class="value">₹ 3.36 Cr <small style="font-size:12px;opacity:0.8">*</small></div></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire">VIEW DETAILS</button></div>
             </div>
+
             <div class="price-card">
-                <h4>Penthouse</h4>
-                <div class="price">₹ On Request</div>
-                <div class="size">Size: 4500 sq.ft.</div>
-                <button class="btn-outline">Know More</button>
+                <h4>3 BHK +<br>Servant</h4>
+                <div class="row"><div class="label">Size</div><div class="value">2600 Sq. Ft.</div></div>
+                <div class="row labelled"><div class="label">Price</div><div class="value">₹ On Request</div></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire">VIEW DETAILS</button></div>
+            </div>
+
+            <div class="price-card">
+                <h4>4 BHK +<br>Servant</h4>
+                <div class="row"><div class="label">Size</div><div class="value">3200 Sq. Ft.</div></div>
+                <div class="row labelled"><div class="label">Price</div><div class="value">₹ On Request</div></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire">VIEW DETAILS</button></div>
             </div>
         </div>
     </section>
@@ -1636,39 +1603,65 @@
         <div class="amenities-underline"></div>
 
         <div class="amenities-inner">
+            <div style="padding-right:26px;">
+                <h3 style="font-size:32px;margin-bottom:10px;font-family:Georgia,serif;">LUXURIOUS AMENITIES</h3>
+                <div style="width:120px;height:2px;background:linear-gradient(90deg,#a6f0e0,#fff);margin-bottom:18px;opacity:0.9;"></div>
+                <p style="text-align:justify;color:#556;line-height:1.8;max-width:520px;margin-bottom:20px;font-size:18px;">
+                    Experion Sector 151 offers an exclusive lifestyle with a wide array of world-class amenities designed for comfort and recreation. Dive into relaxation at the swimming pool, stay fit at the well-equipped gym, or rejuvenate with yoga sessions. Enjoy social gatherings at the expansive clubhouse and open-air amphitheatre, or host events in the multipurpose hall. Every residence features extra-spacious living and bedroom areas, ensuring a luxurious and airy ambience.
+                </p>
+                <button class="btn-primary open-enquire">INTERESTED</button>
+            </div>
             <div>
-                <img src="images/highlight.webp" alt="Amenities Image">
-            </div>
-            <div class="amenities-grid">
-                <div class="amenity-box">Indoor &amp; Outdoor Pools</div>
-                <div class="amenity-box">Fully Equipped Gym</div>
-                <div class="amenity-box">Open-air Fitness Zone</div>
-                <div class="amenity-box">Sports Courts</div>
-                <div class="amenity-box">Myriad Forest Trail</div>
-                <div class="amenity-box">Playcation Zone</div>
-                <div class="amenity-box">Salon, Lounge Area</div>
-                <div class="amenity-box">Fine Dining Zone</div>
-                <div class="amenity-box">Multi-purpose Hall</div>
-                <div class="amenity-box">Wellness Retreat</div>
-                <div class="amenity-box">Indoor Kids Play Zone</div>
-                <div class="amenity-box">Business Centre</div>
-            </div>
-        </div>
-    </section>
+                <div class="amenities-grid">
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </div>
+                        <span class="label">BADMINTON COURT</span>
+                    </div>
 
-    <!-- MASTER PLANS -->
-    <section class="master-section animate-fade-up" id="master">
-        <div class="master-top">
-            <h3>Master Plans</h3>
-            <div class="heading-underline"></div>
-        </div>
-        <div class="master-inner">
-            <div class="master-left">
-                <div class="master-left-title">Master Plan</div>
-                <button class="btn-outline">View Plan</button>
-            </div>
-            <div>
-                <img src="images/master-plan.webp" alt="Master Plan">
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="16" height="12" rx="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </div>
+                        <span class="label">CLUBHOUSE</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 15c1.5-2 3-3 6-3s4.5 1 6 3" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </div>
+                        <span class="label">SWIMMING POOL</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16" stroke="#0f5f7f" stroke-width="1.2"/><path d="M7 7v10" stroke="#0f5f7f" stroke-width="1.2"/></svg>
+                        </div>
+                        <span class="label">PARKING</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="18" height="10" rx="1" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </div>
+                        <span class="label">KID'S PLAY AREA</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16" stroke="#0f5f7f" stroke-width="1.2"/><path d="M6 8v8" stroke="#0f5f7f" stroke-width="1.2"/></svg>
+                        </div>
+                        <span class="label">JOGGING TRACK</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2"/><path d="M6 20c1.5-3 4.5-4 6-4s4.5 1 6 4" stroke="#0f5f7f" stroke-width="1.2"/></svg>
+                        </div>
+                        <span class="label">YOGA LAWN</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1676,19 +1669,15 @@
     <!-- FLOOR PLANS -->
     <section class="floor-section animate-fade-up" id="floor">
         <div class="floor-top">
-            <h3>Floor Plans</h3>
+            <h3>OUR FLOOR PLAN</h3>
             <div class="heading-underline"></div>
         </div>
         <div class="floor-inner">
             <div>
-                <div class="floor-tabs">
-                    <div class="floor-tab active" data-plan="4bhk">4 BHK</div>
-                    <div class="floor-tab" data-plan="ph">Penthouse</div>
-                </div>
-                <div class="floor-detail" id="floorDetail">
-                    Size: 4500 sq.ft.
-                </div>
-                <button class="btn-outline">View Plan</button>
+                <p style="color:#3b4a4a;line-height:1.8;max-width:520px;margin-bottom:20px;font-size:18px;text-align: justify;">
+                    Experion New Launch in Sector 151 Noida presents spacious 3 and 4 BHK homes designed for those who appreciate luxury and comfort. With lavish interiors, each residence features grand living spaces and generously sized bedrooms that exude elegance. The highlight is the impressive 11 ft. ceiling heights, adding a sense of openness and grandeur to your home. Every detail at Experion Sector 151 Noida is crafted to elevate your lifestyle.
+                </p>
+                <button class="btn-primary open-enquire">INTERESTED</button>
             </div>
             <div>
                 <img src="images/floor.png" alt="Floor Plan" id="floorImage">
@@ -1696,47 +1685,56 @@
         </div>
     </section>
 
-    <!-- VISUAL JOURNEY (AUTO MOVING) -->
-    <section class="visual-section animate-fade-up" id="visual">
-        <div class="visual-heading">Visual Journey</div>
-        <div class="visual-underline"></div>
-
-        <div class="visual-viewport">
-            <div class="visual-track" id="visualTrack">
-                <div class="visual-card"><img src="images/1.webp" alt=""></div>
-                <div class="visual-card"><img src="images/6.webp" alt=""></div>
-                <div class="visual-card"><img src="images/3.webp" alt=""></div>
-                <div class="visual-card"><img src="images/4.webp" alt=""></div>
-                <div class="visual-card"><img src="images/5.webp" alt=""></div>
-            </div>
-        </div>
-        <div class="visual-controls">
-            <button class="visual-btn" id="visualPrev">&#10094;</button>
-            <button class="visual-btn" id="visualNext">&#10095;</button>
-        </div>
-    </section>
+    <!-- Visual Journey removed -->
 
     <!-- LOCATION ADVANTAGES -->
     <section class="location-section animate-fade-up" id="location">
         <div class="loc-head">
-            <h3>Location Advantages</h3>
-            <div class="heading-underline"></div>
-            <p>An Exclusive Address Where The World Comes To You</p>
+            <h3>OUR LOCATION ADVANTAGES</h3>
+            <div class="heading-underline" style="width:140px;"></div>
         </div>
         <div class="location-inner">
             <div class="loc-list">
-                <div class="loc-row"><span>Sohna Road</span><span>10 minutes</span></div>
-                <div class="loc-row"><span>Golf Course Extension Road</span><span>15 minutes</span></div>
-                <div class="loc-row"><span>Cyber Park (DLF Cyber City)</span><span>25 minutes</span></div>
-                <div class="loc-row"><span>Huda City Centre Metro Station</span><span>15 minutes</span></div>
-                <div class="loc-row"><span>Medanta and Artemis Hospitals</span><span>15 minutes</span></div>
-                <div class="loc-row"><span>White Park Hospital</span><span>15 minutes</span></div>
-                <div class="loc-row"><span>Omaxe Celebration Mall</span><span>15 minutes</span></div>
-                <div class="loc-row"><span>GD Goenka School</span><span>7 minutes</span></div>
-                <div class="loc-row"><span>St. Xavier's School</span><span>7 minutes</span></div>
-                <div class="loc-btn-wrap">
-                    <button class="btn-outline">View Location Map</button>
-                </div>
+                <ul class="loc-advantages">
+                    <li class="loc-adv">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </span>
+                        <span class="text">10 mins to Sector 148 Metro Station</span>
+                    </li>
+                    <li class="loc-adv">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </span>
+                        <span class="text">Easy access to Sector 137 &amp; 150 social hubs</span>
+                    </li>
+                    <li class="loc-adv">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </span>
+                        <span class="text">2 min from Noida–Greater Noida Expressway</span>
+                    </li>
+                    <li class="loc-adv">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </span>
+                        <span class="text">10 min from Shiv Nadar School &amp; Amity University</span>
+                    </li>
+                    <li class="loc-adv">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </span>
+                        <span class="text">15 min from Jaypee Hospital &amp; Yatharth Hospital</span>
+                    </li>
+                    <li class="loc-adv">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </span>
+                        <span class="text">~25 mins to upcoming Jewar International Airport</span>
+                    </li>
+                </ul>
+
+              
             </div>
             <div class="loc-map">
                 <img src="images/location-map.webp" alt="Location Map">
@@ -1752,10 +1750,9 @@
             <img src="images/logo.png" alt="Developer Logo">
         </div>
         <p class="dev-text">
-            Elan Group is a prominent real estate developer headquartered in Gurugram, Haryana, known for creating high-end
-            residential, commercial, and mixed-use spaces. With landmark projects such as Elan The Presidential, Elan The
-            Emperor, and Elan Imperial, the company focuses on luxury living, upscale retail, and hospitality experiences
-            across prime locations in the NCR region.
+           Established in 1990, Godrej Properties is a trailblazer in the Indian real estate sector and holds the distinction of being the first real estate developer in India to receive ISO certification. The company is committed to delivering excellence through cutting-edge design, innovation, and sustainability. With a presence in 12 prominent cities across India, Godrej Properties is currently developing iconic projects that collectively span over 18.58 million square meters.
+
+Backed by the legacy of the Godrej Group, the brand integrates trust, quality, and modern architecture to create world-class residential and commercial spaces. Known for setting industry benchmarks, Godrej Properties continues to lead with a forward-thinking approach, offering spaces that inspire, enrich lives, and reflect a commitment to long-term value.
         </p>
         <div class="dev-bottom">
             <img src="images/happy_family.webp" alt="Happy Family">
@@ -1803,7 +1800,7 @@
     <!-- FOOTER PHONE + DISCLAIMER -->
     <div class="footer-main animate-fade-up">
         <div class="footer-decor"></div>
-        <div class="footer-phone">+91 7838550055</div>
+        <div class="footer-phone">+91 8929001318</div>
         <div class="footer-decor"></div>
     </div>
     <div class="footer-bottom">
@@ -1826,90 +1823,88 @@
     <div class="enquire-sticky">
         <button class="open-enquire">Enquire Now</button>
     </div>
-<!-- POPUP ENQUIRY MODAL -->
-<div class="modal-backdrop" id="popupEnquiry">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-        <button class="modal-close" id="popupClose">✕</button>
 
-        <img src="images/logo.png" alt="Elan" class="modal-logo">
-        <div class="modal-title" id="popupTitle">Talk to Our Property Specialist!</div>
+    <!-- POPUP ENQUIRY MODAL -->
+    <div class="modal-backdrop" id="popupEnquiry">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+            <button class="modal-close" id="popupClose">✕</button>
 
-        <form id="popupForm">
-            <div class="form-group">
-                <label>NAME</label>
-                <input type="text" required>
-            </div>
-            <div class="form-group">
-                <label>EMAIL ID</label>
-                <input type="email" required>
-            </div>
-            <div class="form-group">
-                <label>CONTACT NO.</label>
-                <input type="tel" required>
-            </div>
-            <div class="form-group">
-                <label>MESSAGE</label>
-                <textarea required></textarea>
-            </div>
+            <img src="images/logo.png" alt="Elan" class="modal-logo">
+            <div class="modal-title" id="popupTitle">Talk to Our Property Specialist!</div>
 
-            <div class="checkbox-row">
-                <input type="checkbox" id="popupConsent" required>
-                <label for="popupConsent">
-                    I authorize company representatives to Call, SMS, Email, or WhatsApp me about its products and offers.
-                    This consent overrides my registration for DNC/NDNC.
-                </label>
-            </div>
+            <form id="popupForm">
+                <div class="form-group">
+                    <label>NAME</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>EMAIL ID</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>CONTACT NO.</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>MESSAGE</label>
+                    <textarea required></textarea>
+                </div>
 
-            <button type="submit" class="submit-btn">Submit Now</button>
-        </form>
+                <div class="checkbox-row">
+                    <input type="checkbox" id="popupConsent" required>
+                    <label for="popupConsent">
+                        I authorize company representatives to Call, SMS, Email, or WhatsApp me about its products and offers.
+                        This consent overrides my registration for DNC/NDNC.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Now</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <script>
         // ========= POPUP MODAL ENQUIRY (center) =========
-const popupBackdrop = document.getElementById('popupEnquiry');
-const popupClose    = document.getElementById('popupClose');
-const popupForm     = document.getElementById('popupForm');
+        const popupBackdrop = document.getElementById('popupEnquiry');
+        const popupClose    = document.getElementById('popupClose');
+        const popupForm     = document.getElementById('popupForm');
 
-// all buttons with .open-enquire will open the popup
-const popupOpenButtons = document.querySelectorAll('.open-enquire');
+        // all buttons with .open-enquire will open the popup
+        const popupOpenButtons = document.querySelectorAll('.open-enquire');
 
-function openPopup(){
-    popupBackdrop.classList.add('active');
-}
+        function openPopup(){
+            popupBackdrop.classList.add('active');
+        }
 
-function closePopup(){
-    popupBackdrop.classList.remove('active');
-}
+        function closePopup(){
+            popupBackdrop.classList.remove('active');
+        }
 
-// click on Enquiry / Book Now / side Enquire etc.
-popupOpenButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPopup();
-    });
-});
+        popupOpenButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openPopup();
+            });
+        });
 
-// close actions
-popupClose.addEventListener('click', closePopup);
-popupBackdrop.addEventListener('click', (e) => {
-    if (e.target === popupBackdrop) closePopup();
-});
+        popupClose.addEventListener('click', closePopup);
+        popupBackdrop.addEventListener('click', (e) => {
+            if (e.target === popupBackdrop) closePopup();
+        });
 
-// submit
-popupForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    alert('Thank you! Our property specialist will contact you shortly.');
-    this.reset();
-    closePopup();
-});
+        popupForm.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('Thank you! Our property specialist will contact you shortly.');
+            this.reset();
+            closePopup();
+        });
 
-// auto-open once after 5 seconds
-setTimeout(() => {
-    if (!popupBackdrop.classList.contains('active')) {
-        openPopup();
-    }
-}, 5000);
+        // auto-open once after 5 seconds
+        setTimeout(() => {
+            if (!popupBackdrop.classList.contains('active')) {
+                openPopup();
+            }
+        }, 5000);
 
         const headerEl = document.querySelector('header');
         const menuToggle = document.querySelector('.menu-toggle');
@@ -1946,22 +1941,15 @@ setTimeout(() => {
 
         // Floating icons
         document.getElementById('callIcon').addEventListener('click', () => {
-            window.location.href = 'tel:+917838550055';
+            window.location.href = 'tel:+918929001318';
         });
         document.getElementById('whatsappIcon').addEventListener('click', () => {
-            window.open('https://wa.me/917838550055','_blank');
+            window.open('https://wa.me/+918929001318','_blank');
         });
 
-        // HERO SIDE ENQUIRY SHOW/HIDE
+        // HERO SIDE ENQUIRY – allow close only
         const heroForm = document.getElementById('heroForm');
         const heroFormClose = document.getElementById('heroFormClose');
-        const openEnquireButtons = document.querySelectorAll('.open-enquire');
-
-        function openHeroForm(){
-            heroForm.classList.remove('hero-form-hidden');
-            document.querySelector('.hero').scrollIntoView({behavior:'smooth'});
-        }
-        openEnquireButtons.forEach(btn => btn.addEventListener('click', openHeroForm));
         heroFormClose.addEventListener('click', () => {
             heroForm.classList.add('hero-form-hidden');
         });
@@ -1991,116 +1979,7 @@ setTimeout(() => {
             heroTimer = setInterval(()=>showHeroSlide(heroIndex + 1), 5000);
         }
 
-        // FLOOR PLAN TABS (image swap)
-        const floorTabs = document.querySelectorAll('.floor-tab');
-        const floorImage = document.getElementById('floorImage');
-        const floorDetail = document.getElementById('floorDetail');
-
-        floorTabs.forEach(tab=>{
-            tab.addEventListener('click',()=>{
-                floorTabs.forEach(t=>t.classList.remove('active'));
-                tab.classList.add('active');
-                if(tab.dataset.plan === '4bhk'){
-                    floorImage.src = 'images/floor-4bhk.webp';
-                    floorDetail.textContent = 'Size: 4500 sq.ft.';
-                }else{
-                    floorImage.src = 'images/floor-ph.webp';
-                    floorDetail.textContent = 'Penthouse – Size on Request.';
-                }
-            });
-        });
-
-        // VISUAL JOURNEY – CENTER AUTO SLIDER
-        const visualTrack = document.getElementById('visualTrack');
-        const visualPrev = document.getElementById('visualPrev');
-        const visualNext = document.getElementById('visualNext');
-        let visualIndex = 0;
-
-        function getCards(){
-            return Array.from(document.querySelectorAll('.visual-card'));
-        }
-        function clampIndex(i){
-            const cards = getCards();
-            return Math.max(0, Math.min(i, cards.length - 1));
-        }
-
-        function updateVisual(){
-            const cards = getCards();
-            if(!cards.length) return;
-            visualIndex = clampIndex(visualIndex);
-            const viewport = document.querySelector('.visual-viewport');
-            const vpWidth = viewport.clientWidth;
-            const activeCard = cards[visualIndex];
-
-            cards.forEach((c,i)=>{
-                c.classList.remove('active','inactive');
-                if(i === visualIndex) c.classList.add('active');
-                else c.classList.add('inactive');
-            });
-
-            const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth/2;
-            const offset = cardCenter - vpWidth/2;
-            visualTrack.style.transform = `translateX(-${offset}px)`;
-        }
-
-        visualPrev.addEventListener('click', ()=>{
-            visualIndex = clampIndex(visualIndex - 1);
-            updateVisual();
-            resetVisualAuto();
-        });
-        visualNext.addEventListener('click', ()=>{
-            visualIndex = clampIndex(visualIndex + 1);
-            updateVisual();
-            resetVisualAuto();
-        });
-
-        document.addEventListener('click',(e)=>{
-            const card = e.target.closest && e.target.closest('.visual-card');
-            if(card && card.parentElement === visualTrack){
-                const cards = getCards();
-                const idx = cards.indexOf(card);
-                if(idx>=0){
-                    visualIndex = idx;
-                    updateVisual();
-                    resetVisualAuto();
-                }
-            }
-        });
-
-        let visualTimer = null;
-        const visualDelay = 4000;
-        function startVisualAuto(){
-            if(visualTimer) return;
-            visualTimer = setInterval(()=>{
-                const cards = getCards();
-                if(!cards.length) return;
-                visualIndex = visualIndex >= cards.length-1 ? 0 : visualIndex+1;
-                updateVisual();
-            }, visualDelay);
-        }
-        function stopVisualAuto(){
-            if(visualTimer){
-                clearInterval(visualTimer);
-                visualTimer = null;
-            }
-        }
-        function resetVisualAuto(){
-            stopVisualAuto();
-            setTimeout(startVisualAuto, 1200);
-        }
-
-        (function initVisual(){
-            const cards = getCards();
-            visualIndex = Math.floor(cards.length/2);
-            window.addEventListener('resize', ()=> setTimeout(updateVisual,60));
-            const visualViewport = document.querySelector('.visual-viewport');
-            visualViewport.addEventListener('mouseenter', stopVisualAuto);
-            visualViewport.addEventListener('mouseleave', startVisualAuto);
-            visualViewport.addEventListener('focusin', stopVisualAuto);
-            visualViewport.addEventListener('focusout', startVisualAuto);
-            updateVisual();
-            startVisualAuto();
-        })();
+        // Visual Journey removed — corresponding JS cleaned up
 
         // SCROLL ANIMATIONS
         const animatedEls = document.querySelectorAll('.animate-fade-up');
