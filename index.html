@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experion Sector 151 Noida Expressway</title>
+    <title>EXPERION SECTOR 151 NOIDA – PREMIUM LUXURY RESIDENCES</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -703,10 +703,11 @@
         }
         .pricing-cards{
             display:grid;
-            grid-template-columns:repeat(3,1fr);
+            grid-template-columns:repeat(2,1fr);
             gap:28px;
             margin-top:28px;
             align-items:start;
+            justify-items:center;
         }
         .price-card{
             background:#1f2224;
@@ -901,7 +902,7 @@
             background:rgba(0,0,0,0.45);
             display:none;
             align-items:center;
-            justify-content:center;
+            justify-content:center; 
             z-index:300;
             padding:18px;
         }
@@ -1501,6 +1502,24 @@
             .contact-right{padding:20px;box-shadow:0 14px 30px rgba(15,95,127,0.06)}
             .form-group input,.form-group textarea{padding:10px 12px;font-size:14px}
         }
+        /* FAQ — attractive accordion */
+        .faq-section{max-width:1200px;margin:32px auto;padding:36px 22px;background:linear-gradient(180deg,#ffffff,#f7fbfd);border-radius:16px;box-shadow:0 18px 40px rgba(15,95,127,0.06);border:1px solid rgba(15,95,127,0.04);}
+        .faq-section .faq-header{max-width:980px;margin:0 auto 12px;text-align:center}
+        .faq-section h3{font-size:28px;color:#0f4f59;margin-bottom:6px}
+        .faq-intro{color:#58666a;margin-bottom:10px}
+        .faq-inner{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+        .faq-column{display:flex;flex-direction:column;gap:12px}
+        .faq-item{background:#fff;border-radius:10px;padding:12px 16px;border:1px solid rgba(15,95,127,0.04);box-shadow:0 10px 24px rgba(15,95,127,0.04);position:relative;overflow:hidden}
+        .faq-item .question{width:100%;text-align:left;background:transparent;border:none;font-weight:800;font-size:16px;padding:6px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:#0d3338}
+        .faq-item .question:focus{outline:2px solid rgba(15,95,127,0.12);outline-offset:2px;border-radius:6px}
+        .faq-item .chev{display:inline-block;width:34px;height:34px;border-radius:8px;background:linear-gradient(180deg,#e9fbff,#eaf6ff);color:#0f5f7f;display:flex;align-items:center;justify-content:center;font-weight:700;transition:transform .28s ease}
+        .faq-item.open .chev{transform:rotate(180deg)}
+        .answer{max-height:0;overflow:hidden;transition:max-height .36s ease, padding .24s ease; color:#344449; padding:0}
+        /* Reset paragraph margins inside answers so scrollHeight is accurate and text doesn't get clipped */
+        .answer p{margin:0}
+        /* Add vertical padding when open so there's breathing room and content isn't cut */
+        .faq-item.open .answer{padding:10px 0 12px}
+        @media (max-width:900px){.faq-inner{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
@@ -1536,23 +1555,23 @@
         <div class="hero-inner">
             <div class="hero-content">
                 <div class="banner-card">
-                    <h1 class="banner-title">EXPERION SECTOR 151 NOIDA</h1>
+                    <h1 class="banner-title">EXPERION SECTOR 151 NOIDA – PREMIUM LUXURY RESIDENCES</h1>
                     <p class="banner-sub">SECTOR 151, NOIDA EXPRESSWAY</p>
 
                     <div class="badge">LUXURY 3 BHK &amp; 4 BHK APARTMENTS</div>
 
                     <ul class="features-list">
-                        <li>Total Land Area 5 Acres</li>
-                        <li>Total Towers: 3</li>
-                        <li>Total Units ~ 425 Apartments</li>
-                        <li>Tower Height ~ G+35</li>
-                        <li>Only 4 Units Per Floor</li>
-                        <li>Special Payment Plan: </li>
+                        <li>Premium 3 &amp; 4 BHK luxury residences</li>
+                        <li>Developed by Experion – 100% FDI-funded</li>
+                        <li>Located in Sector 151, Noida luxury corridor</li>
+                        <li>Close to Noida–Greater Noida Expressway</li>
+                        <li>Spacious, well-ventilated layouts with modern interiors</li>
+                        <li>Large balconies with serene green views</li>
                     </ul>
 
                     <div class="starting-price">
-                        <div class="sp-label">Starting Price</div>
-                        <div class="sp-value">₹ 3.36 Cr*</div>
+                        <div class="sp-label">Availability</div>
+                        <div class="sp-value">Coming Soon</div>
                     </div>
                 </div>
             </div>
@@ -1560,7 +1579,7 @@
             <aside class="hero-enquiry" id="heroForm">
                 <button class="hero-form-close" id="heroFormClose">✕</button>
                 <div class="hero-enquiry-header">
-                    <img src="images/logo.png" alt="Elan" class="hero-enquiry-logo">
+                    <img src="images/logo.png" alt="Experion" class="hero-enquiry-logo">
                     <div class="hero-enquiry-title">Talk to Our Property Specialist!</div>
                 </div>
                 <form id="heroEnquiryForm">
@@ -1598,6 +1617,8 @@
         </div>
     </section>
 
+   
+
     <!-- FIRST BLOCK -->
     <main class="main-wrapper animate-fade-up" id="overview">
         <div class="overview-block">
@@ -1606,41 +1627,69 @@
             <div class="overview-divider"></div>
 
             <p class="overview-text">
-              Experion Group is all set to launch an ultra-luxurious residential project in Sector 151, Noida Expressway, offering exquisitely designed 3 BHK and 4 BHK apartments that redefine modern living. Sprawled across 5 acres, this premium development comprises 3 elegant towers rising G+35 floors, with only 4 spacious units per floor, ensuring exclusivity and privacy for every resident.
-Built by a Grade A contractor (Shapoorji Pallonji), the project showcases superior construction quality and architectural finesse. With approximately 425 well-planned residences, every home blends contemporary design with functionality and comfort.
-Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clubhouse, swimming pool, fitness center, and lush landscaped greens that promote a serene lifestyle. The development embraces eco-friendly, energy-efficient infrastructure, ensuring a sustainable living experience. Strategically located near major expressways and urban conveniences, Experion’s new address in Noida offers a perfect balance of luxury, connectivity, and community living. </p>
+Experion Sector 151 on Noida Expressway is a newly launched luxury residential project by Experion Group, offering premium Experion 3 & 4 BHK apartments designed for modern, elegant, and spacious living. Spread across 5 acres along the Noida–Greater Noida Expressway, this Experion low-density project features 3 towers (G+35) with just 425 premium apartments, ensuring unmatched privacy and exclusivity. Each apartment comes with large layouts (2100–3200 sq. ft.), maximum ventilation, natural light, and experion premium interiors. Built by a Grade A contractor Shapoorji Pallonji, construction partner DPS projects, architect partner Belt Collins, the project showcases superior construction quality and architectural finesse. Experion’s project expected possession time is December 2030, giving homebuyers enough time to plan their investment and future move. 
+The project offers Experion world-class amenities, including a 50,000 sq.ft.clubhouse, gym, swimming pool, landscaped gardens, sports zones, and 24x7 security, along with smart home features and eco-friendly design. Located in Experion Sector 151 Noida, it provides excellent connectivity to the Noida- Greater Noida Expressway, top schools, business hubs, hospitals, Sector 148 (Aqua Metro line) metro station, and the upcoming Jewar International Airport, this project stands out as a strong competitor to some of the top real estate companies in India in terms of lifestyle and value. 
+            </p>
 
+           
             <button class="know-btn open-enquire">
                 Know More
                 <span class="arrow">&#10140;</span>
             </button>
 
             <div class="bottom-image-wrap">
-                <img src="images/overview.jpg" alt="Project View">
+                <img src="images/overview.jpg" alt="Experion Sector 151 Noida Luxury Apartments">
             </div>
         </div>
     </main>
+     <section class="pricing-section animate-fade-up" id="pricing">
+        <div class="section-heading-center">Our Pricing &amp; Plan</div>
+        <div class="heading-underline"></div>
+        <div class="section-sub-center">
+            Explore Pricing Options Tailored To Your Budget
+        </div>
+
+        <div class="pricing-cards">
+            <div class="price-card">
+                <h4>3 BHK Premium Residences
+
+</h4>
+                <div class="row"><div class="label">Size</div><div class="value">Coming Soon</div></div>
+                <div class="row labelled"><div class="label">Price</div><div class="value">Coming Soon</div></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="3 BHK + Servant">VIEW DETAILS</button></div>
+            </div>
+
+            <div class="price-card">
+                <h4>4 BHK Premium Residences
+
+</h4>
+                <div class="row"><div class="label">Size</div><div class="value">Coming Soon</div></div>
+                <div class="row labelled"><div class="label">Price</div><div class="value">Coming Soon</div></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="4 BHK +">VIEW DETAILS</button></div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- USP SECTION -->
     <section class="usp-section animate-fade-up" id="highlights">
         <div class="usp-inner">
             <div class="highlight-image">
-                <img src="images/highlight.webp" alt="USP Image">
+                <img src="images/highlight.webp" alt="Experion Premium Residences Expressway Noida">
             </div>
             <div class="highlights-content">
                 <div class="usp-title">Key Highlights</div>
-                <div class="usp-sub">World-class amenities, premium finishes and thoughtful design — everything crafted for exclusive living.</div>
+                <div class="usp-sub">Premium specifications, spacious layouts and thoughtful design for luxury living.</div>
 
                 <ul class="highlights-list">
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Iconic 2-side corner land parcel</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">3 Standalone Towers rising S+35 to 38 floors</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Dedicated 4BHK Tower</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">4 residences per core</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Expansive balconies with skyline views</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Grand 50,000 sq.ft Clubhouse with curated indulgences</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Expansive entrance lobbies & fine detailing throughout</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Grade A Construction Partner for unmatched quality</div></li>
-                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Luxury Specifications</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Premium 3 &amp; 4 BHK luxury residences</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Developed by Experion – a globally backed, 100% FDI-funded brand</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Located in Noida's promising luxury corridor, Sector 151</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Close to Noida–Greater Noida Expressway and Sector 148 Metro</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Spacious, well-ventilated layouts with modern interiors</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Large balconies with green, serene views</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">High-end finishes and contemporary design</div></li>
+                    <li class="hl-item"><span class="hl-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.3 16.3L4.7 11.7l-1.4 1.4L9.3 19 21 7.3 19.6 5.9z"/></svg></span><div class="hl-text">Ideal for families, professionals and long-term investors</div></li>
                 </ul>
 
                 <div class="usp-cta">
@@ -1661,36 +1710,7 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
     </section>
 
     <!-- PRICING & PLAN -->
-    <section class="pricing-section animate-fade-up" id="pricing">
-        <div class="section-heading-center">Our Pricing &amp; Plan</div>
-        <div class="heading-underline"></div>
-        <div class="section-sub-center">
-            Explore Pricing Options Tailored To Your Budget
-        </div>
-
-        <div class="pricing-cards">
-            <div class="price-card">
-                <h4>3 BHK</h4>
-                <div class="row"><div class="label">Size</div><div class="value"> 2100-2200 Sq.ft</div></div>
-                <div class="row labelled"><div class="label">Price</div><div class="value"> ₹16,000/sq.ft + other charges<small style="font-size:12px;opacity:0.8">*</small></div></div>
-                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="3 BHK">VIEW DETAILS</button></div>
-            </div>
-
-            <div class="price-card">
-                <h4>3 BHK + Servant</h4>
-                <div class="row"><div class="label">Size</div><div class="value">2500-2600 Sq.ft</div></div>
-                <div class="row labelled"><div class="label">Price</div><div class="value">₹ On Request</div></div>
-                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="3 BHK + Servant">VIEW DETAILS</button></div>
-            </div>
-
-            <div class="price-card">
-                <h4>4 BHK </h4>
-                <div class="row"><div class="label">Size</div><div class="value">3100-3200 Sq.ft</div></div>
-                <div class="row labelled"><div class="label">Price</div><div class="value">₹ On Request</div></div>
-                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="4 BHK +">VIEW DETAILS</button></div>
-            </div>
-        </div>
-    </section>
+  
 
     <!-- AMENITIES SECTION -->
     <section class="amenities-section animate-fade-up" id="amenities">
@@ -1702,7 +1722,7 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
                 <h3 style="font-size:32px;margin-bottom:10px;font-family:Georgia,serif;">LUXURIOUS AMENITIES</h3>
                 <div style="width:120px;height:2px;background:linear-gradient(90deg,#a6f0e0,#fff);margin-bottom:18px;opacity:0.9;"></div>
                 <p style="text-align:justify;color:#556;line-height:1.8;max-width:520px;margin-bottom:20px;font-size:18px;">
-                    Experion Sector 151 offers an exclusive lifestyle with a wide array of world-class amenities designed for comfort and recreation. Dive into relaxation at the swimming pool, stay fit at the well-equipped gym, or rejuvenate with yoga sessions. Enjoy social gatherings at the expansive clubhouse and open-air amphitheatre, or host events in the multipurpose hall. Every residence features extra-spacious living and bedroom areas, ensuring a luxurious and airy ambience.
+                    Experion Sector 151 provides a comprehensive suite of amenities tailored for luxury living and well-being. Highlights include a 50,000+ sq.ft. clubhouse, fully equipped gym, swimming pool, jogging and cycling tracks, landscaped gardens, dedicated kids' play areas and advanced safety and sustainability features.
                 </p>
                 <div class="center-cta"><button class="btn-primary open-enquire">KNOW MORE</button></div>
             </div>
@@ -1710,78 +1730,122 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
                 <div class="amenities-grid">
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 21c3-3 6-6 9-9" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M15 9l6-6 1 1-6 6" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11 13l2 2" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <!-- Shield / Security -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l7 3v5c0 5-3.5 9.5-7 11-3.5-1.5-7-6-7-11V5l7-3z" stroke="#0f5f7f" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <span class="label">BADMINTON COURT</span>
+                        <span class="label">24×7 Security with CCTV</span>
                     </div>
 
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 10h18v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/>
-                                <path d="M7 10V6h10v4" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9 14h1M12 14h1M15 14h1" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                            </svg>
+                            <!-- AC / Fan -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10h18v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M8 10v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <span class="label">CLUBHOUSE</span>
+                        <span class="label">Air Conditioned Homes</span>
                     </div>
 
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 16c3-2 5-2 8 0s5 2 8 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                                <path d="M3 12c3-2 5-2 8 0s5 2 8 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                            </svg>
+                            <!-- Clubhouse / Building -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="18" height="12" rx="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M7 10h3v4H7zM14 10h3v4h-3z" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <span class="label">SWIMMING POOL</span>
+                        <span class="label">Luxury Clubhouse</span>
                     </div>
 
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 20v-6h6.5a2.5 2.5 0 0 1 0 5H7z" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                <circle cx="8.5" cy="18" r="1" stroke="#0f5f7f" stroke-width="1.2" fill="none"/>
-                                <circle cx="15" cy="18" r="1" stroke="#0f5f7f" stroke-width="1.2" fill="none"/>
-                            </svg>
+                            <!-- Golf flag -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3v16" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M6 6c4-2 8-2 8 0s-4 2-8 4" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
                         </div>
-                        <span class="label">PARKING</span>
+                        <span class="label">Golf Course Proximity</span>
                     </div>
 
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 11c0-1.5 1.5-3 3-3s3 1.5 3 3" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                                <path d="M5 16c1-2 4-2 7-2s6 0 7 2" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                                <path d="M8 11v5" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                                <path d="M16 11v5" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                            </svg>
+                            <!-- Jogging shoe / track -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17c2-4 6-6 10-6s8 2 10 6" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M6 14l3-3 2 2" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <span class="label">KID'S PLAY AREA</span>
+                        <span class="label">Jogging &amp; Cycling Tracks</span>
                     </div>
 
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 17c3-3 6-4 9-4s6 1 9 4" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                                <path d="M9 12l1-2 2 1" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <!-- Kids swing -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M8 8v8" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M16 8v8" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><rect x="7" y="14" width="6" height="2" rx="1" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </div>
-                        <span class="label">JOGGING TRACK</span>
+                        <span class="label">Kids’ Play Area</span>
                     </div>
 
                     <div class="amenity-item">
                         <div class="amenity-icon">
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="7" r="1.6" stroke="#0f5f7f" stroke-width="1.2" fill="none"/>
-                                <path d="M4 18c3-4 6-5 8-5s5 1 8 5" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                                <path d="M8 13c1-1 3-1 4 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/>
-                            </svg>
+                            <!-- Dumbbell / Gym -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12h3v2H2zM19 12h3v2h-3z" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M7 13h10" stroke="#0f5f7f" stroke-width="1.6" stroke-linecap="round"/></svg>
                         </div>
-                        <span class="label">YOGA LAWN</span>
+                        <span class="label">Fully Equipped Gym</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Pool waves -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8c3 2 6 2 9 0s6-2 9 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M3 12c3 2 6 2 9 0s6-2 9 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="label">Swimming Pool</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Leaf / Gardens -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c4 4 6 8 6 12s-2 6-6 6-6-4-6-8 2-10 6-10z" stroke="#0f5f7f" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <span class="label">Landscaped Gardens</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Sauna / steam lines -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20h12v-6a6 6 0 0 0-12 0v6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M9 8c0 1 1 1 0 2M15 8c0 1-1 1 0 2" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="label">Sauna &amp; Wellness Zone</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Sports (ball) -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="6" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M12 6v12M6 12h12" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="label">Indoor &amp; Outdoor Sports Zones</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Rain / water harvesting -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2s4 4 4 7a4 4 0 0 1-8 0c0-3 4-7 4-7z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M8 18h8v2H8z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </div>
+                        <span class="label">Rainwater Harvesting</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Smart access / lock -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10" width="14" height="10" rx="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="label">Smart Access Control</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- Retail / shopping bag -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><path d="M9 7a3 3 0 0 1 6 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="label">Retail Convenience Zone</span>
+                    </div>
+
+                    <div class="amenity-item">
+                        <div class="amenity-icon">
+                            <!-- WiFi -->
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8c6-4 16-4 20 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M6 12c4-3 12-3 16 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.5" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
+                        </div>
+                        <span class="label">WiFi Enabled Common Areas</span>
                     </div>
                 </div>
             </div>
@@ -1796,13 +1860,21 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
         </div>
         <div class="floor-inner">
             <div>
-                <p style="color:#3b4a4a;line-height:1.8;max-width:520px;margin-bottom:20px;font-size:18px;text-align: justify;">
-                    Experion New Launch in Sector 151 Noida presents spacious 3 and 4 BHK homes designed for those who appreciate luxury and comfort. With lavish interiors, each residence features grand living spaces and generously sized bedrooms that exude elegance. The highlight is the impressive 11 ft. ceiling heights, adding a sense of openness and grandeur to your home. Every detail at Experion Sector 151 Noida is crafted to elevate your lifestyle.
-                </p>
+                <p style="color:#3b4a4a;line-height:1.8;max-width:520px;margin-bottom:12px;font-size:18px;text-align: justify;"><strong>Floor Plan Includes (Expected):</strong></p>
+
+                <ul style="color:#3b4a4a;line-height:1.8;max-width:520px;margin-bottom:18px;font-size:18px;padding-left:20px;">
+                    <li>Large Living + Dining Area</li>
+                    <li>Spacious Bedrooms with Attached Washrooms</li>
+                    <li>Modern Modular Kitchen</li>
+                    <li>Utility Area + Store/Servant Room</li>
+                    <li>Wide Balconies with Green Views</li>
+                </ul>
+
+                <p style="color:#3b4a4a;line-height:1.8;max-width:520px;margin-bottom:20px;font-size:18px;text-align: justify;">A perfect choice for buyers exploring luxury apartments similar to those in Gurgaon — now in a greener, more peaceful Noida setting.</p>
             </div>
             <div>
                 <div class="floor-image-wrap">
-                    <img src="images/floor.png" alt="Floor Plan" id="floorImage">
+                    <img src="images/floor.png" alt="Sector 151 Noida Luxury Flats" id="floorImage">
                     <button class="floor-download-btn open-enquire" data-plan="Floor Plan" type="button">DOWNLOAD FLOOR PLAN</button>
                 </div>
             </div>
@@ -1814,8 +1886,9 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
     <!-- LOCATION ADVANTAGES -->
     <section class="location-section animate-fade-up" id="location">
         <div class="loc-head">
-            <h3>OUR LOCATION ADVANTAGES</h3>
+            <h3>Prime Expressway Location &amp; Excellent Connectivity</h3>
             <div class="heading-underline" style="width:140px;"></div>
+            <div style="margin-top:8px;font-weight:600;color:#0f4f59;">Key Distances</div>
         </div>
         <div class="location-inner">
             <div class="loc-list">
@@ -1824,37 +1897,37 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </span>
-                        <span class="text">10 mins to Sector 148 Metro Station</span>
+                        <span class="text">Noida-Greater Noida Expressway – 2 mins</span>
                     </li>
                     <li class="loc-adv">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </span>
-                        <span class="text">Easy access to Sector 137 &amp; 150 social hubs</span>
+                        <span class="text">Metro Station (Near Sector 148) – 5 mins</span>
                     </li>
                     <li class="loc-adv">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </span>
-                        <span class="text">2 min from Noida–Greater Noida Expressway</span>
+                        <span class="text">Yamuna Expressway – 12 mins</span>
                     </li>
                     <li class="loc-adv">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </span>
-                        <span class="text">10 min from Shiv Nadar School &amp; Amity University</span>
+                        <span class="text">DND Flyway – 22 mins</span>
                     </li>
                     <li class="loc-adv">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </span>
-                        <span class="text">15 min from Jaypee Hospital &amp; Yatharth Hospital</span>
+                        <span class="text">Jewar Noida International Airport – 25 mins</span>
                     </li>
                     <li class="loc-adv">
                         <span class="icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6z" stroke="#0f5f7f" stroke-width="1.2" fill="none"/><circle cx="12" cy="8" r="2" stroke="#0f5f7f" stroke-width="1.2" fill="none"/></svg>
                         </span>
-                        <span class="text">~25 mins to upcoming Jewar International Airport</span>
+                        <span class="text">IGI Airport (via expressway network) – 40 mins</span>
                     </li>
                 </ul>
 
@@ -1869,15 +1942,18 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
 
     <!-- ABOUT DEVELOPER -->
     <section class="developer-section animate-fade-up" id="developer">
-        <h3>About Developer</h3>
+        <h3>About the Developer</h3>
         <div class="dev-underline"></div>
         <div class="dev-logo">
-            <img src="images/logo.png" alt="Developer Logo">
+            <img src="images/logo.png" alt="Experion Developers">
         </div>
-        <p class="dev-text">
-          Experion Developers is a 100% FDI-backed real estate company known for delivering premium residential and commercial projects across India. With over two decades of experience, they specialize in modern, sustainable, and luxurious living spaces. Their projects focus on innovative architecture, world-class amenities, and strategic locations, ensuring high investment value and quality lifestyles. Committed to transparency, timely delivery, and customer satisfaction, Experion has established a strong reputation in Noida, Gurugram, and other key NCR locations. </p>
+                <p class="dev-text">
+Experion Developers has built a reputation as a premium 100% FDI real estate developer based out of Singapore that delivers high-quality commercial and residential property projects across India. Experion has over 20 years of experience in the industry and emphasises modern, sustainable building Design; envisioning creative Luxury Living.
+
+Experion Developments located throughout Noida, Gurgram, and the National Capital Region (NCR) are focused in on prime locations with excellent world-class amenities, providing opportunities for high growth in real estate investments. Experion remains a trusted name in Luxury High-End Real Estate through their commitment to provide transparency in all areas of the construction process, building only the highest quality of products and deliver all of their projects on time.
+                </p>
         <div class="dev-bottom">
-            <img src="images/happy_family.webp" alt="Happy Family">
+            <img src="images/happy_family.webp" alt="Experion Upcoming Project Noida Views">
         </div>
     </section>
 
@@ -1919,6 +1995,50 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
             </div>
         </div>
     </section>
+     <!-- FAQ SECTION -->
+    <section class="faq-section animate-fade-up" id="faq">
+        <div class="faq-header">
+            <h3>FAQs</h3>
+            <div class="heading-underline" style="width:120px;margin-bottom:14px;"></div>
+            <p class="faq-intro">Frequently asked questions about the project to help you decide with confidence.</p>
+        </div>
+
+        <div class="faq-inner">
+            <div class="faq-column">
+                <div class="faq-item">
+                    <button class="question" aria-expanded="false"> <span>Q1: What type of units are available?</span> <span class="chev">+</span></button>
+                    <div class="answer"><p>A: Premium 3 BHK and 4 BHK luxury residences.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="question" aria-expanded="false"> <span>Q3: Is this a luxury project?</span> <span class="chev">+</span></button>
+                    <div class="answer"><p>A: Yes — it is a high-end luxury residential project with world-class amenities.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="question" aria-expanded="false"> <span>Q5: What are the expected sizes?</span> <span class="chev">+</span></button>
+                    <div class="answer"><p>A: Expected between 2100–3200 sq.ft., offering spacious layouts.</p></div>
+                </div>
+            </div>
+
+            <div class="faq-column">
+                <div class="faq-item">
+                    <button class="question" aria-expanded="false"> <span>Q2: What is the possession timeline?</span> <span class="chev">+</span></button>
+                    <div class="answer"><p>A: Expected possession by December 2030.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="question" aria-expanded="false"> <span>Q4: Is Experion a trusted name?</span> <span class="chev">+</span></button>
+                    <div class="answer"><p>A: Yes — Experion Developers is 100% FDI-funded and backed by Experion Holdings Singapore.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="question" aria-expanded="false"> <span>Q6: Is this project good for investment?</span> <span class="chev">+</span></button>
+                    <div class="answer"><p>A: Yes — due to its prime location, global developer background, and proximity to the Expressway and upcoming airport.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER PHONE + DISCLAIMER -->
     <div class="footer-main animate-fade-up">
@@ -1950,7 +2070,7 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
             <button class="modal-close" id="popupClose">✕</button>
 
-            <img src="images/logo.png" alt="Elan" class="modal-logo">
+            <img src="images/logo.png" alt="Experion" class="modal-logo">
             <div class="modal-title" id="popupTitle">Talk to Our Property Specialist!</div>
 
             <form id="popupForm">
@@ -2175,6 +2295,71 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
             const logoImg = document.querySelector('header .logo img');
             if (logoImg) logoImg.style.transform = 'translateY(0)';
         });
+
+        // ===== FAQ ACCORDION (accessible, single-open) =====
+        (function(){
+            const faqBtns = document.querySelectorAll('.faq-section .question');
+            if(!faqBtns || faqBtns.length === 0) return;
+
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', function(){
+                    const item = this.closest('.faq-item');
+                    const isOpen = item.classList.toggle('open');
+
+                    // close other faq items in the same column
+                    const container = item.parentElement;
+                    container.querySelectorAll('.faq-item').forEach(sib => {
+                        if(sib !== item){
+                            sib.classList.remove('open');
+                            const a = sib.querySelector('.answer');
+                            if(a){
+                                a.style.maxHeight = '0';
+                                a.style.overflow = 'hidden';
+                            }
+                            const q = sib.querySelector('.question');
+                            if(q) q.setAttribute('aria-expanded','false');
+                        }
+                    });
+
+                    const answer = item.querySelector('.answer');
+                    if(!answer) return;
+
+                    if(isOpen){
+                        // compute required height and add a small buffer so text isn't clipped
+                        const full = answer.scrollHeight;
+                        const buffer = 8; // px
+                        answer.style.maxHeight = (full + buffer) + 'px';
+                        answer.style.overflow = 'visible';
+                        this.setAttribute('aria-expanded','true');
+
+                        // after transition completes, remove max-height so dynamic content won't be clipped
+                        const onEnd = function(e){
+                            // ensure the event is for max-height transition
+                            if(e.propertyName && e.propertyName !== 'max-height') return;
+                            answer.style.maxHeight = 'none';
+                            answer.removeEventListener('transitionend', onEnd);
+                        };
+                        answer.addEventListener('transitionend', onEnd);
+                    } else {
+                        // animate close: set current height then force to 0
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        // force reflow so the transition occurs
+                        answer.offsetHeight;
+                        answer.style.maxHeight = '0';
+                        answer.style.overflow = 'hidden';
+                        this.setAttribute('aria-expanded','false');
+                    }
+                });
+
+                // keyboard (Enter / Space) support
+                btn.addEventListener('keydown', function(e){
+                    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); this.click(); }
+                });
+            });
+
+            // ensure collapsed answers have maxHeight 0 initially
+            document.querySelectorAll('.faq-section .answer').forEach(a => a.style.maxHeight = '0');
+        })();
     </script>
 </body>
 </html>
