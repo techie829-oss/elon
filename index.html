@@ -11,9 +11,14 @@
 
         body{
             font-family:popins;
+            font-family:popins;
             line-height:1.6;
             color:black ;
+            color:black ;
             background:#f5f5f5;
+        }
+        body.no-scroll{
+            overflow:hidden;
         }
         body.no-scroll{
             overflow:hidden;
@@ -25,9 +30,11 @@
             justify-content:space-between;
             align-items:center;
             padding:10px 24px;
+            padding:10px 24px;
             background:rgba(255,255,255,0.96);
             position:sticky;
             top:0;
+            z-index:130;
             z-index:130;
             box-shadow:0 1px 10px rgba(0,0,0,0.08);
             backdrop-filter:blur(10px);
@@ -35,11 +42,17 @@
         .logo img{
             height:34px;
             display:block;
+        .logo img{
+            height:34px;
+            display:block;
         }
         nav{
             display:flex;
             gap:18px;
+            gap:18px;
             align-items:center;
+            font-size:11px;
+            z-index:120;
             font-size:11px;
             z-index:120;
         }
@@ -82,6 +95,8 @@
             text-transform:uppercase;
             letter-spacing:0.5px;
             box-shadow:0 4px 10px rgba(0,0,0,0.15);
+            position:relative;
+            overflow:hidden;
             position:relative;
             overflow:hidden;
         }
@@ -127,8 +142,45 @@
         }
 
         /* HERO SECTION WITH SLIDER + RIGHT ENQUIRY FORM */
+        /* HAMBURGER MENU */
+        .menu-toggle{
+            display:none;
+            width:32px;
+            height:32px;
+            border:none;
+            background:transparent;
+            cursor:pointer;
+            position:relative;
+            margin-left:8px;
+        }
+        .menu-toggle span{
+            position:absolute;
+            left:4px;
+            right:4px;
+            height:2px;
+            background:#333;
+            border-radius:3px;
+            transition:transform 0.3s ease,top 0.3s ease,opacity 0.3s ease;
+        }
+        .menu-toggle span:nth-child(1){top:8px;}
+        .menu-toggle span:nth-child(2){top:15px;}
+        .menu-toggle span:nth-child(3){top:22px;}
+        header.nav-open .menu-toggle span:nth-child(1){
+            top:15px;
+            transform:rotate(45deg);
+        }
+        header.nav-open .menu-toggle span:nth-child(2){
+            opacity:0;
+        }
+        header.nav-open .menu-toggle span:nth-child(3){
+            top:15px;
+            transform:rotate(-45deg);
+        }
+
+        /* HERO SECTION WITH SLIDER + RIGHT ENQUIRY FORM */
         .hero{
             position:relative;
+            height:520px;
             height:520px;
             display:flex;
             align-items:center;
@@ -149,6 +201,12 @@
             opacity:0;
             transition:opacity 1s ease-in-out, transform 6s ease-out;
             transform:scale(1.04);
+            transition:opacity 1s ease-in-out, transform 6s ease-out;
+            transform:scale(1.04);
+        }
+        .hero-slide.active{
+            opacity:1;
+            transform:scale(1);
         }
         .hero-slide.active{
             opacity:1;
@@ -159,10 +217,12 @@
             position:absolute;
             inset:0;
             background:linear-gradient(120deg,rgba(0,0,0,0.70),rgba(0,0,0,0.25));
+            background:linear-gradient(120deg,rgba(0,0,0,0.70),rgba(0,0,0,0.25));
             pointer-events:none;
             z-index:1;
         }
 
+        .hero-inner{
         .hero-inner{
             position:relative;
             z-index:2;
@@ -361,10 +421,12 @@
         .hero-nav{
             position:absolute;
             bottom:24px;
+            bottom:24px;
             left:50%;
             transform:translateX(-50%);
             display:flex;
             gap:15px;
+            z-index:2;
             z-index:2;
             animation:floatNav 3s ease-in-out infinite;
         }
@@ -416,7 +478,45 @@
             opacity:0;
             transform:translateY(30px);
             transition:opacity 0.7s ease, transform 0.7s ease;
+        /* GLOBAL CTA / BUTTON ANIMATION */
+        .btn-primary,
+        .btn-outline,
+        .know-btn,
+        .cta-button{
+            position:relative;
+            overflow:hidden;
         }
+        .btn-primary::before,
+        .btn-outline::before,
+        .know-btn::before,
+        .cta-button::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:linear-gradient(120deg,rgba(255,255,255,0.35),transparent 60%);
+            transform:translateX(-120%);
+            transition:transform 0.5s ease;
+        }
+        .btn-primary:hover::before,
+        .btn-outline:hover::before,
+        .know-btn:hover::before,
+        .cta-button:hover::before{
+            transform:translateX(0);
+        }
+
+        /* SIMPLE SCROLL ANIMATION */
+        .animate-fade-up{
+            opacity:0;
+            transform:translateY(30px);
+            transition:opacity 0.7s ease, transform 0.7s ease;
+        }
+        .animate-fade-up.visible{
+            opacity:1;
+            transform:translateY(0);
+        }
+
+        /* MAIN LAYOUT WRAPPER (FIRST BLOCK) */
+        .main-wrapper{
         .animate-fade-up.visible{
             opacity:1;
             transform:translateY(0);
@@ -430,7 +530,13 @@
             background:#fff;
             border-radius:0 0 18px 18px;
             box-shadow:0 18px 40px rgba(0,0,0,0.05);
+            padding:32px 14px 0;
+            background:#fff;
+            border-radius:0 0 18px 18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.05);
         }
+
+        .overview-block{
 
         .overview-block{
             text-align:center;
@@ -1174,6 +1280,12 @@
             max-width:1200px;
             margin:0 auto 32px;
             padding:36px 14px 42px;
+
+        /* GET IN TOUCH SECTION */
+        .contact-section{
+            max-width:1200px;
+            margin:0 auto 32px;
+            padding:36px 14px 42px;
             background:#fff;
             border-radius:18px;
             box-shadow:0 18px 40px rgba(0,0,0,0.04);
@@ -1182,7 +1294,24 @@
             display:grid;
             grid-template-columns:1fr;
             gap:22px;
+            border-radius:18px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.04);
+        }
+        .contact-inner{
+            display:grid;
+            grid-template-columns:1fr;
+            gap:22px;
             align-items:center;
+            justify-items:center;
+            text-align:center;
+        }
+        .contact-title{
+            font-family:Georgia,serif;
+            font-size:48px;
+            line-height:1.05;
+            margin:6px 0 4px;
+            font-weight:700;
+            color:#0d3338;
             justify-items:center;
             text-align:center;
         }
@@ -1219,12 +1348,19 @@
             border:1px solid #e6e6e6;
             border-radius:8px;
             font-size:14px;
+            padding:12px 14px;
+            border:1px solid #e6e6e6;
+            border-radius:8px;
+            font-size:14px;
             font-family:inherit;
+            box-shadow:inset 0 1px 0 rgba(0,0,0,0.02);
+            transition:box-shadow 0.18s ease, border-color 0.18s ease;
             box-shadow:inset 0 1px 0 rgba(0,0,0,0.02);
             transition:box-shadow 0.18s ease, border-color 0.18s ease;
         }
         .form-group textarea{
             resize:vertical;
+            min-height:80px;
             min-height:80px;
         }
         .checkbox-row{
@@ -1239,9 +1375,14 @@
         }
         .submit-btn{
             background:linear-gradient(90deg,#0f5f7f,#0b6b78);
+            background:linear-gradient(90deg,#0f5f7f,#0b6b78);
             color:#fff;
             padding:14px 22px;
+            padding:14px 22px;
             border:none;
+            font-size:14px;
+            text-transform:uppercase;
+            letter-spacing:0.8px;
             font-size:14px;
             text-transform:uppercase;
             letter-spacing:0.8px;
@@ -1270,12 +1411,57 @@
             background:#fbf5ee;
             text-align:center;
             border-radius:18px 18px 0 0;
+            border-radius:8px;
+            transition:transform 0.18s ease,box-shadow 0.18s ease,opacity 0.18s ease;
+            box-shadow:0 10px 26px rgba(15,95,127,0.12);
+        }
+        .submit-btn:hover{transform:translateY(-3px);opacity:0.98;box-shadow:0 20px 46px rgba(15,95,127,0.16)}
+
+        .form-group input:focus, .form-group textarea:focus{outline:none;border-color:rgba(15,95,127,0.24);box-shadow:0 6px 18px rgba(15,95,127,0.06)}
+
+        @media (min-width:1000px){
+            .contact-inner{grid-template-columns:1fr 740px;align-items:start;text-align:left;justify-items:stretch}
+            .contact-title{font-size:44px}
+            .contact-title span{font-size:40px}
+            .contact-right{margin-left:auto}
+        }
+
+        /* FOOTER PHONE + DISCLAIMER */
+        .footer-main{
+            max-width:1200px;
+            margin:0 auto 0;
+            padding:32px 14px 16px;
+            background:#fbf5ee;
+            text-align:center;
+            border-radius:18px 18px 0 0;
         }
         .footer-decor{
             width:60%;
             max-width:900px;
             height:1px;
+        .footer-decor{
+            width:60%;
+            max-width:900px;
+            height:1px;
             background:#0f5f7f;
+            margin:0 auto 18px;
+            opacity:0.95;
+        }
+        .footer-phone{
+            color:#0f5f7f;
+            font-size:32px;
+            margin:4px 0 10px;
+            font-family:Georgia,serif;
+            letter-spacing:1px;
+            font-weight:600;
+        }
+        .footer-bottom{
+            max-width:1200px;
+            margin:0 auto 30px;
+            background:transparent;
+            font-size:12px;
+            color:#555;
+            padding:0 14px 32px;
             margin:0 auto 18px;
             opacity:0.95;
         }
@@ -1329,6 +1515,7 @@
             cursor:pointer;
             z-index:140;
             background:#fff;
+            animation:floatIcon 3.4s ease-in-out infinite;
             animation:floatIcon 3.4s ease-in-out infinite;
         }
         .float-left{left:18px;bottom:22px;}
@@ -1393,6 +1580,12 @@
         }
         @keyframes heroCardIn{
             0%{opacity:0;transform:translateY(24px);}
+        @keyframes heroFormIn{
+            0%{opacity:0;transform:translate(40px,10px);}
+            100%{opacity:1;transform:translate(0,0);}
+        }
+        @keyframes heroCardIn{
+            0%{opacity:0;transform:translateY(24px);}
             100%{opacity:1;transform:translateY(0);}
         }
         @keyframes floatNav{
@@ -1403,9 +1596,40 @@
             0%,100%{transform:translateY(0);}
             50%{transform:translateY(-6px);}
         }
+        @keyframes floatIcon{
+            0%,100%{transform:translateY(0);}
+            50%{transform:translateY(-6px);}
+        }
 
         /* RESPONSIVE */
         @media (max-width:1024px){
+            .hero{
+                height:auto;
+                padding:72px 0 40px;
+            }
+            .hero-inner{
+                flex-direction:column;
+                align-items:center;
+                gap:22px;
+            }
+            .hero-content{
+                text-align:center;
+                max-width:640px;
+            }
+            .banner-card{
+                margin:0 auto;
+            }
+            .hero-enquiry{
+                width:100%;
+                max-width:420px;
+            }
+
+            .usp-inner,
+            .amenities-inner,
+            .floor-inner,
+            .location-inner,
+            .contact-inner{grid-template-columns:1fr;gap:20px;}
+            .pricing-cards{grid-template-columns:repeat(2,1fr);}
             .hero{
                 height:auto;
                 padding:72px 0 40px;
@@ -1464,12 +1688,73 @@
             .pricing-cards{grid-template-columns:1fr;}
         }
 
+        @media (max-width:768px){
+            header{padding:8px 14px;}
+            .menu-toggle{display:block;}
+            nav{
+                position:fixed;
+                left:0;
+                right:0;
+                top:54px;
+                background:rgba(255,255,255,0.98);
+                flex-direction:column;
+                align-items:flex-start;
+                padding:14px 18px 18px;
+                gap:12px;
+                border-bottom:1px solid #eee;
+                transform:translateY(-120%);
+                opacity:0;
+                pointer-events:none;
+                transition:transform 0.3s ease, opacity 0.3s ease;
+            }
+            header.nav-open nav{
+                transform:translateY(0);
+                opacity:1;
+                pointer-events:auto;
+            }
+            .visual-card{flex:0 0 280px;}
+            .pricing-cards{grid-template-columns:1fr;}
+        }
+
         @media (max-width:480px){
+            .hero-inner{padding:0 16px;}
+            .main-wrapper{padding:26px 12px 0;}
+            .pricing-cards{grid-template-columns:1fr;}
             .hero-inner{padding:0 16px;}
             .main-wrapper{padding:26px 12px 0;}
             .pricing-cards{grid-template-columns:1fr;}
             .float-left{left:14px;bottom:18px;}
             .float-right{right:18px;bottom:18px;}
+            .amenities-grid{grid-template-columns:1fr;}
+            .enquire-sticky button{padding:30px 10px;font-size:11px;}
+            .contact-title{font-size:32px;text-align:center;}
+            .usp-inner img,
+            .amenities-inner img,
+            .dev-bottom img{height:220px;}
+            .visual-card{flex:0 0 calc(100% - 48px);}
+            .visual-card img{height:220px;}
+            .visual-viewport{padding:0 24px;}
+            /* Mobile-specific pricing adjustments (do not change desktop styles) */
+            .price-card{
+                padding:18px 14px 20px;
+                border-radius:12px;
+            }
+            .price-card h4{
+                font-size:18px;
+                letter-spacing:1px;
+                white-space:normal !important;
+            }
+            .price-card .row{padding:8px 0}
+            .price-card .label{font-size:14px}
+            .price-card .value{font-size:16px}
+            .price-cta{display:block;width:100%;padding:12px 14px;font-size:14px;border-radius:8px;text-align:center}
+            .price-card::after{opacity:0.04}
+            /* Make visual cards fit smaller screens neatly */
+            .visual-card{flex:0 0 calc(100% - 36px);border-radius:14px}
+            .visual-card img{height:160px;object-fit:cover}
+            /* Forms and contact */
+            .contact-right{padding:20px;box-shadow:0 14px 30px rgba(15,95,127,0.06)}
+            .form-group input,.form-group textarea{padding:10px 12px;font-size:14px}
             .amenities-grid{grid-template-columns:1fr;}
             .enquire-sticky button{padding:30px 10px;font-size:11px;}
             .contact-title{font-size:32px;text-align:center;}
@@ -1514,6 +1799,14 @@
             <span></span><span></span><span></span>
         </button>
 
+        <div class="logo">
+            <img src="images/logo.png" alt="Experion">
+        </div>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+
         <nav>
             <a href="#overview">Overview</a>
             <a href="#highlights">Highlights</a>
@@ -1526,6 +1819,7 @@
         </nav>
     </header>
 
+    <!-- HERO SECTION (SLIDER + SIDE ENQUIRY FORM) -->
     <!-- HERO SECTION (SLIDER + SIDE ENQUIRY FORM) -->
     <section class="hero">
         <div class="hero-slider">
@@ -1626,6 +1920,14 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
         <div class="usp-inner">
             <div class="highlight-image">
                 <img src="images/highlight.webp" alt="USP Image">
+        </div>
+    </main>
+
+    <!-- USP SECTION -->
+    <section class="usp-section animate-fade-up" id="highlights">
+        <div class="usp-inner">
+            <div class="highlight-image">
+                <img src="images/highlight.webp" alt="USP Image">
             </div>
             <div class="highlights-content">
                 <div class="usp-title">Key Highlights</div>
@@ -1648,6 +1950,15 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
                     <button class="btn-primary open-enquire">Request a Brochure</button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- DECISION CORNER BANNER -->
+    <section class="decision-banner animate-fade-up">
+        <div class="decision-inner">
+            <h3>Decision Corner</h3>
+            <p>Looking For A Luxurious Home To Live Or A Lucrative Investment.</p>
+            <button class="btn-primary open-enquire">Book Now</button>
         </div>
     </section>
 
@@ -1952,24 +2263,44 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
 
             <img src="images/logo.png" alt="Elan" class="modal-logo">
             <div class="modal-title" id="popupTitle">Talk to Our Property Specialist!</div>
+    <div class="modal-backdrop" id="popupEnquiry">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+            <button class="modal-close" id="popupClose">✕</button>
+
+            <img src="images/logo.png" alt="Elan" class="modal-logo">
+            <div class="modal-title" id="popupTitle">Talk to Our Property Specialist!</div>
 
             <form id="popupForm">
+            <form id="popupForm">
                 <div class="form-group">
+                    <label>NAME</label>
                     <label>NAME</label>
                     <input type="text" required>
                 </div>
                 <div class="form-group">
                     <label>EMAIL ID</label>
+                    <label>EMAIL ID</label>
                     <input type="email" required>
                 </div>
                 <div class="form-group">
+                    <label>CONTACT NO.</label>
                     <label>CONTACT NO.</label>
                     <input type="tel" required>
                 </div>
                 <div class="form-group">
                     <label>MESSAGE</label>
+                    <label>MESSAGE</label>
                     <textarea required></textarea>
                 </div>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="popupConsent" required>
+                    <label for="popupConsent">
+                        I authorize company representatives to Call, SMS, Email, or WhatsApp me about its products and offers.
+                        This consent overrides my registration for DNC/NDNC.
+                    </label>
+                </div>
+
 
                 <div class="checkbox-row">
                     <input type="checkbox" id="popupConsent" required>
@@ -2094,7 +2425,9 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
         }
         document.getElementById('bottomForm').addEventListener('submit',handleSimpleSubmit);
         document.getElementById('heroEnquiryForm').addEventListener('submit',handleSimpleSubmit);
+        document.getElementById('heroEnquiryForm').addEventListener('submit',handleSimpleSubmit);
 
+        // Smooth scroll for nav link
         // Smooth scroll for nav link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -2106,10 +2439,14 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
 
                     headerEl.classList.remove('nav-open');
                     document.body.classList.remove('no-scroll');
+
+                    headerEl.classList.remove('nav-open');
+                    document.body.classList.remove('no-scroll');
                 }
             });
         });
 
+        // Floating icons
         // Floating icons
         document.getElementById('callIcon').addEventListener('click', () => {
             window.location.href = 'tel:+919205992535';
@@ -2123,8 +2460,14 @@ Residents will enjoy world-class amenities, including a 50,000 sq. ft. grand clu
         const heroFormClose = document.getElementById('heroFormClose');
         heroFormClose.addEventListener('click', () => {
             heroForm.classList.add('hero-form-hidden');
+        // HERO SIDE ENQUIRY – allow close only
+        const heroForm = document.getElementById('heroForm');
+        const heroFormClose = document.getElementById('heroFormClose');
+        heroFormClose.addEventListener('click', () => {
+            heroForm.classList.add('hero-form-hidden');
         });
 
+        // HERO SLIDER
         // HERO SLIDER
         const heroSlides = document.querySelectorAll('.hero-slide');
         let heroIndex = 0;
