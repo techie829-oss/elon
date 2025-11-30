@@ -768,11 +768,11 @@
             display:inline-block;padding:12px 24px;background:linear-gradient(90deg,#0f5f7f,#0b6b78);color:#fff;border-radius:12px;border:none;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 12px 28px rgba(11,107,120,0.18);position:relative;z-index:5;}
         .price-cta:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(11,107,120,0.22)}
 
-        /* Amenities section */
+        /* Amenities section (updated card layout to match sample) */
         .amenities-section{
             max-width:1200px;
             margin:32px auto 0;
-            padding:36px 14px 42px;
+            padding:36px 18px 42px;
             background:#fff;
             border-radius:18px;
             box-shadow:0 18px 40px rgba(0,0,0,0.04);
@@ -781,6 +781,10 @@
             text-align:center;
             font-size:32px;
             margin-bottom:6px;
+            color:#0f5f7f;
+            font-weight:700;
+            text-transform:uppercase;
+            letter-spacing:1px;
         }
         .amenities-underline{
             width:130px;
@@ -803,6 +807,7 @@
             display:grid;
             grid-template-columns:1.2fr 1.3fr;
             gap:20px;
+            align-items:start;
         }
         .amenities-inner img{
             width:100%;
@@ -810,43 +815,116 @@
             object-fit:cover;
             border-radius:10px;
         }
+        /* make grid wider on large screens to show many items like the sample */
         .amenities-grid{
             display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:28px;
-            align-items:start;
+            grid-template-columns:repeat(5,1fr);
+            gap:20px;
+            align-items:stretch;
         }
+        :root{--amenity-accent:#0f5f7f;--amenity-accent-dark:#0b4e5e}
+
         .amenity-item{
             text-align:center;
             font-size:13px;
-            color:#0f5f7f;
+            color:var(--amenity-accent);
             display:flex;
             flex-direction:column;
             align-items:center;
-            gap:12px;
-            transition:transform 0.3s ease, box-shadow 0.3s ease;
+            gap:14px;
+            transition:transform 0.32s cubic-bezier(.2,.9,.2,1), box-shadow 0.32s ease, background 0.32s ease;
+            background:linear-gradient(180deg,#ffffff,#f7fcfb);
+            padding:20px 14px;
+            border-radius:14px;
+            border:1px solid rgba(15,95,127,0.06);
+            box-shadow:0 10px 30px rgba(11,107,120,0.04);
+            min-height:140px;
+            justify-content:center;
         }
+
         .amenity-icon{
-            width:78px;
-            height:78px;
-            border-radius:12px;
+            width:96px;
+            height:96px;
+            border-radius:50%;
             display:flex;
             align-items:center;
             justify-content:center;
-            border:2px solid rgba(15,95,127,0.06);
-            background:rgba(15,95,127,0.02);
-            box-shadow:0 10px 20px rgba(0,0,0,0.06);
+            background:radial-gradient(circle at 35% 35%, rgba(15,95,127,0.10), rgba(240,255,250,0.6) 40%, rgba(255,255,255,0.95) 60%);
+            border:1px solid rgba(15,95,127,0.08);
+            box-shadow:0 8px 30px rgba(15,95,127,0.06);
+            flex:0 0 96px;
+            transition:transform .28s ease, box-shadow .28s ease, background .28s ease, color .28s ease;
+            color:var(--amenity-accent);
+            position:relative;
+            overflow:visible;
         }
+
+        /* decorative halo (soft, appears on hover) */
+        .amenity-icon::before{
+            content:'';
+            position:absolute;
+            inset:-10px;
+            border-radius:50%;
+            background:conic-gradient(from 180deg at 50% 50%, rgba(11,107,120,0.06), transparent 30%);
+            filter:blur(8px);
+            opacity:0;
+            transform:scale(.98);
+            transition:opacity .32s ease, transform .32s ease;
+            pointer-events:none;
+        }
+
+        /* subtle inner ring to match the circular sample look (keeps icons crisp) */
+        .amenity-icon::after{
+            content:'';
+            position:absolute;
+            inset:12px;
+            border-radius:50%;
+            border:1px solid rgba(15,95,127,0.06);
+            pointer-events:none;
+        }
+
+        /* Make SVG icons larger and inherit the color for a clean, monochrome look */
+        .amenity-icon svg{width:44px;height:44px;stroke:currentColor !important;fill:none !important;stroke-width:1.6 !important}
+        .amenity-icon svg *{stroke:currentColor !important;fill:none !important}
+
         .amenity-item span.label{
             display:block;
-            font-weight:600;
-            font-size:12px;
-            color:#222;
-            margin-top:6px;
+            font-weight:700;
+            font-size:13px;
+            color:#223233;
+            margin-top:8px;
+            max-width:150px;
+            text-align:center;
+            line-height:1.25;
+            text-transform:uppercase;
+            letter-spacing:0.6px;
         }
+
         .amenity-item:hover{
-            transform:translateY(-5px);
-            box-shadow:0 14px 30px rgba(0,0,0,0.08);
+            transform:translateY(-10px);
+            box-shadow:0 32px 80px rgba(15,95,127,0.12);
+            background:linear-gradient(180deg,#ffffff,#f0fbfa);
+        }
+
+        .amenity-item:hover .amenity-icon{
+            transform:translateY(-6px) scale(1.08);
+            box-shadow:0 36px 90px rgba(15,95,127,0.16);
+            background:radial-gradient(circle at 35% 35%, rgba(15,95,127,0.14), rgba(255,255,255,0.98));
+            color:var(--amenity-accent-dark);
+        }
+
+        .amenity-item:hover .amenity-icon::before{opacity:1;transform:scale(1);} 
+
+        /* Responsive: fewer columns on smaller screens */
+        @media (max-width:1200px){
+            .amenities-grid{grid-template-columns:repeat(4,1fr);}
+        }
+        @media (max-width:900px){
+            .amenities-grid{grid-template-columns:repeat(2,1fr);}
+            .amenities-inner{grid-template-columns:1fr;}
+        }
+        @media (max-width:480px){
+            .amenities-grid{grid-template-columns:1fr;}
         }
 
         /* Floor Plans */
@@ -888,11 +966,27 @@
 
         /* Floor image wrapper + download CTA */
         .floor-image-wrap{position:relative;display:block;max-width:100%;}
-        .floor-download-btn{position:absolute;left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);background:#0f5f7f;color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;letter-spacing:0.6px;box-shadow:0 12px 28px rgba(11,107,120,0.18);z-index:6}
-        .floor-download-btn:hover{transform:translate(-50%,-50%) translateY(-6px);box-shadow:0 20px 40px rgba(11,107,120,0.26)}
+        /* Keep the download CTA visually stable: remove lift, transition and heavy shadow */
+        .floor-download-btn{
+            position:absolute;
+            left:40%;
+            top:50%;
+            bottom:auto;
+            background:#0f5f7f;
+            color:#fff;
+            padding:12px 24px;
+            border-radius:10px;
+            text-decoration:none;
+            font-weight:700;
+            letter-spacing:0.6px;
+            box-shadow:none;
+            transition:none;
+            z-index:6;
+        }
+        /* No lift or extra shadow on hover — remain centered and static */
+      
 
         @media (max-width:900px){
-            .floor-download-btn{left:50%;top:auto;bottom:18px;transform:translateX(-50%)}
         }
 
         /* POPUP ENQUIRY MODAL */
@@ -1365,7 +1459,7 @@
         nav a:hover{color:#0f5f7f;transform:translateY(-3px)}
 
         /* Stronger Enquiry CTA styling and animation */
-        nav .cta-button, .open-enquire{background:#0f5f7f;color:#fff;padding:10px 18px;border-radius:8px;border:2px solid #0f5f7f;box-shadow:0 8px 22px rgba(15,95,127,0.18);transition:transform .18s ease,box-shadow .18s ease,background .18s}
+        nav .cta-button, .open-enquire{background:#0f5f7f;color:#fff;padding:10px 18px;border-radius:8px;border:2px solid #0f5f7f;box-shadow:0 8px 22px rgba(15,95,127,0.18);transition:box-shadow .18s ease, background .18s}
         nav .cta-button:hover, .open-enquire:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(15,95,127,0.22);background:#0b4e5e}
         .enquire-sticky button{background:#0f5f7f;border:2px solid rgba(255,255,255,0.06)}
 
@@ -1656,7 +1750,7 @@ The project offers Experion world-class amenities, including a 50,000 sq.ft.club
 </h4>
                 <div class="row"><div class="label">Size</div><div class="value">Coming Soon</div></div>
                 <div class="row labelled"><div class="label">Price</div><div class="value">Coming Soon</div></div>
-                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="3 BHK + Servant">VIEW DETAILS</button></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="3 BHK Premium Residences">VIEW DETAILS</button></div>
             </div>
 
             <div class="price-card">
@@ -1665,7 +1759,7 @@ The project offers Experion world-class amenities, including a 50,000 sq.ft.club
 </h4>
                 <div class="row"><div class="label">Size</div><div class="value">Coming Soon</div></div>
                 <div class="row labelled"><div class="label">Price</div><div class="value">Coming Soon</div></div>
-                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="4 BHK +">VIEW DETAILS</button></div>
+                <div style="padding-top:22px;"><button class="price-cta open-enquire" data-plan="4 BHK Premium Residences">VIEW DETAILS</button></div>
             </div>
         </div>
     </section>
@@ -1787,7 +1881,7 @@ The project offers Experion world-class amenities, including a 50,000 sq.ft.club
                     <div class="amenity-item">
                         <div class="amenity-icon">
                             <!-- Pool waves -->
-                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8c3 2 6 2 9 0s6-2 9 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M3 12c3 2 6 2 9 0s6-2 9 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
+                            <svg class="e-font-icon-svg e-fas-swimming-pool" width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8c3 2 6 2 9 0s6-2 9 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/><path d="M3 12c3 2 6 2 9 0s6-2 9 0" stroke="#0f5f7f" stroke-width="1.2" stroke-linecap="round"/></svg>
                         </div>
                         <span class="label">Swimming Pool</span>
                     </div>
@@ -2363,4 +2457,3 @@ Experion Developments located throughout Noida, Gurgram, and the National Capita
     </script>
 </body>
 </html>
-
